@@ -18,6 +18,10 @@ mongoose.connect(process.env.MONGO_URL, {
     console.error("Error connecting to MongoDB:", error.message);
   });
 
+  app.get('/', (req, res) => {
+    res.send('NoBS');
+  });
+
 app.use('/api/goals', goalRoutes);
 
 app.listen(PORT, () => {

@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const goalSchema = new mongoose.Schema({
-  title: String,
-  description: String,
-  dueDate: Date,
-  completed: Boolean,
+  title: { type: String, required: true },
+  description: { type: String },
+  completed: { type: Boolean, default: false },
+  createdAt: { type: Date, default: Date.now },
 });
 
 const Goal = mongoose.model('Goal', goalSchema);
