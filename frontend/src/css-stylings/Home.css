@@ -118,3 +118,11 @@ button:hover {
     opacity: 1;
   }
 }
+
+body[data-theme="light"] {
+  color: #000; /* Light mode text color */
+}
+
+body[data-theme="dark"] {
+  color: #fff; /* Dark mode text color */
+}

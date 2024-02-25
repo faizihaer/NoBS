@@ -1,5 +1,7 @@
+/* Navbar.css */
+
 .navbar {
-  background-color: #1e2124;
+  background-color: #000000;
   color: white;
   padding: 10px;
   padding-top: 15px;
@@ -7,7 +9,9 @@
   top: 0;
   width: 100%;
   z-index: 1000;
+  transition: transform 0.3s ease-in-out;
 }
+
 
 .navbar-container {
   display: flex;
@@ -16,14 +20,22 @@
   padding: 0 10%;
 }
 
-.left-section {
-  display: flex;
-  align-items: center;
+.left-section img {
+  width: 150px;
+  margin-left: -120px;
+  transition: filter 10s ease; /* Smooth transition effect */
+
+  /* Set initial brightness */
+  filter: brightness(1);
+}
+
+.left-section img:hover {
+  filter: brightness(0.5);
 }
 
 .logo {
-  width: 80px;
-  margin-right: 10px;
+  width: 150px;
+  margin-right: 0px;
 }
 
 .right-section {
@@ -31,11 +43,6 @@
   align-items: center;
 }
 
-.group-id {
-  margin: 0;
-  margin-right: 20px;
-  font-size: 1.1rem;
-}
 
 .nav-links {
   list-style-type: none;
@@ -51,6 +58,8 @@
   font-size: 20px;
 }
 
+
+
 .title {
   text-decoration: none;
   color: white;
@@ -60,4 +69,9 @@
 
 .logout-btn {
   font-size: 15px;
+}
+
+/* Class for hiding the navbar on scroll down */
+.navbar-hidden {
+  transform: translateY(-100%); /* Move the navbar out of view */
 }

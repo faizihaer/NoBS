@@ -10,7 +10,7 @@
 }
 
 [data-theme="dark"] {
-  --body_background: #4a4c51;
+  --body_background: #000000;
   --body_color: #20323d;
   --link_color: cyan;
   --hover_color: #7289da;

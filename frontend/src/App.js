@@ -12,8 +12,8 @@ function App() {
         <Navbar />
         <div className="pages">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/" element={<About />} />
+            <Route path="/Home" element={<Home />} />
           </Routes>
         </div>
       </BrowserRouter>

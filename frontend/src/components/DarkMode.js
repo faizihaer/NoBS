@@ -1,16 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ReactComponent as Sun } from "../assets/Sun.svg";
 import { ReactComponent as Moon } from "../assets/Moon.svg";
 import "../css-stylings/DarkMode.css";
 
 const DarkMode = () => {
+  const [theme, setTheme] = useState("light");
+
   const setDarkMode = () => {
     document.querySelector("body").setAttribute("data-theme", "dark");
     localStorage.setItem("theme", "dark");
+    setTheme("dark");
   };
+
   const setLightMode = () => {
     document.querySelector("body").setAttribute("data-theme", "light");
     localStorage.setItem("theme", "light");
+    setTheme("light");
   };
 
   useEffect(() => {
@@ -20,8 +25,8 @@ const DarkMode = () => {
     }
   }, []);
 
-  const toggleTheme = (e) => {
-    if (e.target.checked) {
+  const toggleTheme = () => {
+    if (theme === "light") {
       setDarkMode();
     } else {
       setLightMode();
@@ -35,9 +40,9 @@ const DarkMode = () => {
         type="checkbox"
         id="darkmode-toggle"
         onChange={toggleTheme}
-        defaultChecked={localStorage.getItem("theme") === "dark"}
+        checked={theme === "dark"}
       />
-      <label className="dark_mode_label" for="darkmode-toggle">
+      <label className="dark_mode_label" htmlFor="darkmode-toggle">
         <Sun />
         <Moon />
       </label>
