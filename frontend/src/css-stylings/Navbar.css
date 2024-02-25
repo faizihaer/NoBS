@@ -1,0 +1,63 @@
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  padding-top: 15px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 80px;
+  margin-right: 10px;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+.group-id {
+  margin: 0;
+  margin-right: 20px;
+  font-size: 1.1rem;
+}
+
+.nav-links {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  margin-right: 15px;
+  font-size: 20px;
+}
+
+.title {
+  text-decoration: none;
+  color: white;
+  margin-right: 15px;
+  font-size: 40px;
+}
+
+.logout-btn {
+  font-size: 15px;
+}
