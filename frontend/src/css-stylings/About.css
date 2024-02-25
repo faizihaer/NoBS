@@ -1,24 +1,36 @@
+@import url('Fonts/Nohemi-Thin.css');
+
 .about {
   max-width: 800px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 150px;
   background-color: var(--body_background);
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  font-family: 'NohemiThin', sans-serif; /* Apply font-family to the entire about page */
+  text-align: center; /* Adjust as needed */
+  color: var(--text_color); /* Adjust as needed */
+  font-size: 20px; /* Adjust as needed */
+  line-height: 1.5; /* Adjust as needed */
+}
+
+.about-container {
+  /* Your existing styles for the about page */
 }
 
 .header {
-  text-align: center;
   margin-bottom: 30px;
-  color: var(--text_color);
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 5.5em;
   margin-bottom: 10px;
 }
 
 p {
   margin-bottom: 15px;
-  line-height: 1.5;
+}
+
+.about-text {
+  /* Additional styles for the text in the about page */
 }

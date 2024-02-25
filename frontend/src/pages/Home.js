@@ -5,16 +5,14 @@ const Home = () => {
   return (
     <div className="home">
       <header className="header">
-        <h1>Welcome, USERNAME</h1>
+        <h1>Welcome, USERNAME!</h1>
       </header>
 
       <section className="plan">
-        <h2 className="section-title">Plan</h2>
+        <h2 className="section-title">Your Plan</h2>
         <textarea
           className="textarea"
-          defaultValue={
-            "Create your plan now!\n\nNeed help coming up with a plan? Use our personal AI Chatbot"
-          }
+          placeholder="Create your plan now! Need help? Use our personal AI Chatbot."
           rows={4}
           cols={40}
         ></textarea>
@@ -22,11 +20,11 @@ const Home = () => {
       </section>
 
       <section className="daily-tasks">
-        <h2 className="section-title">Daily Tasks</h2>
+        <h2 className="section-title">Your Daily Tasks</h2>
         <div className="task-container">
           <div className="task">
             <input type="checkbox" id="bench" />
-            <label htmlFor="bench">Bench</label>
+            <label htmlFor="bench">Bench Press</label>
           </div>
           <div className="task">
             <input type="checkbox" id="run" />
