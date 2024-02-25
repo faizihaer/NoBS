@@ -2,14 +2,14 @@ body {
   font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
+  background-color: var(--body_background);
 }
 
 .home {
   max-width: 800px;
   margin: 110px auto 20px;
   padding: 20px;
-  background-color: #fff;
+  background-color: var(--body_background);
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   animation: fadeIn 1s ease;
@@ -18,7 +18,7 @@ body {
 .header {
   text-align: center;
   margin-bottom: 30px;
-  color: #2e2e2e;
+  color: var(--text_color);
 }
 
 .header h1 {
@@ -27,8 +27,8 @@ body {
 }
 
 .section-title {
-  color: #333;
-  border-bottom: 2px solid #333;
+  color: var(--text_color);
+  border-bottom: 2px solid var(--border_color);
   padding-bottom: 10px;
   margin-bottom: 20px;
   animation: slideIn 1s ease;
@@ -43,8 +43,8 @@ body {
 }
 
 button {
-  background-color: #454845;
-  color: white;
+  background-color: var(--button_color);
+  color: var(--text_color);
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
@@ -53,7 +53,7 @@ button {
 }
 
 button:hover {
-  background-color: #707370;
+  background-color: var(--hover_color);
 }
 
 .friend {
@@ -74,7 +74,6 @@ button:hover {
 
 .activity-progress {
   margin-right: 8px;
-  color: #777;
 }
 
 .daily-tasks {
@@ -104,6 +103,7 @@ button:hover {
 .textarea {
   height: 150px;
   resize: none;
+  background-color: var(--text_area_color);
 }
 
 .edit-button {

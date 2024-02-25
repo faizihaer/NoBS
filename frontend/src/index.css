@@ -1,0 +1,23 @@
+:root {
+  --body_background: #99aab5;
+  --body_color: black;
+  --link_color: navy;
+  --hover_color: #7289da;
+  --text_color: white;
+  --button_color: #424549;
+  --text_area_color: white;
+  --border_color: #333;
+}
+
+[data-theme="dark"] {
+  --body_background: #4a4c51;
+  --body_color: #20323d;
+  --link_color: cyan;
+  --hover_color: #7289da;
+  --text_color: white;
+  --button_color: #424549;
+  --text_area_color: white;
+  --border_color: #333;
+}
+
+/*EXP:  var(--body_background)*/

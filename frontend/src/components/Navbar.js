@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css-stylings/Navbar.css";
+import DarkMode from "./DarkMode";
 
 const Navbar = () => {
   return (
@@ -31,6 +32,9 @@ const Navbar = () => {
             </li>
             <li>
               <button className="logout-btn">Log Out</button>
+            </li>
+            <li>
+              <DarkMode />
             </li>
           </ul>
         </div>
