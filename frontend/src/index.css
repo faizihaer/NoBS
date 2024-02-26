@@ -1,11 +1,11 @@
 :root {
-  --body_background: #99aab5;
+  --body_background: #07789b;
   --body_color: black;
-  --link_color: navy;
-  --hover_color: #7289da;
-  --text_color: white;
-  --button_color: #424549;
-  --text_area_color: white;
+  --link_color: rgb(2, 2, 6);
+  --hover_color: #0d0e13;
+  --text_color: rgb(0, 0, 0);
+  --button_color: #8cabd3;
+  --text_area_color: rgb(0, 0, 0);
   --border_color: #333;
 }
 
@@ -14,7 +14,7 @@
   --body_color: #20323d;
   --link_color: cyan;
   --hover_color: #7289da;
-  --text_color: white;
+  --text_color: rgb(255, 255, 255);
   --button_color: #424549;
   --text_area_color: white;
   --border_color: #333;
