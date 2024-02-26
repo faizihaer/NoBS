@@ -12,7 +12,6 @@
   transition: transform 0.3s ease-in-out;
 }
 
-
 .navbar-container {
   display: flex;
   justify-content: space-between;
@@ -43,7 +42,6 @@
   align-items: center;
 }
 
-
 .nav-links {
   list-style-type: none;
   padding: 0;
@@ -57,8 +55,6 @@
   margin-right: 15px;
   font-size: 20px;
 }
-
-
 
 .title {
   text-decoration: none;
