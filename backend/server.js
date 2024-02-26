@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const route = require("./routes/route.js");
+const route = require("./routes/userRoute.js");
 
 const app = express();
 const PORT = 4000;

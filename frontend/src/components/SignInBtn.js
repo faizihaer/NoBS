@@ -1,14 +1,29 @@
 import { useEffect, useState } from "react";
 import "../css-stylings/SignInBtn.css"; // Import CSS file for styling
 import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 
 export default function SignInBtn() {
   const [user, setUser] = useState({});
 
   function handleCallbackResponse(response) {
-    console.log("Encoded JWT ID token: " + response.credential);
+    //console.log("Encoded JWT ID token: " + response.credential);
     var userObject = jwtDecode(response.credential);
-    console.log(userObject);
+    //console.log(userObject);
+
+    // Send user data to backend API
+    axios
+      .post("http://localhost:4000/api/google-auth", {
+        name: userObject.name,
+        email: userObject.email,
+      })
+      .then((response) => {
+        console.log("User saved successfully:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error saving user:", error);
+      });
+
     setUser(userObject);
     document.getElementById("signInDiv").hidden = true;
   }
