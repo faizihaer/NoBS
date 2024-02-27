@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 
+router.use(express.json());
+
 router.post("/", async (req, res) => {
   try {
     const { name, email } = req.body;
@@ -18,7 +20,9 @@ router.post("/", async (req, res) => {
     res.status(200).json({ message: "User authenticated successfully", user });
   } catch (error) {
     console.error("Error authenticating user:", error);
-    res.status(500).json({ message: "Error authenticating user" });
+    res
+      .status(500)
+      .json({ message: "Error authenticating user", error: error.message });
   }
 });
 
@@ -27,7 +31,10 @@ router.get("/", async (req, res) => {
     const users = await User.find();
     res.json(users);
   } catch (error) {
-    res.status(500).json({ message: "Error getting user" });
+    console.error("Error getting users:", error);
+    res
+      .status(500)
+      .json({ message: "Error getting users", error: error.message });
   }
 });
 
