@@ -48,17 +48,30 @@ export default function SignInBtn() {
   }, []);
 
   return (
-    <div>
+    <div className="centered-container">
       <div id="signInDiv"></div>
-      {Object.keys(user).length != 0 && (
-        <button onClick={(e) => handleSignOut(e)}>Sign Out</button>
-      )}
-      {user && (
-        <div>
-          <img src={user.picture}></img>
-          <h3>{user.name}</h3>
+      {user && Object.keys(user).length !== 0 ? (
+        <div className="welcome-container">
+          <h1>Welcome, {user.name}</h1>
+          <div className="profile-circle">
+            <img src={user.picture} alt="User profile" />
+          </div>
+
+          <div className="groupSelection">
+            <h2>Please Enter a Group ID or Create a New Group</h2>
+
+            <div className="input-container">
+              <label htmlFor="groupId">Group ID:</label>
+              <input type="text" id="groupId" placeholder="Enter Group ID" />
+              <button className="submit-button">Submit</button>
+            </div>
+
+            <button className="create-group-button">Create a Group</button>
+
+            <button onClick={(e) => handleSignOut(e)}>Sign Out</button>
+          </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }
