@@ -1,17 +1,17 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = 'http://localhost:4000'; // Update with your backend URL
+const API_URL = "http://localhost:4000"; // Update with your backend URL
 
 const api = axios.create({
   baseURL: API_URL,
 });
 
-export const getGoals = async () => {
+export const getRoutes = async () => {
   try {
-    const response = await api.get('/api/goals');
+    const response = await api.get("/api/route");
     return response.data;
   } catch (error) {
-    console.error('Error fetching goals:', error);
+    console.error("Error fetching route:", error);
     throw error;
   }
 };
