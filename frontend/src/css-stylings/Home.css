@@ -52,10 +52,19 @@ button {
   margin-top: 10px;
 }
 
-button:hover {
-  background-color: var(--hover_color);
-}
-
+ button:hover {
+  background-color: rgba(255, 255, 255, 0.5); /* Lighter background color with reduced opacity */
+ } 
+/*To be put in place later - Gabe
+ For light mode 
+ .light-mode button:hover { 
+   background-color: rgba(255, 255, 255, 0.5); Lighter background color with reduced opacity 
+ } */
+/*To be used later - Gabe
+ For dark mode 
+ .dark-mode button:hover {
+  background-color: rgba(0, 0, 0, 0.5); Lighter background color with reduced opacity
+} */
 .friend {
   display: flex;
   justify-content: space-between;
