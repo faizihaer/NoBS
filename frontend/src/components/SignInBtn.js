@@ -13,7 +13,7 @@ export default function SignInBtn() {
 
     // Send user data to backend API
     axios
-      .post("http://localhost:4000/api/google-auth", {
+      .post("http://localhost:4000/api/route", {
         name: userObject.name,
         email: userObject.email,
       })
