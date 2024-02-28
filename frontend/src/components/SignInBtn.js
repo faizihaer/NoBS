@@ -58,8 +58,7 @@ export default function SignInBtn() {
           </div>
 
           <div className="groupSelection">
-            <h2>Please Enter a Group ID or Create a New Group</h2>
-
+            <h2>Enter a Group ID or Create a New Group to join NoBS!</h2>
             <div className="input-container">
               <label htmlFor="groupId">Group ID:</label>
               <input type="text" id="groupId" placeholder="Enter Group ID" />
