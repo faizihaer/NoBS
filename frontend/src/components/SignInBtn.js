@@ -10,6 +10,7 @@ export default function SignInBtn() {
     //console.log("Encoded JWT ID token: " + response.credential);
     var userObject = jwtDecode(response.credential);
     //console.log(userObject);
+    //
 
     // Send user data to backend API
     axios
