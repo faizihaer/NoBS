@@ -1,4 +1,5 @@
 .centered-container {
+  padding: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,7 +8,7 @@
 }
 
 h2 {
-  color: rgb(0, 128, 255);
+  color: rgb(33, 36, 40);
 }
 
 .welcome-container {
@@ -16,8 +17,8 @@ h2 {
 
 .profile-circle {
   display: inline-block;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   overflow: hidden;
   margin-left: 20px; /* Adjust as needed */
@@ -34,11 +35,12 @@ h2 {
 /* Additional styling for the button if necessary */
 button {
   margin-top: 20px; /* Adjust as needed */
-  width: 100px;
+  width: 150px;
 }
 
-.groupSelection {
+.groupSelection h2{
   text-align: center;
+  color: white;
 }
 
 .input-container {

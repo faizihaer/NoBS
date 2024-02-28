@@ -1,6 +1,7 @@
 import React from "react";
 import '../css-stylings/Fonts/Nohemi-Thin.css';
 import "../css-stylings/About.css";
+import VideoPlayer from "../components/videoplayer"; // Assuming VideoPlayer component path
 
 const MotivationalComponent = () => {
   const containerStyle = {
@@ -60,9 +61,8 @@ const MotivationalComponent = () => {
 const About = () => {
   return (
     <>
+     <VideoPlayer />
       <MotivationalComponent />
-
-
       <div className="about" id="about2">
         <header className="header">
           <h1>About NoBS</h1>
