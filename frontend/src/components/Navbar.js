@@ -28,21 +28,20 @@ const Navbar = () => {
       <nav className="navbar-container">
         <div className="left-section">
           <Link to="/" className="title">
-            <img src="Nobswhite.png" alt="Logo" className="logo" />
+            <img src="RedNoBS.png" alt="Logo" className="logo" />
           </Link>
         </div>
         <div className="right-section">
           <ul className="nav-links">
             <li>
               {/* You can add additional styling to this Link */}
-              <Link to="/" className="nav-link">
+              <Link to="/" className="welcome-link">
                 Welcome
               </Link>
             </li>
             <li>
               {/* You can add additional styling to this Link */}
-
-              <Link to="/Home" className="nav-link">
+              <Link to="/Home" className="home-link">
                 Home
               </Link>
             </li>

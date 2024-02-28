@@ -5,7 +5,7 @@ import VideoPlayer from "../components/videoplayer"; // Assuming VideoPlayer com
 
 const MotivationalComponent = () => {
   const containerStyle = {
-    padding: '80px 200px 200px',
+    padding: '80px 20px 200px',
     position: 'relative',
     marginTop: '60px',
     
@@ -17,21 +17,22 @@ const MotivationalComponent = () => {
     zIndex: 2,
     position: 'relative',
   };
-
-  const triangleStyle = {
-    padding: '-100px',
-    position: 'absolute',
-    top: 0,
-    right: '-0px', // Adjust right to control the starting point of the triangle
-    width: 0,
-    height: 0,
-    borderLeft: '500px solid transparent',
-    borderBottom: '800px solid turquoise', // Adjust dimensions and color as needed
-    zIndex: 10000,
-  };
+/*Commented out our triangle style */
+  // const triangleStyle = {
+  //   padding: '-100px',
+  //   position: 'absolute',
+  //   top: 0,
+  //   right: '-0px', // Adjust right to control the starting point of the triangle
+  //   width: 0,
+  //   height: 0,
+  //   borderLeft: '500px solid transparent',
+  //   borderBottom: '800px solid turquoise', // Adjust dimensions and color as needed
+  //   zIndex: 10000,
+  // };
 
   const factsStyle = {
     marginTop: '40px', // Adjust margin to create space between text and facts
+    marginLeft: '40px', // Add marginLeft to shift text to the left
     color: 'white',
     fontSize: '18px',
     lineHeight: '2.5',
@@ -53,7 +54,8 @@ const MotivationalComponent = () => {
           </ul>
         </div>
       </div>
-      <div style={triangleStyle}></div>
+      
+      {/* (If you want triangle back in uncomment this -> and delete this text) <- <div style={triangleStyle}></div> */}
     </div>
   );
 };
