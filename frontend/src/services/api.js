@@ -8,10 +8,10 @@ const api = axios.create({
 
 export const getRoutes = async () => {
   try {
-    const response = await api.get("/api/route");
+    const response = await api.get("/api/routes");
     return response.data;
   } catch (error) {
-    console.error("Error fetching route:", error);
+    console.error("Error fetching routes:", error);
     throw error;
   }
 };
