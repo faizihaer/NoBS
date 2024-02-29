@@ -6,7 +6,7 @@ const Home = () => {
   const nudgeEmail = async () => {
     const options = {
       from: process.env.REACT_APP_EMAIL_USERNAME,
-      to: "faizihaer@gmail.com",
+      to: "USEREMAIL@gmail.com",
       subject: "Welcome to NoBS, where you can stop your BS and get to work",
       text: "Get Ready to work out",
     };
