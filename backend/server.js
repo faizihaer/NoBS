@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
   res.send("NoBS");
 });
 
-app.use("/api/users", userRoute);
+app.use("/api/user", userRoute);
 app.use("/api/email", emailRouter);
 
 app.listen(PORT, () => {

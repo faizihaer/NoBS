@@ -4,11 +4,11 @@ const { sendMail } = require("../nodeMailer");
 
 router.use(express.json());
 
-router.post("/api/email", async (req, res) => {
-  // Extract email data from request body
-  const { to, subject, text } = req.body;
-
+router.post("/", async (req, res) => {
   try {
+    // Extract email data from request body
+    const { to, subject, text } = req.body;
+
     await sendMail({ to, subject, text });
     res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
