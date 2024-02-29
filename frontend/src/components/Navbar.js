@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../css-stylings/Navbar.css";
 import DarkMode from "./DarkMode";
-import { AuthProvider, useAuth } from '../AuthService';
+import { AuthProvider, useAuth } from "../AuthService";
 
 const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
-  const {user, handleCallbackResponse, handleSignOut, isLoggedIn } = useAuth();
+  const { user, handleCallbackResponse, handleSignOut, isLoggedIn } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,20 +35,21 @@ const Navbar = () => {
         <div className="right-section">
           <ul className="nav-links">
             <li>
-              <Link to="/" className="nav-link">
-                Welcome
+              <Link to="/Home" className="nav-link">
+                Home
               </Link>
             </li>
             <li>
-
-              <Link to="/Home" className="nav-link">
-                Home
+              <Link to="/Profile" className="nav-link">
+                Profile
               </Link>
             </li>
             {isLoggedIn ? (
               <li>
                 {/* Use onClick handler to sign out */}
-                <button onClick={(e) => handleSignOut(e)} className="logbtn">Sign Out</button>
+                <button onClick={(e) => handleSignOut(e)} className="logbtn">
+                  Sign Out
+                </button>
               </li>
             ) : (
               <li>
