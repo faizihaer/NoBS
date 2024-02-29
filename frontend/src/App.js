@@ -7,11 +7,12 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Auth from "./pages/Auth";
 import VideoPlayer from "./components/videoplayer";
-
+import { AuthProvider } from "./AuthService";
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <AuthProvider>
         <Navbar />
         <div className="pages">
           <Routes>
@@ -20,6 +21,7 @@ function App() {
             <Route path="/Auth" element={<Auth />} />
           </Routes>
         </div>
+        </AuthProvider>
       </BrowserRouter>
     </div>
   );

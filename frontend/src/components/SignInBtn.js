@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import "../css-stylings/SignInBtn.css";
-import { useAuth } from '../AuthService'; // Import the useAuth hook
+import { AuthProvider, useAuth } from '../AuthService'; // Import the useAuth hook
+import Auth from "../pages/Auth";
 
 export default function SignInBtn() {
   const { user, handleCallbackResponse, handleSignOut } = useAuth();
@@ -22,6 +23,7 @@ export default function SignInBtn() {
 
   return (
     <div className="centered-container">
+      <AuthProvider>
       <div id="signInDiv"></div>
       {user && Object.keys(user).length !== 0 ? (
         <div className="welcome-container">
@@ -39,11 +41,10 @@ export default function SignInBtn() {
             </div>
 
             <button className="create-group-button">Create a Group</button>
-
-            <button onClick={(e) => handleSignOut(e)}>Sign Out</button>
           </div>
         </div>
       ) : null}
+    </AuthProvider>
     </div>
   );
 }
