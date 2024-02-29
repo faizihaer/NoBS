@@ -1,7 +1,24 @@
 import React from "react";
 import "../css-stylings/Home.css";
+import axios from "axios";
 
 const Home = () => {
+  const nudgeEmail = async () => {
+    const options = {
+      from: process.env.REACT_APP_EMAIL_USERNAME,
+      to: "USEREMAIL@gmail.com",
+      subject: "Welcome to NoBS, where you can stop your BS and get to work",
+      text: "Get Ready to work out",
+    };
+
+    try {
+      await axios.post("http://localhost:4000/api/email", options);
+      console.log("Email sent successfully");
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
+  };
+
   return (
     <div className="home">
       <header className="header">
@@ -47,7 +64,9 @@ const Home = () => {
           </div>
           <div className="activity-actions">
             <span className="activity-progress">2/3</span>
-            <button className="nudge-button">Nudge Me</button>
+            <button className="nudge-button" onClick={nudgeEmail}>
+              Nudge Me
+            </button>
           </div>
         </div>
         <div className="friend">
@@ -57,7 +76,9 @@ const Home = () => {
           </div>
           <div className="activity-actions">
             <span className="activity-progress">2/3</span>
-            <button className="nudge-button">Nudge Me</button>
+            <button className="nudge-button" onClick={nudgeEmail}>
+              Nudge Me
+            </button>
           </div>
         </div>
         <div className="friend">
@@ -67,7 +88,9 @@ const Home = () => {
           </div>
           <div className="activity-actions">
             <span className="activity-progress">0/3</span>
-            <button className="nudge-button">Nudge Me</button>
+            <button className="nudge-button" onClick={nudgeEmail}>
+              Nudge Me
+            </button>
           </div>
         </div>
       </section>

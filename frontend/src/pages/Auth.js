@@ -5,7 +5,7 @@ import "../css-stylings/Auth.css";
 const Auth = () => {
   return (
     <div>
-      <div className="paper">
+      <div>
         <div>
           <SignInBtn />
         </div>
