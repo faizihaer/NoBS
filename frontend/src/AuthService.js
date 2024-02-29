@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
   const handleSignOut = () => {
     setUser({});
     setLoggedIn(false);
-    document.getElementById("signInDiv").hidden = false;
+   // document.getElementById("signInDiv").hidden = false;
   };
   
 
