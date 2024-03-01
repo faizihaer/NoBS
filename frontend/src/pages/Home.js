@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css-stylings/Home.css";
 import axios from "axios";
 
 const Home = () => {
+  const [lastClickTime, setLastClickTime] = useState(null);
+  const [showPopUp, setShowPopUp] = useState(false);
+
   const nudgeEmail = async () => {
+    const currentTime = new Date();
+
     const options = {
       from: process.env.REACT_APP_EMAIL_USERNAME,
       to: "USEREMAIL@gmail.com",
@@ -11,11 +16,18 @@ const Home = () => {
       text: "Get Ready to work out",
     };
 
-    try {
-      await axios.post("http://localhost:4000/api/email", options);
-      console.log("Email sent successfully");
-    } catch (error) {
-      console.error("Error sending email:", error);
+    if (!lastClickTime || currentTime - lastClickTime >= 3600000) {
+      try {
+        await axios.post("http://localhost:4000/api/email", options);
+        setLastClickTime(currentTime);
+        console.log("Email sent successfully");
+      } catch (error) {
+        console.error("Error sending email:", error);
+      }
+    } else {
+      setShowPopUp(true);
+      setTimeout(() => setShowPopUp(false), 3000);
+      console.log("You can only nudge once per hour");
     }
   };
 
@@ -94,6 +106,11 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {showPopUp && (
+        <div className="popup">
+          <p>You can only nudge once per hour</p>
+        </div>
+      )}
     </div>
   );
 };
