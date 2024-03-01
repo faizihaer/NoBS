@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import "../css-stylings/Home.css";
-import axios from "axios";
+import nudgeEmail from "../components/nudgeEmail";
 
 const Home = () => {
   const [lastClickTime, setLastClickTime] = useState(null);
@@ -9,29 +9,11 @@ const Home = () => {
   const [planText, setPlanText] = useState("");
   const planTextareaRef = useRef(null);
 
-  //Nudge Mail function
-  const nudgeEmail = async () => {
-    const currentTime = new Date();
-
-    const options = {
-      from: process.env.REACT_APP_EMAIL_USERNAME,
-      to: "USEREMAIL@gmail.com",
-      subject: "Welcome to NoBS, where you can stop your BS and get to work",
-      text: "Get Ready to work out",
-    };
-
-    if (!lastClickTime || currentTime - lastClickTime >= 3600000) {
-      try {
-        await axios.post("http://localhost:4000/api/email", options);
-        setLastClickTime(currentTime);
-        console.log("Email sent successfully");
-      } catch (error) {
-        console.error("Error sending email:", error);
-      }
-    } else {
-      setShowPopUp(true);
-      setTimeout(() => setShowPopUp(false), 3000);
-      console.log("You can only nudge once per hour");
+  // Handle nudge button click
+  const handleNudgeClick = async () => {
+    const newLastClickTime = await nudgeEmail(lastClickTime, setShowPopUp);
+    if (newLastClickTime) {
+      setLastClickTime(newLastClickTime);
     }
   };
 
@@ -114,7 +96,7 @@ const Home = () => {
           </div>
           <div className="activity-actions">
             <span className="activity-progress">2/3</span>
-            <button className="nudge-button" onClick={nudgeEmail}>
+            <button className="nudge-button" onClick={handleNudgeClick}>
               Nudge Me
             </button>
           </div>
@@ -126,7 +108,7 @@ const Home = () => {
           </div>
           <div className="activity-actions">
             <span className="activity-progress">2/3</span>
-            <button className="nudge-button" onClick={nudgeEmail}>
+            <button className="nudge-button" onClick={handleNudgeClick}>
               Nudge Me
             </button>
           </div>
@@ -138,7 +120,7 @@ const Home = () => {
           </div>
           <div className="activity-actions">
             <span className="activity-progress">0/3</span>
-            <button className="nudge-button" onClick={nudgeEmail}>
+            <button className="nudge-button" onClick={handleNudgeClick}>
               Nudge Me
             </button>
           </div>

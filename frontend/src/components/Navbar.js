@@ -47,9 +47,11 @@ const Navbar = () => {
             {isLoggedIn ? (
               <li>
                 {/* Use onClick handler to sign out */}
-                <button onClick={(e) => handleSignOut(e)} className="logbtn">
-                  Sign Out
-                </button>
+                <Link to="/">
+                  <button onClick={(e) => handleSignOut(e)} className="logbtn">
+                    Sign Out
+                  </button>
+                </Link>
               </li>
             ) : (
               <li>
