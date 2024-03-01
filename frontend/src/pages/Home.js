@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "../css-stylings/Home.css";
 import axios from "axios";
 
 const Home = () => {
+  const [lastClickTime, setLastClickTime] = useState(null);
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [planText, setPlanText] = useState("");
+  const planTextareaRef = useRef(null);
+
+  //Nudge Mail function
   const nudgeEmail = async () => {
+    const currentTime = new Date();
+
     const options = {
       from: process.env.REACT_APP_EMAIL_USERNAME,
       to: "USEREMAIL@gmail.com",
@@ -11,12 +20,33 @@ const Home = () => {
       text: "Get Ready to work out",
     };
 
-    try {
-      await axios.post("http://localhost:4000/api/email", options);
-      console.log("Email sent successfully");
-    } catch (error) {
-      console.error("Error sending email:", error);
+    if (!lastClickTime || currentTime - lastClickTime >= 3600000) {
+      try {
+        await axios.post("http://localhost:4000/api/email", options);
+        setLastClickTime(currentTime);
+        console.log("Email sent successfully");
+      } catch (error) {
+        console.error("Error sending email:", error);
+      }
+    } else {
+      setShowPopUp(true);
+      setTimeout(() => setShowPopUp(false), 3000);
+      console.log("You can only nudge once per hour");
     }
+  };
+
+  //Editing button for the plan
+  const handleEditClick = () => {
+    setIsEditing(true); // Enable editing mode
+    if (planTextareaRef.current) {
+      setPlanText(planTextareaRef.current.value);
+    }
+  };
+
+  //Saving button for the plan
+  const handleSaveClick = () => {
+    setIsEditing(false); // Disable editing mode
+    console.log("Updated Plan:", planText);
   };
 
   return (
@@ -27,13 +57,33 @@ const Home = () => {
 
       <section className="plan">
         <h2 className="section-title">Your Plan</h2>
-        <textarea
-          className="textarea"
-          placeholder="Create your plan now! Need help? Use our personal AI Chatbot."
-          rows={4}
-          cols={40}
-        ></textarea>
-        <button className="edit-button">Edit</button>
+        {isEditing ? (
+          <textarea
+            ref={planTextareaRef}
+            className="textarea"
+            rows={4}
+            cols={40}
+            value={planText}
+            onChange={(e) => setPlanText(e.target.value)}
+          ></textarea>
+        ) : (
+          <textarea
+            className="textarea"
+            rows={4}
+            cols={40}
+            value={planText}
+            readOnly
+          ></textarea>
+        )}
+        {isEditing ? (
+          <button className="save-button" onClick={handleSaveClick}>
+            Save
+          </button>
+        ) : (
+          <button className="edit-button" onClick={handleEditClick}>
+            Edit
+          </button>
+        )}
       </section>
 
       <section className="daily-tasks">
@@ -94,6 +144,11 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {showPopUp && (
+        <div className="popup">
+          <p>You can only nudge once per hour</p>
+        </div>
+      )}
     </div>
   );
 };
