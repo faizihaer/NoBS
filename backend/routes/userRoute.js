@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
+const { sendMail } = require("../nodeMailer");
 
 router.use(express.json());
 
@@ -11,10 +12,19 @@ router.post("/", async (req, res) => {
     // Check if the user already exists in the database
     let user = await User.findOne({ email });
 
-    // If user doesn't exist, create a new user
+    // If user doesn't exist, create a new user and send a Welcome email
     if (!user) {
       user = new User({ name, email });
       await user.save();
+
+      // Send a welcome email
+      const mailOptions = {
+        from: process.env.EMAIL_USERNAME,
+        to: email,
+        subject: "Welcome to NoBS",
+        text: `Hi ${name}, Welcome to NoBS! Where you can stop your BS and get to work`,
+      };
+      await sendMail(mailOptions);
     }
 
     res.status(200).json({ message: "User authenticated successfully", user });
