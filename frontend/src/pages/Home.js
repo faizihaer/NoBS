@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "../css-stylings/Home.css";
 import axios from "axios";
 
 const Home = () => {
   const [lastClickTime, setLastClickTime] = useState(null);
   const [showPopUp, setShowPopUp] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [planText, setPlanText] = useState("");
+  const planTextareaRef = useRef(null);
 
+  //Nudge Mail function
   const nudgeEmail = async () => {
     const currentTime = new Date();
 
@@ -31,6 +35,20 @@ const Home = () => {
     }
   };
 
+  //Editing button for the plan
+  const handleEditClick = () => {
+    setIsEditing(true); // Enable editing mode
+    if (planTextareaRef.current) {
+      setPlanText(planTextareaRef.current.value);
+    }
+  };
+
+  //Saving button for the plan
+  const handleSaveClick = () => {
+    setIsEditing(false); // Disable editing mode
+    console.log("Updated Plan:", planText);
+  };
+
   return (
     <div className="home">
       <header className="header">
@@ -39,13 +57,33 @@ const Home = () => {
 
       <section className="plan">
         <h2 className="section-title">Your Plan</h2>
-        <textarea
-          className="textarea"
-          placeholder="Create your plan now! Need help? Use our personal AI Chatbot."
-          rows={4}
-          cols={40}
-        ></textarea>
-        <button className="edit-button">Edit</button>
+        {isEditing ? (
+          <textarea
+            ref={planTextareaRef}
+            className="textarea"
+            rows={4}
+            cols={40}
+            value={planText}
+            onChange={(e) => setPlanText(e.target.value)}
+          ></textarea>
+        ) : (
+          <textarea
+            className="textarea"
+            rows={4}
+            cols={40}
+            value={planText}
+            readOnly
+          ></textarea>
+        )}
+        {isEditing ? (
+          <button className="save-button" onClick={handleSaveClick}>
+            Save
+          </button>
+        ) : (
+          <button className="edit-button" onClick={handleEditClick}>
+            Edit
+          </button>
+        )}
       </section>
 
       <section className="daily-tasks">
