@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import "../css-stylings/Home.css";
 import nudgeEmail from "../components/nudgeEmail";
+import { AuthProvider, useAuth } from "../AuthService";
 
 const Home = () => {
   const [lastClickTime, setLastClickTime] = useState(null);
@@ -8,6 +9,7 @@ const Home = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [planText, setPlanText] = useState("");
   const planTextareaRef = useRef(null);
+  const { user } = useAuth();
 
   // Handle nudge button click
   const handleNudgeClick = async () => {
@@ -34,7 +36,7 @@ const Home = () => {
   return (
     <div className="home">
       <header className="header">
-        <h1>Welcome, USERNAME!</h1>
+        <h1>Welcome, {user.name}!</h1>
       </header>
 
       <section className="plan">

@@ -6,8 +6,8 @@ const nudgeEmail = async (lastClickTime, setShowPopUp) => {
   const options = {
     from: process.env.REACT_APP_EMAIL_USERNAME,
     to: "USEREMAIL@gmail.com",
-    subject: "Welcome to NoBS, where you can stop your BS and get to work",
-    text: "Get Ready to work out",
+    subject: "You are being NUDGED",
+    text: "STOP your BS, and GET READY to work out",
   };
 
   if (!lastClickTime || currentTime - lastClickTime >= 3600000) {

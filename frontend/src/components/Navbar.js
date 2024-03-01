@@ -24,6 +24,7 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [prevScrollPos]);
+
   return (
     <div className={`navbar ${visible ? "" : "navbar-hidden"}`}>
       <nav className="navbar-container">
@@ -34,16 +35,20 @@ const Navbar = () => {
         </div>
         <div className="right-section">
           <ul className="nav-links">
-            <li>
-              <Link to="/Home" className="nav-link">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/Profile" className="nav-link">
-                Profile
-              </Link>
-            </li>
+            {isLoggedIn && (
+              <>
+                <li>
+                  <Link to="/Home" className="nav-link">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/Profile" className="nav-link">
+                    Profile
+                  </Link>
+                </li>
+              </>
+            )}
             {isLoggedIn ? (
               <li>
                 {/* Use onClick handler to sign out */}
