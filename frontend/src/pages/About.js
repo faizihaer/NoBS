@@ -8,7 +8,7 @@ const MotivationalComponent = () => {
     padding: '80px 200px 200px',
     position: 'relative',
     marginTop: '60px',
-    
+    color: 'white',
   };
 
   const textContainerStyle = {
@@ -16,7 +16,7 @@ const MotivationalComponent = () => {
     padding: '40px', // Adjust padding to avoid text overlap
     zIndex: 2,
     position: 'relative',
-    color: 'white',
+    color: 'var(--text_color)',
   };
 
   const triangleStyle = {
