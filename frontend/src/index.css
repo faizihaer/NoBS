@@ -7,6 +7,7 @@
   --button_color: #8cabd3;
   --text_area_color: rgb(0, 0, 0);
   --border_color: #333;
+  --nav_color: #8cabd3;
 }
 
 [data-theme="dark"] {
@@ -18,6 +19,7 @@
   --button_color: #424549;
   --text_area_color: white;
   --border_color: #333;
+  --nav_color: #1b1a1a;
 }
 
 /*EXP:  var(--body_background)*/

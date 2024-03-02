@@ -28,7 +28,7 @@ const MotivationalComponent = () => {
     width: 0,
     height: 0,
     borderLeft: '500px solid transparent',
-    borderBottom: '800px solid  #8ac1ed', // Adjust dimensions and color as needed
+    borderBottom: '800px solid  #8ac1ed',  // Adjust dimensions and color as needed
     zIndex: 10000,
   };
 
@@ -68,7 +68,6 @@ const About = () => {
   return (
     <>
      <VideoPlayer />
-     
       <MotivationalComponent />
       <div className="about" id="about2">
         <header className="header">
