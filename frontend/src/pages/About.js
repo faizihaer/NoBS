@@ -8,6 +8,7 @@ const MotivationalComponent = () => {
     padding: '80px 200px 200px',
     position: 'relative',
     marginTop: '60px',
+    color: 'white',
     
   };
 
@@ -16,6 +17,7 @@ const MotivationalComponent = () => {
     padding: '40px', // Adjust padding to avoid text overlap
     zIndex: 2,
     position: 'relative',
+    color: 'white',
   };
 
   const triangleStyle = {
@@ -26,15 +28,19 @@ const MotivationalComponent = () => {
     width: 0,
     height: 0,
     borderLeft: '500px solid transparent',
-    borderBottom: '800px solid turquoise', // Adjust dimensions and color as needed
+    borderBottom: '800px solid  #8ac1ed',  // Adjust dimensions and color as needed
     zIndex: 10000,
   };
 
   const factsStyle = {
     marginTop: '40px', // Adjust margin to create space between text and facts
     color: 'white',
-    fontSize: '18px',
+    fontSize: '20px',
     lineHeight: '2.5',
+  };
+
+  const titlestyle = {
+    color: 'white',
   };
 
   return (
@@ -43,7 +49,7 @@ const MotivationalComponent = () => {
         <h1>Unlock Your Potential</h1>
         <p>Your journey to greatness begins now. Embrace the possibilities within.</p>
         <div style={factsStyle}>
-          <h2>Facts About NoBS:</h2>
+          <h2 style={titlestyle}>Facts About NoBS:</h2>
           <ul>
             <li>NoBS features a helpful AI Chatbot to assist users in their fitness journey. 🤖</li>
             <li>NoBS is designed to provide users with a platform to encourage group motivation. 🚀</li>
