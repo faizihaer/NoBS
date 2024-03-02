@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../css-stylings/SignInBtn.css";
 import { AuthProvider, useAuth } from "../AuthService";
+import { Link } from "react-router-dom";
 
 const GroupPage = () => {
   const { user } = useAuth();
@@ -18,10 +19,16 @@ const GroupPage = () => {
           <div className="input-container">
             <label htmlFor="groupId">Group ID:</label>
             <input type="text" id="groupId" placeholder="Enter Group ID" />
-            <button className="submit-button">Submit</button>
+
+            {/* For the specific group, we should have them go to /Home/#32132  for those users */}
+            <Link to="/Home">
+              <button className="submit-button">Submit</button>
+            </Link>
           </div>
 
-          <button className="create-group-button">Create a Group</button>
+          <Link to="/Home">
+            <button className="create-group-button">Create a Group</button>
+          </Link>
         </div>
       </div>
     </div>
