@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   height: 40vh; /* Adjust as needed */
+  color: transparent;
 }
 
 h2 {

@@ -5,6 +5,7 @@
   position: relative;
   overflow: hidden;
   display: flex;
+  color: #023abd;
 }
 
 .motivational-text {
@@ -24,8 +25,9 @@
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
-  border-bottom: 100px solid turquoise; /* Adjust dimensions as needed */
+  border-bottom: 100px solid #023abd; /* Adjust dimensions as needed */
   z-index: 1;
+  color: #023abd;
 }
 
 .about {
@@ -40,6 +42,8 @@
   color: var(--text_color);
   font-size: 20px;
   line-height: 1.5;
+  color: #023abd;
+  
 }
 
 .header {
@@ -50,6 +54,7 @@ h1 {
   font-family: 'NohemiThin', sans-serif;
   font-size: 5.5em;
   margin-bottom: 10px;
+
 }
 
 p {

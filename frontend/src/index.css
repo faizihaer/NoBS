@@ -1,5 +1,5 @@
 :root {
-  --body_background: #dee2e4;
+  --body_background: #898989;
   --body_color: black;
   --link_color: rgb(2, 2, 6);
   --hover_color: #0d0e13;
@@ -10,10 +10,10 @@
 }
 
 [data-theme="dark"] {
-  --body_background: #000000;
-  --body_color: #20323d;
-  --link_color: cyan;
-  --hover_color: #7289da;
+  --body_background: #1b1a1a;
+  --body_color: #000000;
+  --link_color: #8806d4;
+  --hover_color: #8806d4;
   --text_color: rgb(255, 255, 255);
   --button_color: #424549;
   --text_area_color: white;

@@ -1,8 +1,7 @@
 /* Navbar.css */
 
 .navbar {
-  background-color: #000000;
-  color: white;
+  background-color: --nav_color;
   padding: 20px;
   padding-top: 15px;
   position: fixed;
@@ -10,6 +9,7 @@
   width: 100%;
   z-index: 1000;
   transition: transform 0.3s ease-in-out;
+
 }
 
 .navbar-container {
@@ -22,15 +22,14 @@
 .left-section img {
   width: 150px;
   margin-left: -120px;
-  transition: filter 10s ease; /* Smooth transition effect */
-
-  /* Set initial brightness */
+  transition: filter 0.5s ease; /* Adjust the duration */
   filter: brightness(1);
 }
 
 .left-section img:hover {
   filter: brightness(0.5);
 }
+
 
 .title {
   margin-left: 80px;
@@ -39,52 +38,56 @@
 .right-section {
   display: flex;
   align-items: center;
+  margin-right: 20px;
 }
 
 .nav-links {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin-right: 40px;
   display: flex;
 }
 
 .nav-link {
   text-decoration: none;
   color: white;
-  margin-right: 25px;
+  margin-left: 30px;
   font-size: 20px;
 }
 
 .nav-links li {
-  margin-right: 25px; /* Increase the margin between each list item */
+  margin-right: 21px; /* Increase the margin between each list item */
 }
 
 .nav-links li:last-child {
-  margin-right: -10px; /* Remove margin from the last list item */
+  margin-right: -30px; /* Remove margin from the last list item */
 }
 
 .logbtn {
  font-size: 20px;
   margin-top: -8px;
-  background-color: rgb(249, 249, 249); /* Default background color */
-  color: rgb(0, 0, 0); /* Default text color */
+  background-color: transparent; /* Default background color */
+  color: rgb(255, 255, 255); /* Default text color */
   border: none; /* Remove border */
   cursor: pointer; /*Change cursor to pointer on hover */
   transition: background-color 0.2s, color 0.2s, box-shadow 0.2s; /* Smooth transition for background color, text color, and box shadow */
 }
 
 .logbtn:hover {
-  background-color: #08adb9; /* Change background color to black on hover */
+  background-color: #26292b; /* Change background color to black on hover */
   color: rgb(243, 243, 243); /* Change text color to white on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow when hovered over */
+  box-shadow: 4 4px 4px rgba(0, 0, 0, 0.2); /* Stronger shadow when hovered over */
 }
 
 .title {
+  display: block;
   text-decoration: none;
   color: white;
-  margin-right: 15px;
-  font-size: 40px;
+  margin-right: 105px;
+  font-size: 80px;
+  
 }
+
 
 /* Class for hiding the navbar on scroll down */
 .navbar-hidden {
