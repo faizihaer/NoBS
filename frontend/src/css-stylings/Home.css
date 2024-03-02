@@ -54,7 +54,7 @@ button {
 
  button:hover {
   background-color: rgba(255, 255, 255, 0.5); /* Lighter background color with reduced opacity */
- } 
+} 
 /*To be put in place later - Gabe
  For light mode 
  .light-mode button:hover { 

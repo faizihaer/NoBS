@@ -7,7 +7,6 @@ const GroupPage = () => {
 
   return (
     <div>
-      {user && Object.keys(user).length !== 0 ? (
         <div className="welcome-container">
           <h1>Welcome, {user.name}</h1>
           <div className="profile-circle">
@@ -21,11 +20,9 @@ const GroupPage = () => {
               <input type="text" id="groupId" placeholder="Enter Group ID" />
               <button className="submit-button">Submit</button>
             </div>
-
             <button className="create-group-button">Create a Group</button>
           </div>
         </div>
-      ) : null}
     </div>
   );
 };
