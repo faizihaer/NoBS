@@ -2,9 +2,12 @@ import { useEffect } from "react";
 import "../css-stylings/SignInBtn.css";
 import { AuthProvider, useAuth } from "../AuthService"; // Import the useAuth hook
 import Auth from "../pages/Auth";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import Group from "../pages/Group";
 
 export default function SignInBtn() {
   const { user, handleCallbackResponse, handleSignOut } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     /* global google */
@@ -21,29 +24,20 @@ export default function SignInBtn() {
     google.accounts.id.prompt();
   }, [handleCallbackResponse]);
 
+  useEffect(() => {
+    // Redirect when user is authenticated
+    if (user && Object.keys(user).length !== 0) {
+      navigate("/Group");
+    }
+  }, [user, navigate]);
+
   return (
     <div className="centered-container">
       <AuthProvider>
         <div id="signInDiv"></div>
-        {user && Object.keys(user).length !== 0 ? (
-          <div className="welcome-container">
-            <h1>Welcome, {user.name}</h1>
-            <div className="profile-circle">
-              <img src={user.picture} alt="User profile" />
-            </div>
-          
-            <div className="groupSelection">
-              <h2>Enter a Group ID or Create a New Group to join NoBS!</h2>
-              <div className="input-container">
-                <label htmlFor="groupId">Group ID:</label>
-                <input type="text" id="groupId" placeholder="Enter Group ID" />
-                <button className="submit-button">Submit</button>
-              </div>
-
-              <button className="create-group-button">Create a Group</button>
-            </div>
-          </div>
-        ) : null}
+        <Routes>
+          <Route path="/Group" element={<Group />} />
+        </Routes>
       </AuthProvider>
     </div>
   );
