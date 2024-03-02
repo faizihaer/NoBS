@@ -5,10 +5,6 @@ import "../css-stylings/Auth.css";
 const Auth = () => {
   return (
     <div className="auth-container">
-      <div className="white-box">
-        <h2 className="welcome-text">Welcome Back!</h2>
-        {/* Your white box content */}
-      </div>
       <div className="sign-in-button-container">
         <SignInBtn />
       </div>
@@ -17,4 +13,3 @@ const Auth = () => {
 };
 
 export default Auth;
-
