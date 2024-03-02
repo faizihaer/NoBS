@@ -1,5 +1,6 @@
 import { AuthProvider, useAuth } from "../AuthService";
 import "../css-stylings/SignInBtn.css";
+import "../css-stylings/profile.css"
 
 import React, { useState } from "react";
 
