@@ -31,7 +31,7 @@ export default function SignInBtn() {
             <div className="profile-circle">
               <img src={user.picture} alt="User profile" />
             </div>
-
+          
             <div className="groupSelection">
               <h2>Enter a Group ID or Create a New Group to join NoBS!</h2>
               <div className="input-container">

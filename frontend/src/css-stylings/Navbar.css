@@ -2,7 +2,8 @@
 
 .navbar {
   background-color: #000000;
-  color: white;
+  /* background-color: var(--button_color); We can use this later if we want to implement light and dark mode
+  with the navbar. Reference index.css to style as you like. - Gabe */
   padding: 20px;
   padding-top: 15px;
   position: fixed;
@@ -16,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10%;
+  padding: 0 7%;
 }
 
 .left-section img {

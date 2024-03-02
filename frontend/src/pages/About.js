@@ -62,6 +62,7 @@ const About = () => {
   return (
     <>
      <VideoPlayer />
+     
       <MotivationalComponent />
       <div className="about" id="about2">
         <header className="header">
