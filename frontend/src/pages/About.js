@@ -8,7 +8,6 @@ const MotivationalComponent = () => {
     padding: '80px 200px 200px',
     position: 'relative',
     marginTop: '60px',
-    color: 'white',
     
   };
 
