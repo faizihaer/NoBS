@@ -1,12 +1,17 @@
 import axios from "axios";
 
-const nudgeEmail = async (lastClickTime, setShowPopUp) => {
+const nudgeEmail = async (
+  senderUser,
+  targetUser,
+  lastClickTime,
+  setShowPopUp
+) => {
   const currentTime = new Date();
 
   const options = {
     from: process.env.REACT_APP_EMAIL_USERNAME,
-    to: "USEREMAIL@gmail.com",
-    subject: "You are being NUDGED",
+    to: targetUser, // Change here to targetUser.email
+    subject: "You are being NUDGED by " + senderUser.name,
     text: "STOP your BS, and GET READY to work out",
   };
 

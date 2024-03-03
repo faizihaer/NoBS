@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import "../css-stylings/Home.css";
 import nudgeEmail from "../components/nudgeEmail";
-import { AuthProvider, useAuth } from "../AuthService";
+import { useAuth } from "../AuthService";
 
 const Home = () => {
   const [lastClickTime, setLastClickTime] = useState(null);
@@ -12,8 +12,13 @@ const Home = () => {
   const { user } = useAuth();
 
   // Handle nudge button click
-  const handleNudgeClick = async () => {
-    const newLastClickTime = await nudgeEmail(lastClickTime, setShowPopUp);
+  const handleNudgeClick = async (targetUser) => {
+    const newLastClickTime = await nudgeEmail(
+      user,
+      targetUser,
+      lastClickTime,
+      setShowPopUp
+    );
     if (newLastClickTime) {
       setLastClickTime(newLastClickTime);
     }
@@ -98,7 +103,10 @@ const Home = () => {
           </div>
           <div className="activity-actions">
             <span className="activity-progress">2/3</span>
-            <button className="nudge-button" onClick={handleNudgeClick}>
+            <button
+              className="nudge-button"
+              onClick={() => handleNudgeClick("friend@gmail.com")}
+            >
               Nudge Me
             </button>
           </div>
@@ -110,7 +118,10 @@ const Home = () => {
           </div>
           <div className="activity-actions">
             <span className="activity-progress">2/3</span>
-            <button className="nudge-button" onClick={handleNudgeClick}>
+            <button
+              className="nudge-button"
+              onClick={() => handleNudgeClick("friend@gmail.com")}
+            >
               Nudge Me
             </button>
           </div>
@@ -122,7 +133,10 @@ const Home = () => {
           </div>
           <div className="activity-actions">
             <span className="activity-progress">0/3</span>
-            <button className="nudge-button" onClick={handleNudgeClick}>
+            <button
+              className="nudge-button"
+              onClick={() => handleNudgeClick("friend@gmail.com")}
+            >
               Nudge Me
             </button>
           </div>
