@@ -8,6 +8,7 @@ const Home = () => {
   const [showPopUp, setShowPopUp] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [planText, setPlanText] = useState("");
+  const [tasks, setTasks] = useState([]);
   const planTextareaRef = useRef(null);
   const { user } = useAuth();
 
@@ -35,6 +36,12 @@ const Home = () => {
   //Saving button for the plan
   const handleSaveClick = () => {
     setIsEditing(false); // Disable editing mode
+    const lines = planText.split("\n").filter((line) => line.trim() !== ""); // Split text by lines
+    const newTasks = lines.map((line, index) => ({
+      id: index,
+      text: line.trim(),
+    }));
+    setTasks(newTasks);
     console.log("Updated Plan:", planText);
   };
 
@@ -54,6 +61,7 @@ const Home = () => {
             cols={40}
             value={planText}
             onChange={(e) => setPlanText(e.target.value)}
+            placeholder={"Enter your tasks here, each on a separate line..."}
           ></textarea>
         ) : (
           <textarea
@@ -61,6 +69,7 @@ const Home = () => {
             rows={4}
             cols={40}
             value={planText}
+            placeholder={"Enter your tasks here, each on a separate line..."}
             readOnly
           ></textarea>
         )}
@@ -78,18 +87,12 @@ const Home = () => {
       <section className="daily-tasks">
         <h2 className="section-title">Your Daily Tasks</h2>
         <div className="task-container">
-          <div className="task">
-            <input type="checkbox" id="bench" />
-            <label htmlFor="bench">Bench Press</label>
-          </div>
-          <div className="task">
-            <input type="checkbox" id="run" />
-            <label htmlFor="run">Run 20 Min</label>
-          </div>
-          <div className="task">
-            <input type="checkbox" id="swim" />
-            <label htmlFor="swim">Swim</label>
-          </div>
+          {tasks.map((task) => (
+            <div className="task" key={task.id}>
+              <input type="checkbox" id={task.id} />
+              <label htmlFor={task.id}>{task.text}</label>
+            </div>
+          ))}
         </div>
         <button className="post-button">Post</button>
       </section>
