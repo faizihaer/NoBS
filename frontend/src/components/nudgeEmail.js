@@ -10,7 +10,7 @@ const nudgeEmail = async (
 
   const options = {
     from: process.env.REACT_APP_EMAIL_USERNAME,
-    to: targetUser, // Change here to targetUser.email
+    to: targetUser.email, // Change here to targetUser.email
     subject: "You are being NUDGED by " + senderUser.name,
     text: "STOP your BS, and GET READY to work out",
   };
@@ -25,7 +25,7 @@ const nudgeEmail = async (
     }
   } else {
     setShowPopUp(true);
-    setTimeout(() => setShowPopUp(false), 3000);
+    setTimeout(() => setShowPopUp(false), 1000);
     console.log("You can only nudge once per hour");
   }
 };
