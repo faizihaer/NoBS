@@ -3,3 +3,35 @@
 body {
   margin-top: 100px;
 }
+.welcome-text{
+  display: flex;
+  font-size: 50px;
+  flex-direction: column;
+  justify-content: relative;
+  align-items: center;
+  transform: translate(0%, 250px); 
+  color: white;
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+.white-box {
+  width: 100%; /* Example width */
+  height: 100%;
+  background-color: #ffffff; /* White background color */
+  border: 1px solid #ccc; /* Example border */
+  position: absolute; /* Position the white box absolutely */
+  top: 50%; /* Adjust as needed to center vertically */
+  left: 50%; /* Adjust as needed to center horizontally */
+  transform: translate(-50%, -50%); /* Center the box horizontally and vertically */
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Grey shadow */
+  background-image: url('../../public/pexels-leon-ardho-1552242.jpg'); /* Specify the path to your image */
+  background-size: cover; /* Cover the entire box with the background image */
+  background-position: center; /* Center the background image */
+}
+
+.sign-in-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: relative;
+  align-items: center;
+  transform: translate(0%, 250px); 
+}

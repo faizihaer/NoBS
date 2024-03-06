@@ -4,7 +4,12 @@ body {
   padding: 0;
   background-color: var(--body_background);
 }
-
+.section-title{
+  overflow: auto;
+}
+.date-span{
+  float: right;
+}
 .home {
   max-width: 800px;
   margin: 110px auto 20px;
