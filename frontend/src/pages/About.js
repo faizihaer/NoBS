@@ -19,18 +19,6 @@ const MotivationalComponent = () => {
     color: 'var(--text_color)',
   };
 
-  const triangleStyle = {
-    padding: '-100px',
-    position: 'absolute',
-    top: 0,
-    right: '-0px', // Adjust right to control the starting point of the triangle
-    width: 0,
-    height: 0,
-    borderLeft: '500px solid transparent',
-    borderBottom: '800px solid  #8ac1ed',  // Adjust dimensions and color as needed
-    zIndex: 10000,
-  };
-
   const factsStyle = {
     marginTop: '40px', // Adjust margin to create space between text and facts
     color: 'white',
@@ -58,7 +46,6 @@ const MotivationalComponent = () => {
           </ul>
         </div>
       </div>
-      <div style={triangleStyle}></div>
     </div>
   );
 };

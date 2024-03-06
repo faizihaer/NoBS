@@ -11,6 +11,7 @@ import Profile from "./pages/Profile";
 import { AuthProvider } from "./AuthService";
 
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter>
