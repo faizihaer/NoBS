@@ -1,86 +1,66 @@
-.centered-container {
-  padding: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 40vh; /* Adjust as needed */
-  color: transparent;
-}
-
-h2 {
-  color: rgb(33, 36, 40);
-}
-
-.welcome-container {
+.welcome-container { /* Use flexbox layout */
   text-align: center;
+  padding: 30px;
 }
-
+.container {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically */
+  align-items: center; /* Center-aligns items horizontally */
+}
 .profile-circle {
   display: inline-block;
-  width: 200px;
+  display: flex;
+  justify-content: center;
+  width: 400px;
   height: 200px;
-  border-radius: 50%;
+  border-radius: 5%;
   overflow: hidden;
   margin-left: 20px; /* Adjust as needed */
   margin-bottom: 20px;
-}
 
-.profile-circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
 }
-
-/* Additional styling for the button if necessary */
-button {
-  margin-top: 20px; /* Adjust as needed */
-  width: 150px;
+.text{
+  font-size: 20px;
+  padding-bottom: 20px;
+  font-family: "Chakra Petch", sans-serif;
 }
-
-.groupSelection h2{
-  text-align: center;
-  color: white;
-}
-
 .input-container {
-  margin-top: 20px;
-}
-
-.input-container label {
-  display: block;
-  margin-bottom: 5px;
+  display: flex; /* Use flexbox layout */
+  margin-left: 30px; /* Add space between input and buttons */
 }
 
 .input-container input {
-  padding: 8px;
-  margin-right: 10px;
+  display: flex;
+  padding: 10px;
+  font-size: 20px;
+  margin-right: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  color: black;
+  width: 300px;
+}
+.submit-button{
+  position: fixed;
+  margin-top: 0px;
   width: 200px;
-}
-
-.input-container button.submit-button {
-  padding: 8px 15px;
-  background-color: #007bff;
-  color: white;
+  padding: 10px 0px;
+  font-size: 16px;
+  background-color: #f7f4f4d4;
+  color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
-
 .create-group-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #303330;
+  margin-top: 40px;
+  font-size: 16px;
+  width: 200px;
+  padding: 10px 0px;
+  background-color: rgb(103, 101, 101);
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.create-group-button:hover,
-.input-container button.submit-button:hover {
-  opacity: 0.8;
-}
+

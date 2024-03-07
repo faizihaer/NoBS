@@ -11,6 +11,12 @@ import Profile from "./pages/Profile";
 import { AuthProvider } from "./AuthService";
 
 function App() {
+  const[modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal(){
+    setIsOpen(true); 
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
