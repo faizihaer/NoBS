@@ -2,13 +2,17 @@ const mongoose = require("mongoose");
 
 const groupSchema = new mongoose.Schema(
   {
-    email: { type: String, required: true },
     name: { type: String, required: true },
-    groupId: { type: mongoose.Schema.Types.ObjectId, ref: 'Group' } // Define a reference to the Group model
+    users: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
   },
   { timestamps: true }
 );
 
-const User = mongoose.model("User", userSchema);
+const Group = mongoose.model("Group", groupSchema);
 
-module.exports = User;
+module.exports = Group;
