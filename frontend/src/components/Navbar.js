@@ -78,10 +78,14 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/Group" className="nav-link">
+                    Group
+                </li>
+                <li>
                   <Link className= "nav-link">
-                  <button onClick={(e) => openModal()} className="logbtn">
-                    Chatbot
-                  </button>
+                    <button onClick={(e) => openModal()} className="logbtn">
+                      Chatbot
+                    </button>
                   </Link>
                 </li>
               </>
