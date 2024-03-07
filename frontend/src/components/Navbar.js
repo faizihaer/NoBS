@@ -21,14 +21,13 @@ const modalStyle = {
     bottom: '20px',
     right: '20px',
     minWidth: '600px',
-    minHeight: '400px',
     maxWidth: '600px',
-    maxHeight: '59vh', // Set maximum height to 80% of the viewport height
-    overflow: 'auto',
+    maxHeight: '65vh', // Set maximum height to 80% of the viewport height
+    overflow: 'hidden',
     borderRadius: '10px',
     boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.1)',
-    padding: '20px',
-    transform: 'translate(150%, 50%)', // Adjusted to move modal to bottom right corner
+    padding: '0px',
+    transform: 'translate(165%, 43%)', // Adjusted to move modal to bottom right corner
     zIndex: '9999', // high z-index to ensure it's on top of other elements
   },
 };
@@ -125,7 +124,10 @@ const Navbar = () => {
       <Modal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
-       style={modalStyle}>
+       style={modalStyle}
+       shouldCloseOnOverlayClick={false}>
+        <button onClick={closeModal} className="close-button" 
+        style={{margin:'10px'}}>X</button>
         <ChatbotModal />
         <div style={{ minWidth: "400px", minHeight: "300px" }}></div>
       </Modal>
