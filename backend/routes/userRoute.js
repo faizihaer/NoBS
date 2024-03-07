@@ -21,8 +21,8 @@ router.post("/", async (req, res) => {
       const mailOptions = {
         from: process.env.EMAIL_USERNAME,
         to: email,
-        subject: "Welcome to NoBS",
-        text: `Hi ${name}, Welcome to NoBS! Where you can stop your BS and get to work`,
+        subject: "Welcome to NoBS - Let's Get Started on Your Fitness Journey!",
+        text: `Hi ${name}, \n\nWelcome to NoBS – the platform where excuses have no place, and results are the only outcome we're after! \n Whether you're looking to shed a few pounds, build muscle, or simply improve your overall health and wellness, our platform is designed to provide you with the tools, resources, and encouragement you need to reach your goals. `,
       };
       await sendMail(mailOptions);
     }
