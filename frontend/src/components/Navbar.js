@@ -27,8 +27,9 @@ const modalStyle = {
     borderRadius: '10px',
     boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.1)',
     padding: '0px',
-    transform: 'translate(165%, 43%)', // Adjusted to move modal to bottom right corner
     zIndex: '9999', // high z-index to ensure it's on top of other elements
+    left: '62%',
+    top: '33%'
   },
 };
 
