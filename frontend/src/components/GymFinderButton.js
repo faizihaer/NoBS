@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NearestGymFinder from "./NearestGym"; // Assuming your original component is in a file named NearestGymFinder.js
+import NearestGymFinder from "./NearestGym"; 
 import Profile from "../pages/Profile";
 const GymFinderButton = () => {
   const [showGyms, setShowGyms] = useState(false);
