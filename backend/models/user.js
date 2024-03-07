@@ -4,6 +4,12 @@ const userSchema = new mongoose.Schema(
   {
     email: { type: String, required: true },
     name: { type: String, required: true },
+    groups: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Group',
+      },
+    ],
   },
   { timestamps: true }
 );
