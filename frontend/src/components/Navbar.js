@@ -47,6 +47,11 @@ const Navbar = () => {
                     Profile
                   </Link>
                 </li>
+                <li>
+                  <Link to="/Group" className="nav-link">
+                    Group
+                  </Link>
+                </li>
               </>
             )}
             {isLoggedIn ? (
