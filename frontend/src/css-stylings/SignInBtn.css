@@ -1,4 +1,5 @@
 .welcome-container { /* Use flexbox layout */
+  font-size: 10px;
   text-align: center;
   padding: 30px;
 }
@@ -7,7 +8,7 @@
   flex-direction: column; /* Stacks items vertically */
   align-items: center; /* Center-aligns items horizontally */
 }
-.profile-circle {
+.Videorunner{
   display: inline-block;
   display: flex;
   justify-content: center;
@@ -17,7 +18,6 @@
   overflow: hidden;
   margin-left: 20px; /* Adjust as needed */
   margin-bottom: 20px;
-
 }
 .text{
   font-size: 20px;

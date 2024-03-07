@@ -13,7 +13,7 @@ const GroupPage = () => {
     <h1>Welcome, {user.name}</h1>
   </div>
   
-  <div className="profile-circle">
+  <div className="Videorunner">
     <video src={NoBSHome} autoPlay loop muted />
   </div>
   <div className ="text">
