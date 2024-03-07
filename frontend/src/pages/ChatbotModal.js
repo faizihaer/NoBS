@@ -14,12 +14,10 @@ function ChatbotModal() {
   const [messages, setMessages] = useState([
     {
       message: "Hello, I'm Nora, a personalized fitness helper! Let's help you reach your fitness goals. Ask me anything, or type 'PLAN' to start reaching your goals today.",
-      direction: 'incoming',
       sender: "Nora"
     },
     {
       message: "Ask for motivation if you want some inspiration for your day!",
-      direction: 'incoming',
       sender: "Nora"
     }
   ]);
@@ -52,7 +50,6 @@ function ChatbotModal() {
     let apiMessages = chatMessages.map((messageObject) => {
       let role = "";
       if (messageObject.sender === "Nora") {
-        messageObject.direction = 'incoming';
         role = "assistant";
       } else {
         role = "user";
@@ -85,7 +82,6 @@ function ChatbotModal() {
         console.log(data);
         setMessages([...chatMessages, {
           message: data.choices[0].message.content,
-          direction: 'incoming',
           sender: "Nora"
         }]);
         setIsTyping(false);
@@ -94,7 +90,7 @@ function ChatbotModal() {
 
   return (
     <div className="ChatbotModal">
-      <div style={{ position: "relative", height: "575px", overflow:"auto"}}>
+      <div style={{ position: "relative", height: "800px", width: "700px" }}>
         <MainContainer>
           <ChatContainer>
             <MessageList
