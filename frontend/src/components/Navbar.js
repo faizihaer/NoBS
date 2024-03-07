@@ -21,13 +21,14 @@ const modalStyle = {
     bottom: '20px',
     right: '20px',
     minWidth: '600px',
+    minHeight: '400px',
     maxWidth: '600px',
-    maxHeight: '65vh', // Set maximum height to 80% of the viewport height
-    overflow: 'hidden',
+    maxHeight: '59vh', // Set maximum height to 80% of the viewport height
+    overflow: 'auto',
     borderRadius: '10px',
     boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.1)',
-    padding: '0px',
-    transform: 'translate(165%, 43%)', // Adjusted to move modal to bottom right corner
+    padding: '20px',
+    transform: 'translate(150%, 50%)', // Adjusted to move modal to bottom right corner
     zIndex: '9999', // high z-index to ensure it's on top of other elements
   },
 };
@@ -53,10 +54,10 @@ const Navbar = () => {
     };
   }, [prevScrollPos]);
 
-  const[modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
-  function openModal(){
-    setIsOpen(true); 
+  function openModal() {
+    setIsOpen(true);
   }
 
   function closeModal() {
@@ -86,10 +87,15 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link className= "nav-link">
-                  <button onClick={(e) => openModal()} className="logbtn">
-                    Chatbot
-                  </button>
+                  <Link to="/Group" className="nav-link">
+                    Group
+                  </Link>
+                </li>
+                <li>
+                  <Link className="nav-link">
+                    <button onClick={(e) => openModal()} className="logbtn">
+                      Chatbot
+                    </button>
                   </Link>
                 </li>
               </>
@@ -119,14 +125,9 @@ const Navbar = () => {
       <Modal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
-       style={modalStyle}
-       shouldCloseOnOverlayClick={false}>
-        <button onClick={closeModal} className="close-button" 
-        style={{margin:'10px'}}>X</button>
+       style={modalStyle}>
         <ChatbotModal />
-        <div style={{minWidth: '400px', minHeight: '300px'}}>
-      
-        </div>
+        <div style={{ minWidth: "400px", minHeight: "300px" }}></div>
       </Modal>
     </div>
   );
