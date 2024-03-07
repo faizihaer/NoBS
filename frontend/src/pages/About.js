@@ -8,7 +8,7 @@ const MotivationalComponent = () => {
     padding: '80px 200px 200px',
     position: 'relative',
     marginTop: '60px',
-    color: 'white',
+    // color: 'white',
   };
 
   const textContainerStyle = {
@@ -21,13 +21,13 @@ const MotivationalComponent = () => {
 
   const factsStyle = {
     marginTop: '40px', // Adjust margin to create space between text and facts
-    color: 'white',
+    // color: 'white',
     fontSize: '20px',
     lineHeight: '2.5',
   };
 
   const titlestyle = {
-    color: 'white',
+   // color: 'white',
   };
 
   return (
