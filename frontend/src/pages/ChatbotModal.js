@@ -3,7 +3,7 @@ import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
 
 // API KEY for the scope of this project 
-const API_KEY = "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";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 // prompting 
 const systemMessage = { //  Explain things like you're a helpful workout planner bot.
