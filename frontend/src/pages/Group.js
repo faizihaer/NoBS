@@ -10,21 +10,30 @@ const GroupPage = () => {
   const [userId, setUserId] = useState(null);
   //useEffect for getting the user ID as "userId"
   useEffect(() => {
+    console.log(user);
     const fetchUserId = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/user", {
+        //const response = await axios.post("http://localhost:4000/api/byemail", 
+
+        const response = await fetch("http://localhost:4000/api/byemail", {
+          method: 'POST',
           headers: {
             "Content-Type": "application/json",
             // Add any other headers if needed
           },
           body: JSON.stringify({ userEmail: user.email }),
         });
-        if (!response.data) {
+        console.log(response);
+        const result = await response.json();
+        console.log("UserId =", result.userId);
+
+        if (!result.userId) {
           throw new Error("No user data received");
         }
+        
 
-        setUserId(response);
-        console.log("UserId =", response);
+        setUserId(result.userId);
+     
       } catch (error) {
         console.error("Error fetching user ID:", error.message);
         // Handle error as needed
@@ -38,6 +47,9 @@ const GroupPage = () => {
     //passes 'input' in, should contain the group name
     try {
       const groupName = input;
+
+      //console log to see what is contained in group name 
+      console.log("Request Body:", JSON.stringify({ action: 'createGroup', name: groupName, userId: userId }));
 
       const response = await fetch('http://localhost:4000/api/group', {
         method: 'POST',

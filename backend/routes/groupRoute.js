@@ -3,23 +3,24 @@ const express = require("express");
 const router = express.Router();
 const Group = require("../models/group");
 
-router.post("/Group", async (req, res) => {
+router.post("/", async (req, res) => {
+  console.log(req.body);
   const { name, action, userId } = req.body;
   try {
     // Logic based on the action parameter
     if (action === "createGroup") {
       
       // Logic for creating a new group
-      const { groupName } = name;
-      const existingGroup = await Group.findOne({ groupName });
+      const existingGroup = await Group.findOne({ name });
       if (existingGroup) {
         // If a group with the same name exists, send an error response
         return res.status(400).json({ message: "Group with this name already exists" });
       }
 
       // Create a new group
-      const newGroup = new Group({ groupName });
+      const newGroup = new Group({ name });
       await newGroup.save();
+      console.log("done at line 24");
 
       // Add the creator (assuming they are the user making the request) to the group
       newGroup.users.push(userId);
@@ -27,15 +28,14 @@ router.post("/Group", async (req, res) => {
 
       res.status(200).json({ message: "Group created successfully", group: newGroup });
     } else if (action === "joinGroup") {
-      const { groupName } = name;
-      const existingGroup = await Group.findOne({ groupName });
+      const existingGroup = await Group.findOne({ groupName:name });
       if (existingGroup) {
         // Add the creator (assuming they are the user making the request) to the group
         existingGroup.users.push(userId);
         await existingGroup.save();
         res.status(200).json({ message: "Group joined successfully" });
       }
-      return res.status(400).json({ message: "Group not found" });
+      return res.status(404).json({ message: "Group not found" }); //404 not found
     } else {
       // Handle other cases or invalid actions
       res.status(400).json({ message: "Invalid action" });
