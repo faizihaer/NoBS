@@ -21,14 +21,12 @@ const GroupPage = () => {
   </div>
   <div className="input-container">
     <input type="text" id="groupId" placeholder="Enter Group Name" />
-    <div>
+    <div className="button-container">
+    <Link to="/Home">
+        <button className="submit-button">Create</button>
+      </Link>
     <Link to="/Home">
         <button className="create-group-button">Join</button>
-      </Link>
-      </div>
-      <div>
-      <Link to="/Home">
-        <button className="submit-button">Create</button>
       </Link>
       </div>
   </div>
