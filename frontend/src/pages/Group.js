@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css-stylings/SignInBtn.css";
+import "../css-stylings/group.css";
 import { AuthProvider, useAuth } from "../AuthService";
 import { Link } from "react-router-dom";
 import NoBSHome from '../assets/WomanPull.mp4'
@@ -25,11 +25,10 @@ const GroupPage = () => {
     <Link to="/Home">
         <button className="submit-button">Create</button>
       </Link>
-      <Link to="/Home">
+    <Link to="/Home">
         <button className="create-group-button">Join</button>
       </Link>
-      
-    </div>
+      </div>
   </div>
 </div>
   );
