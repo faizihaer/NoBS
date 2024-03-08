@@ -11,7 +11,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [isLoggedIn, setLoggedIn] = useState(false);
-
+  
   const handleCallbackResponse = (response) => {
     var userObject = jwtDecode(response.credential);
     axios
@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
       .then((response) => {
         console.log("User saved successfully:", response.data);
 
-        document.getElementById("signInDiv").hidden = true;
+        //document.getElementById("signInDiv").hidden = true;
       })
       .catch((error) => {
         console.error("Error saving user:", error);

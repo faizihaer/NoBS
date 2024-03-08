@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const userRoute = require("./routes/userRoute.js");
+const groupRoute = require("./routes/groupRoute.js");
 const emailRouter = require("./routes/email");
 
 const app = express();
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/user", userRoute);
 app.use("/api/email", emailRouter);
+app.use("/api/group", groupRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

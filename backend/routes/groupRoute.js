@@ -1,38 +1,49 @@
-const express = require('express');
+// backend/routes/groupRoute.js
+const express = require("express");
 const router = express.Router();
-const mongoose = require('mongoose');
-const User = require('../models/user');
-const Group = require('../models/group'); 
+const Group = require("../models/group");
 
-// Route to handle requests for a random group ID
-router.get('/', async (req, res) => {
+router.post("/Group", async (req, res) => {
+  const { name, action, userId } = req.body;
   try {
-    // Retrieve the user ID from the request parameters or session
-    const userId = req.user ? req.user.id : null;
+    // Logic based on the action parameter
+    if (action === "createGroup") {
+      
+      // Logic for creating a new group
+      const { groupName } = name;
+      const existingGroup = await Group.findOne({ groupName });
+      if (existingGroup) {
+        // If a group with the same name exists, send an error response
+        return res.status(400).json({ message: "Group with this name already exists" });
+      }
 
-    if (!userId) {
-      return res.status(401).json({ message: 'Unauthorized: User not logged in' });
+      // Create a new group
+      const newGroup = new Group({ groupName });
+      await newGroup.save();
+
+      // Add the creator (assuming they are the user making the request) to the group
+      newGroup.users.push(userId);
+      await newGroup.save();
+
+      res.status(200).json({ message: "Group created successfully", group: newGroup });
+    } else if (action === "joinGroup") {
+      const { groupName } = name;
+      const existingGroup = await Group.findOne({ groupName });
+      if (existingGroup) {
+        // Add the creator (assuming they are the user making the request) to the group
+        existingGroup.users.push(userId);
+        await existingGroup.save();
+        res.status(200).json({ message: "Group joined successfully" });
+      }
+      return res.status(400).json({ message: "Group not found" });
+    } else {
+      // Handle other cases or invalid actions
+      res.status(400).json({ message: "Invalid action" });
     }
-
-    // Query the database to find the user's group ID
-    const user = await User.findById(userId);
-
-    //Can't find our user then error
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-
-    // Generate a new random group ID using Types from mongo
-    const randomGroupId = mongoose.Types.ObjectId();
-
-    // Send the random group ID as a response
-    res.status(200).json({ groupId: randomGroupId });
   } catch (error) {
-    console.error('Error generating group ID:', error);
-    res.status(500).json({ message: 'Error generating group ID', error: error.message });
+    console.error('Error:', error.message);
+    res.status(500).json({ message: "Internal server error", error: error.message });
   }
 });
 
 module.exports = router;
-
-
