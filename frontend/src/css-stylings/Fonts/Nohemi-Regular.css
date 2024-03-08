@@ -1,9 +1,0 @@
-/* Webfont: Nohemi-Regular */@font-face {
-    font-family: 'Nohemi';
-    src: url('Nohemi-Regular.woff2') format('woff2'), /* Modern Browsers */
-         url('Nohemi-Regular.otf') format('opentype'); /* Safari, Android, iOS */
-             font-style: normal;
-    font-weight: normal;
-    text-rendering: optimizeLegibility;
-}
-

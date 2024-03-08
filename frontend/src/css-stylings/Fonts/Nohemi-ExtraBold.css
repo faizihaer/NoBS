@@ -1,9 +1,0 @@
-/* Webfont: Nohemi-ExtraBold */@font-face {
-    font-family: 'NohemiExtBd';
-    src: url('Nohemi-ExtraBold.woff2') format('woff2'), /* Modern Browsers */
-         url('Nohemi-ExtraBold.otf') format('opentype'); /* Safari, Android, iOS */
-             font-style: normal;
-    font-weight: normal;
-    text-rendering: optimizeLegibility;
-}
-

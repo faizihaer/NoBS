@@ -1,9 +1,0 @@
-/* Webfont: Nohemi-Medium */@font-face {
-    font-family: 'NohemiMed';
-    src: url('Nohemi-Medium.woff2') format('woff2'), /* Modern Browsers */
-         url('Nohemi-Medium.otf') format('opentype'); /* Safari, Android, iOS */
-             font-style: normal;
-    font-weight: normal;
-    text-rendering: optimizeLegibility;
-}
-
