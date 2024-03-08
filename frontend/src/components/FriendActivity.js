@@ -3,11 +3,14 @@ import nudgeEmail from "./nudgeEmail";
 
 export default function FriendActivity({
   user,
-  showPopUp,
-  setShowPopUp,
+  ShowPopUpSecond,
+  setShowPopUpSecond,
+  ShowPopUpHourly,
+  setShowPopUpHourly,
   tasks,
 }) {
   const [lastClickTime, setLastClickTime] = useState(null);
+  const [nudgesSent, setNudgesSent] = useState(0);
   // Placeholder state for friends' activities - you'll replace this with actual data fetching later
   const [friendsActivities, setFriendsActivities] = useState([]);
 
@@ -17,7 +20,10 @@ export default function FriendActivity({
       user,
       targetUser,
       lastClickTime,
-      setShowPopUp
+      nudgesSent,
+      setNudgesSent,
+      setShowPopUpSecond,
+      setShowPopUpHourly
     );
     if (newLastClickTime) {
       setLastClickTime(newLastClickTime);
@@ -65,7 +71,12 @@ export default function FriendActivity({
       ) : (
         <p> friends' activities...</p>
       )}
-      {showPopUp && (
+      {ShowPopUpSecond && (
+        <div className="popup">
+          <p>Wait 4 seconds before nudging again</p>
+        </div>
+      )}
+      {ShowPopUpHourly && (
         <div className="popup">
           <p>You can only nudge once per hour</p>
         </div>

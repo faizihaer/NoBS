@@ -4,7 +4,10 @@ const nudgeEmail = async (
   senderUser,
   targetUser,
   lastClickTime,
-  setShowPopUp
+  nudgesSent,
+  setNudgesSent,
+  setShowPopUpSecond,
+  setShowPopUpHourly
 ) => {
   const currentTime = new Date();
 
@@ -16,17 +19,35 @@ const nudgeEmail = async (
   };
 
   if (!lastClickTime || currentTime - lastClickTime >= 3600000) {
+    setNudgesSent(1); // Reset nudges sent to 1
     try {
       await axios.post("http://localhost:4000/api/email", options);
       console.log("Email sent successfully");
-      return currentTime; // Return current time for setting last click time
+      return currentTime;
     } catch (error) {
       console.error("Error sending email:", error);
     }
+  } else if (nudgesSent < 3) {
+    // If within the hour and nudges sent are less than 3
+    if (currentTime - lastClickTime >= 4000) {
+      // If been more than 5 seconds since last nudge
+      try {
+        await axios.post("http://localhost:4000/api/email", options);
+        console.log("Email sent successfully");
+        setNudgesSent(nudgesSent + 1);
+        return currentTime;
+      } catch (error) {
+        console.error("Error sending email:", error);
+      }
+    } else {
+      setShowPopUpSecond(true);
+      setTimeout(() => setShowPopUpSecond(false), 4000);
+      console.log("Please wait 4 seconds before nudging again");
+    }
   } else {
-    setShowPopUp(true);
-    setTimeout(() => setShowPopUp(false), 1000);
-    console.log("You can only nudge once per hour");
+    setShowPopUpHourly(true);
+    setTimeout(() => setShowPopUpHourly(false), 4000);
+    console.log("You can only nudge three times per hour");
   }
 };
 
