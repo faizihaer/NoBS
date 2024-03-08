@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../css-stylings/SignInBtn.css";
+import "../css-stylings/group.css";
 import { AuthProvider, useAuth } from "../AuthService";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -100,15 +100,16 @@ const GroupPage = () => {
     <h1>Welcome, {user.name}</h1>
   </div>
   
-  <div className="profile-circle">
+  <div className="Videorunner">
     <video src={NoBSHome} autoPlay loop muted />
   </div>
   <div className ="text">
     <h2>Begin your fitness journey by joining a group or making your own!</h2>
   </div>
   <div className="input-container">
-    <input type="text" id="groupId" placeholder="Enter Group ID" />
+    <input type="text" id="groupId" placeholder="Enter Group Name" />
     <div className="button-container">
+
       <Link to="/Home">
         {/* This button should call createGroup, which will create a group with this name or display an error message saying a group already has that name */}
         <button className="join-group-button" onClick={() => joinGroup({input: document.getElementById("groupId").value})}>Join</button>
@@ -116,8 +117,9 @@ const GroupPage = () => {
       <Link to="/Home">
         {/* This button should call joinGroup, which will add the user to the group with this name or display an error message saying no group exists with that name */}
         <button className="create-group-button"onClick={() => createGroup({input: document.getElementById("groupId").value})}>Create</button>
+
       </Link>
-    </div>
+      </div>
   </div>
 </div>
   );

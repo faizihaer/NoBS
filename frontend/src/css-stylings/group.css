@@ -1,4 +1,5 @@
 .welcome-container { /* Use flexbox layout */
+  font-size: 10px;
   text-align: center;
   padding: 30px;
 }
@@ -7,8 +8,7 @@
   flex-direction: column; /* Stacks items vertically */
   align-items: center; /* Center-aligns items horizontally */
 }
-.profile-circle {
-  display: inline-block;
+.Videorunner{
   display: flex;
   justify-content: center;
   width: 400px;
@@ -17,7 +17,6 @@
   overflow: hidden;
   margin-left: 20px; /* Adjust as needed */
   margin-bottom: 20px;
-
 }
 .text{
   font-size: 20px;
@@ -25,6 +24,8 @@
   font-family: "Chakra Petch", sans-serif;
 }
 .input-container {
+  flex-direction: column;
+  align-items: center;
   display: flex; /* Use flexbox layout */
   margin-left: 30px; /* Add space between input and buttons */
 }
@@ -39,8 +40,27 @@
   color: black;
   width: 300px;
 }
+.button-container{
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.create-group-button {
+  margin-right: 0px;
+  margin-top: 20px;
+  font-size: 16px;
+  width: 200px;
+  padding: 10px 0px;
+  background-color: rgb(103, 101, 101);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 .submit-button{
-  position: fixed;
+  margin-right: 10px;
   margin-top: 0px;
   width: 200px;
   padding: 10px 0px;
@@ -51,16 +71,6 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.create-group-button {
-  margin-top: 40px;
-  font-size: 16px;
-  width: 200px;
-  padding: 10px 0px;
-  background-color: rgb(103, 101, 101);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+
 
 

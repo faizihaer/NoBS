@@ -27,7 +27,7 @@ export default function DailyTasks({tasks, setTasks}){
         </div>
         <button className="post-button">Post</button>
       </div>
-    );
+    ); 
    
   }
   

@@ -22,7 +22,11 @@ export const AuthProvider = ({ children }) => {
       .then((response) => {
         console.log("User saved successfully:", response.data);
 
-        //document.getElementById("signInDiv").hidden = true;
+        const signInDiv = document.getElementById("signInDiv");
+        if (signInDiv) {
+          signInDiv.hidden = true;
+        }
+
       })
       .catch((error) => {
         console.error("Error saving user:", error);
@@ -33,7 +37,10 @@ export const AuthProvider = ({ children }) => {
   const handleSignOut = () => {
     setUser({});
     setLoggedIn(false);
-    // document.getElementById("signInDiv").hidden = false;
+    const signInDiv = document.getElementById("signInDiv");
+    if (signInDiv) {
+      signInDiv.hidden = false;
+    }
   };
 
   return (
