@@ -1,5 +1,5 @@
 import React from 'react';
-import "../css-stylings/NoBSHome.css";
+import "../css-stylings/videohome.css";
 import NoBSHome from '../assets/NoBSHome.mp4'
 
 const VideoPlayer = () => {
