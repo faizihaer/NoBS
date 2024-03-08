@@ -36,7 +36,25 @@ router.post("/", async (req, res) => {
   }
 });
 
+//Error here: won't recognize 
+router.get("/.*email$/", async (req, res) => {
+  console.log("/byemail url 41");
+  const { userEmail } = req.body;
+  try {
+    const thisUser = await User.findOne( {email: userEmail} ); 
+    if (!thisUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+console.log("found user: " + thisUser._id);
+    res.json(thisUser._id);
+  } catch (error) {
+    console.error("Error finding user", error);
+    res.status(500).json({ message: "Error finding user", error: error.message });
+  }
+});
+
 router.get("/", async (req, res) => {
+  console.log("/user url 56");
   try {
     const users = await User.find();
     res.json(users);
@@ -47,5 +65,7 @@ router.get("/", async (req, res) => {
       .json({ message: "Error getting users", error: error.message });
   }
 });
+
+
 
 module.exports = router;
