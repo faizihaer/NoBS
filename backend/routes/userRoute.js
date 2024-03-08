@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
     if (!user) {
       user = new User({ name, email });
       await user.save();
-
+      
       // Send a welcome email
       const mailOptions = {
         from: process.env.EMAIL_USERNAME,

@@ -9,7 +9,6 @@
   align-items: center; /* Center-aligns items horizontally */
 }
 .Videorunner{
-  display: inline-block;
   display: flex;
   justify-content: center;
   width: 400px;
@@ -39,19 +38,8 @@
   color: black;
   width: 300px;
 }
-.submit-button{
-  position: fixed;
-  margin-top: 0px;
-  width: 200px;
-  padding: 10px 0px;
-  font-size: 16px;
-  background-color: #f7f4f4d4;
-  color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
 .create-group-button {
+  margin-right: -200px;
   margin-top: 40px;
   font-size: 16px;
   width: 200px;
@@ -62,5 +50,18 @@
   border-radius: 5px;
   cursor: pointer;
 }
+.submit-button{
+  position: flex;
+  margin-top: 1px;
+  width: 200px;
+  padding: 10px 0px;
+  font-size: 16px;
+  background-color: #f7f4f4d4;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 
 

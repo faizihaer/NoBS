@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import "../css-stylings/SignInBtn.css";
 import { AuthProvider, useAuth } from "../AuthService"; // Import the useAuth hook
 import Auth from "../pages/Auth";
 import { Routes, Route, useNavigate } from "react-router-dom";
