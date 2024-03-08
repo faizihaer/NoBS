@@ -3,19 +3,21 @@ import { ReactComponent as Sun } from "../assets/Sun.svg";
 import { ReactComponent as Moon } from "../assets/Moon.svg";
 import "../css-stylings/DarkMode.css";
 
-const DarkMode = () => {
+const DarkMode = ({ setImage }) => {
   const [theme, setTheme] = useState("light");
 
   const setDarkMode = () => {
     document.querySelector("body").setAttribute("data-theme", "dark");
     localStorage.setItem("theme", "dark");
     setTheme("dark");
+    setImage("Nobswhite.png");
   };
 
   const setLightMode = () => {
     document.querySelector("body").setAttribute("data-theme", "light");
     localStorage.setItem("theme", "light");
     setTheme("light");
+    setImage("Nobs.png");
   };
 
   useEffect(() => {
