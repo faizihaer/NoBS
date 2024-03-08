@@ -2,7 +2,7 @@
 
 .navbar {
 
-  background-color: --nav_color;
+  
 
   padding: 20px;
   padding-top: 15px;
@@ -24,8 +24,7 @@
 .left-section img {
   width: 150px;
   margin-left: -120px;
-  transition: filter 0.5s ease; /* Adjust the duration */
-  filter: brightness(1);
+
 }
 
 .left-section img:hover {

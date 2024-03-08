@@ -40,7 +40,7 @@
   width: 300px;
 }
 .submit-button{
-  position: fixed;
+  position: flex;
   margin-top: 0px;
   width: 200px;
   padding: 10px 0px;
@@ -51,16 +51,6 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.create-group-button {
-  margin-top: 40px;
-  font-size: 16px;
-  width: 200px;
-  padding: 10px 0px;
-  background-color: rgb(103, 101, 101);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+
 
 

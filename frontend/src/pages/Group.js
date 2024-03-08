@@ -20,13 +20,10 @@ const GroupPage = () => {
     <h2>Begin your fitness journey by joining a group or making your own!</h2>
   </div>
   <div className="input-container">
-    <input type="text" id="groupId" placeholder="Enter Group ID" />
+    <input type="text" id="groupId" placeholder="Enter Group ID to create a group" />
     <div className="button-container">
       <Link to="/Home">
-        <button className="submit-button">Create a group</button>
-      </Link>
-      <Link to="/Home">
-        <button className="create-group-button">Submit</button>
+        <button className="submit-button">Submit</button>
       </Link>
     </div>
   </div>
