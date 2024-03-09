@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../AuthService';
-
-export default function DailyTasks({tasks, setTasks}){
+export default function DailyTasks({ tasks }) {
   const { user } = useAuth();
-  const [checkedTasks, setCheckedTasks] = useState(new Array(tasks.length).fill(false));
-  
-    // Initialize taskStatuses with task names, checked status, and timestamp
+
+  // Initialize taskStatuses with task names, checked status, and timestamp
   const [taskStatuses, setTaskStatuses] = useState(tasks.map(task => ({
     name: task,
     checked: false,
@@ -24,16 +22,16 @@ export default function DailyTasks({tasks, setTasks}){
       return task;
     }));
   };
+
   // Calculate the number of tasks yet to complete
   const tasksRemaining = taskStatuses.filter(task => !task.checked).length;
 
   return (
-    <div className="plan">
-       <h2 className="section-title" style={{ display: 'flex', justifyContent: 'space-between' }}>
-        Daily Tasks
+    <div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h2>Daily Tasks</h2>
         <span>{tasksRemaining} tasks left</span>
-        </h2>
-             
+      </div>
       <div className="task-container" style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div className="task-column">
           {taskStatuses.map((task, index) => (
@@ -49,7 +47,7 @@ export default function DailyTasks({tasks, setTasks}){
           ))}
         </div>
         <div className="time-column">
-        
+          <h3>Time Checked</h3>
           {taskStatuses.map((task, index) => (
             <div className="timestamp" key={index}>
               {task.checked ? task.timestamp : '---'}
@@ -60,5 +58,4 @@ export default function DailyTasks({tasks, setTasks}){
       <button className="post-button">Post</button>
     </div>
   );
-  }
-  
+}
