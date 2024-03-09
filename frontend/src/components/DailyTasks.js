@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../AuthService';
+
 export default function DailyTasks({ tasks }) {
   const { user } = useAuth();
 
-  // Initialize taskStatuses with task names, checked status, and timestamp
-  const [taskStatuses, setTaskStatuses] = useState(tasks.map(task => ({
-    name: task,
-    checked: false,
-    timestamp: ''
-  })));
+  // Removed the initial setting of taskStatuses from here
+
+  const [taskStatuses, setTaskStatuses] = useState([]);
+
+  // useEffect hook to update taskStatuses when tasks array changes
+  useEffect(() => {
+    setTaskStatuses(tasks.map(task => ({
+      name: task,
+      checked: false,
+      timestamp: ''
+    })));
+  }, [tasks]); // This ensures useEffect is called whenever the tasks array changes
 
   const handleCheckboxChange = index => {
     setTaskStatuses(taskStatuses => taskStatuses.map((task, idx) => {
@@ -16,7 +23,7 @@ export default function DailyTasks({ tasks }) {
         return {
           ...task,
           checked: !task.checked,
-          timestamp: !task.checked ? new Date().toLocaleTimeString() : ''
+          timestamp: !task.checked ? new Date().toLocaleTimeString() : task.timestamp
         };
       }
       return task;
@@ -59,6 +66,3 @@ export default function DailyTasks({ tasks }) {
     </div>
   );
 }
-
-  
-
