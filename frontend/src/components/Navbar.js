@@ -8,28 +8,28 @@ import ChatbotModal from "../pages/ChatbotModal";
 
 const modalStyle = {
   overlay: {
-    position: 'fixed',
+    position: "fixed",
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // semi-transparent background
-    zIndex: 9999 // higher z-index than other elements
+    backgroundColor: "rgba(0, 0, 0, 0.5)", // semi-transparent background
+    zIndex: 9999, // higher z-index than other elements
   },
   content: {
-    position: 'fixed',
-    bottom: '20px',
-    right: '20px',
-    minWidth: '600px',
-    maxWidth: '600px',
-    maxHeight: '65vh', // Set maximum height to 80% of the viewport height
-    overflow: 'hidden',
-    borderRadius: '10px',
-    boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.1)',
-    padding: '0px',
-    zIndex: '9999', // high z-index to ensure it's on top of other elements
-    left: '62%',
-    top: '33%'
+    position: "fixed",
+    bottom: "20px",
+    right: "20px",
+    minWidth: "600px",
+    maxWidth: "600px",
+    maxHeight: "65vh", // Set maximum height to 80% of the viewport height
+    overflow: "hidden",
+    borderRadius: "10px",
+    boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.1)",
+    padding: "0px",
+    zIndex: "9999", // high z-index to ensure it's on top of other elements
+    left: "62%",
+    top: "33%",
   },
 };
 
@@ -37,6 +37,7 @@ const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
   const { user, handleCallbackResponse, handleSignOut, isLoggedIn } = useAuth();
+  const [image, setImage] = useState("Nobswhite.png");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,7 +70,7 @@ const Navbar = () => {
       <nav className="navbar-container">
         <div className="left-section">
           <Link to="/" className="title">
-            <img src="Nobswhite.png" alt="Logo" className="logo" />
+            <img src={image} alt="Logo" className="logo" />
           </Link>
         </div>
         <div className="right-section">
@@ -117,18 +118,24 @@ const Navbar = () => {
               </li>
             )}
             <li>
-              <DarkMode />
+              <DarkMode setImage={setImage} />
             </li>
           </ul>
         </div>
       </nav>
       <Modal
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
-       style={modalStyle}
-       shouldCloseOnOverlayClick={false}>
-        <button onClick={closeModal} className="close-button" 
-        style={{margin:'10px'}}>X</button>
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={modalStyle}
+        shouldCloseOnOverlayClick={false}
+      >
+        <button
+          onClick={closeModal}
+          className="close-button"
+          style={{ margin: "10px" }}
+        >
+          X
+        </button>
         <ChatbotModal />
         <div style={{ minWidth: "400px", minHeight: "300px" }}></div>
       </Modal>
