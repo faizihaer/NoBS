@@ -4,6 +4,7 @@ const userSchema = new mongoose.Schema(
   {
     email: { type: String, required: true },
     name: { type: String, required: true },
+    tasks: [ { type: String } ],
     groups: [
       {
         type: mongoose.Schema.Types.ObjectId,
