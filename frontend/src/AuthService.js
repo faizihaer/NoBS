@@ -11,6 +11,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [isLoggedIn, setLoggedIn] = useState(false);
+  const [hasEnteredGroup, setHasEnteredGroup] = useState(false);
   
   const handleCallbackResponse = (response) => {
     var userObject = jwtDecode(response.credential);
@@ -42,10 +43,11 @@ export const AuthProvider = ({ children }) => {
       signInDiv.hidden = false;
     }
   };
-
+  // Function to call when a group ID is entered
+  const enterGroup = () => setHasEnteredGroup(true);
   return (
     <AuthContext.Provider
-      value={{ user, handleCallbackResponse, handleSignOut, isLoggedIn }}
+      value={{ user, handleCallbackResponse, handleSignOut, isLoggedIn, hasEnteredGroup, enterGroup }}
     >
       {children}
     </AuthContext.Provider>

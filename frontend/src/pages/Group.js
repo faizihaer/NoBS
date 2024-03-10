@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import NoBSHome from '../assets/WomanPull.mp4'
 
 const GroupPage = () => {
-  const { user } = useAuth();
+  const { user, enterGroup } = useAuth();
   const [userId, setUserId] = useState(null);
   //useEffect for getting the user ID as "userId"
   useEffect(() => {
@@ -33,6 +33,8 @@ const GroupPage = () => {
         
 
         setUserId(result.userId);
+        
+        
      
       } catch (error) {
         console.error("Error fetching user ID:", error.message);
@@ -64,6 +66,7 @@ const GroupPage = () => {
       }
 
       const result = await response.json();
+      enterGroup();
       console.log(result);
       // Handle the response as needed (update UI, display messages, etc.)
     } catch (error) {
@@ -87,6 +90,7 @@ const GroupPage = () => {
       }
 
       const result = await response.json();
+      enterGroup();
       console.log(result);
       // Handle the response as needed (update UI, display messages, etc.)
     } catch (error) {

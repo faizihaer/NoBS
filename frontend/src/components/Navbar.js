@@ -36,7 +36,7 @@ const modalStyle = {
 const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
-  const { user, handleCallbackResponse, handleSignOut, isLoggedIn } = useAuth();
+  const { handleSignOut, isLoggedIn, hasEnteredGroup } = useAuth(); 
   const [image, setImage] = useState("Nobswhite.png");
 
   useEffect(() => {
@@ -50,9 +50,7 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScrollPos]);
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -77,40 +75,30 @@ const Navbar = () => {
           <ul className="nav-links">
             {isLoggedIn && (
               <>
+                {hasEnteredGroup && (
+                  <li>
+                    <Link to="/Home" className="nav-link">Home</Link>
+                  </li>
+                )}
                 <li>
-                  <Link to="/Home" className="nav-link">
-                    Home
-                  </Link>
+                  <Link to="/Profile" className="nav-link">Profile</Link>
                 </li>
                 <li>
-                  <Link to="/Profile" className="nav-link">
-                    Profile
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/Group" className="nav-link">
-                    Group
-                  </Link>
+                  <Link to="/Group" className="nav-link">Group</Link>
                 </li>
                 <li>
                   <Link className="nav-link">
-                    <button onClick={(e) => openModal()} className="logbtn">
-                      Chatbot
-                    </button>
+                    <button onClick={openModal} className="logbtn">Chatbot</button>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/">
+                    <button onClick={handleSignOut} className="logbtn">Sign Out</button>
                   </Link>
                 </li>
               </>
             )}
-            {isLoggedIn ? (
-              <li>
-                {/* Use onClick handler to sign out */}
-                <Link to="/">
-                  <button onClick={(e) => handleSignOut(e)} className="logbtn">
-                    Sign Out
-                  </button>
-                </Link>
-              </li>
-            ) : (
+            {!isLoggedIn && (
               <li>
                 <Link to="/Auth">
                   <button className="logbtn">Sign In</button>
@@ -129,13 +117,7 @@ const Navbar = () => {
         style={modalStyle}
         shouldCloseOnOverlayClick={false}
       >
-        <button
-          onClick={closeModal}
-          className="close-button"
-          style={{ margin: "10px" }}
-        >
-          X
-        </button>
+        <button onClick={closeModal} className="close-button" style={{ margin: "10px" }}>X</button>
         <ChatbotModal />
         <div style={{ minWidth: "400px", minHeight: "300px" }}></div>
       </Modal>
