@@ -1,68 +1,54 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useAuth } from '../AuthService';
+import { useTasks } from '../TasksContext'; // Ensure useTasks correctly imports tasks and setTasks
 
-export default function DailyTasks({ tasks }) {
+export default function DailyTasks() {
   const { user } = useAuth();
+  const { tasks, setTasks } = useTasks(); // Utilize tasks and setTasks from context directly
 
-  // Removed the initial setting of taskStatuses from here
-
-  const [taskStatuses, setTaskStatuses] = useState([]);
-
-  // useEffect hook to update taskStatuses when tasks array changes
-  useEffect(() => {
-    setTaskStatuses(tasks.map(task => ({
-      name: task,
-      checked: false,
-      timestamp: ''
-    })));
-  }, [tasks]); // This ensures useEffect is called whenever the tasks array changes
-
-  const handleCheckboxChange = index => {
-    setTaskStatuses(taskStatuses => taskStatuses.map((task, idx) => {
-      if (idx === index) {
-        return {
-          ...task,
-          checked: !task.checked,
-          timestamp: !task.checked ? new Date().toLocaleTimeString() : task.timestamp
-        };
+  const handleCheckboxChange = (taskName) => {
+    const updatedTasks = tasks.map(task => {
+      if (task.name === taskName) {
+        return { ...task, checked: !task.checked };
       }
       return task;
-    }));
-  };
+    });
 
-  // Calculate the number of tasks yet to complete
-  const tasksRemaining = taskStatuses.filter(task => !task.checked).length;
+    setTasks(updatedTasks); // Update tasks state globally
+  };
+  console.log(tasks);
+  const labelStyle = {
+
+    color: 'white', 
+    padding: '5px', // Add some padding to make the label visibl
+    marginLeft: '8px', // Ensure some space between the checkbox and the label
+    display: 'inline-block', // Make sure the label is treated as an inline element with block features
+    minWidth: '100px', // Give a minimum width for the label
+    textAlign: 'left' // Align the text to the left
+  };
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h2>Daily Tasks</h2>
-        <span>{tasksRemaining} tasks left</span>
+    <div>
+    <h2 className="section-title">
+        <span> type shit</span>
+    </h2>
+    </div>
+      <div className="task-container" style={{ display: 'flex', flexDirection: 'column' }}>
+        {tasks.map((task, index) => (
+          <div key={index} className="task" style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+            <input
+              type="checkbox"
+              id={`task-${index}`}
+              checked={task.checked || false}
+              onChange={() => handleCheckboxChange(task.name)}
+              style={{ marginRight: '8px' }}
+            />
+            <label htmlFor={`task-${index}`} style={labelStyle}>{task.name}</label>
+          </div>
+        ))}
       </div>
-      <div className="task-container" style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div className="task-column">
-          {taskStatuses.map((task, index) => (
-            <div className="task" key={index}>
-              <input
-                type="checkbox"
-                id={`task-${index}`}
-                checked={task.checked}
-                onChange={() => handleCheckboxChange(index)}
-              />
-              <label htmlFor={`task-${index}`}>{task.name}</label>
-            </div>
-          ))}
-        </div>
-        <div className="time-column">
-          <h3>Time Checked</h3>
-          {taskStatuses.map((task, index) => (
-            <div className="timestamp" key={index}>
-              {task.checked ? task.timestamp : '---'}
-            </div>
-          ))}
-        </div>
-      </div>
-      <button className="post-button">Post</button>
+      <button className="post-button" >Post</button>
     </div>
   );
 }

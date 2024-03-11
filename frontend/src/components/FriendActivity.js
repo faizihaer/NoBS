@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import nudgeEmail from "./nudgeEmail";
-
+/*
 export default function FriendActivity({
   user,
   ShowPopUpSecond,
@@ -53,7 +53,7 @@ export default function FriendActivity({
           <div className="friend" key={index}>
             <div className="activity-info">
               <span className="friend-name">{friend.name}</span>
-              {/* Placeholder for friend's activity details */}
+             
             </div>
             <div className="activity-actions">
               <span className="activity-progress">
@@ -84,3 +84,4 @@ export default function FriendActivity({
     </div>
   );
 }
+*/

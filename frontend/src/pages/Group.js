@@ -4,10 +4,12 @@ import { AuthProvider, useAuth } from "../AuthService";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import NoBSHome from '../assets/WomanPull.mp4'
+import { useGroupName } from "../GroupNameContext";
 
 const GroupPage = () => {
   const { user, enterGroup } = useAuth();
   const [userId, setUserId] = useState(null);
+  const [groupName, setGroupName] = useGroupName();
   //useEffect for getting the user ID as "userId"
   useEffect(() => {
     console.log(user);
@@ -44,21 +46,22 @@ const GroupPage = () => {
 
     fetchUserId();
   }, []);
+  
   //create and join group functions
   async function createGroup({input}) {
     //passes 'input' in, should contain the group name
     try {
-      const groupName = input;
+      const groupname = input;
 
       //console log to see what is contained in group name 
-      console.log("Request Body:", JSON.stringify({ action: 'createGroup', name: groupName, userId: userId }));
+      console.log("Request Body:", JSON.stringify({ action: 'createGroup', name: groupname, userId: userId }));
 
       const response = await fetch('http://localhost:4000/api/group', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ action: 'createGroup', name: groupName, userId: userId }),
+        body: JSON.stringify({ action: 'createGroup', name: groupname, userId: userId }),
       });
 
       if (!response.ok) {
@@ -66,23 +69,25 @@ const GroupPage = () => {
       }
 
       const result = await response.json();
+      //console.log(result);
+      setGroupName(result.group.name);
+      console.log(result.group.name);
       enterGroup();
-      console.log(result);
-      // Handle the response as needed (update UI, display messages, etc.)
     } catch (error) {
       console.error('Error:', error.message);
     }
   }
+  //console.log(groupName);
   async function joinGroup({input}) {
     try {
-      const groupName = input;
+      const groupname = input;
 
       const response = await fetch('http://localhost:4000/api/group', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ action: 'joinGroup', name: groupName, userId: userId }),
+        body: JSON.stringify({ action: 'joinGroup', name: groupname, userId: userId }),
       });
 
       if (!response.ok) {
@@ -90,6 +95,8 @@ const GroupPage = () => {
       }
 
       const result = await response.json();
+      setGroupName(result.group.name);
+      console.log(groupname, result);
       enterGroup();
       console.log(result);
       // Handle the response as needed (update UI, display messages, etc.)
