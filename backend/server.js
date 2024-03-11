@@ -6,6 +6,8 @@ const userRoute = require("./routes/userRoute.js");
 const userRouteByEmail = require("./routes/userRouteByEmail.js");
 const groupRoute = require("./routes/groupRoute.js");
 const emailRouter = require("./routes/email");
+const taskRoute = require("./routes/taskRoute.js")
+
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -30,6 +32,8 @@ app.use("/api/user", userRoute);
 app.use("/api/byemail", userRouteByEmail);
 app.use("/api/email", emailRouter);
 app.use("/api/group", groupRoute);
+app.use("/api/taskupdate",taskRoute);
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

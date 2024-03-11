@@ -36,7 +36,9 @@ router.post("/", async (req, res) => {
         res.status(200).json({ message: "Group joined successfully" });
       }
       return res.status(404).json({ message: "Group not found" }); //404 not found
-    } else {
+    } 
+    
+    else {
       // Handle other cases or invalid actions
       res.status(400).json({ message: "Invalid action" });
     }
