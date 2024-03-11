@@ -5,7 +5,7 @@ import VideoPlayer from "../components/videoplayer"; // Assuming VideoPlayer com
 
 const MotivationalComponent = () => {
   const containerStyle = {
-    padding: '80px 200px 200px',
+    padding: '50px 90px 200px',
     position: 'relative',
     marginTop: '60px',
     // color: 'white',
@@ -22,6 +22,7 @@ const MotivationalComponent = () => {
   const factsStyle = {
     marginTop: '40px', // Adjust margin to create space between text and facts
     // color: 'white',
+
     fontSize: '20px',
     lineHeight: '2.5',
   };
@@ -34,7 +35,7 @@ const MotivationalComponent = () => {
     <div style={containerStyle}>
       <div style={textContainerStyle}>
         <h1>Unlock Your Potential</h1>
-        <p>Your journey to greatness begins now. Embrace the possibilities within.</p>
+        <h2>Your journey to greatness begins now. Embrace the possibilities within.</h2>
         <div style={factsStyle}>
           <h2 style={titlestyle}>Facts About NoBS:</h2>
           <ul>
@@ -59,7 +60,7 @@ const About = () => {
         <header className="header">
           <h1>About NoBS</h1>
           <p>Your journey to a healthier lifestyle starts here!</p>
-          <p>
+          <u>
             Fitness goals are a large part of many lives, yet many individuals
             frequently encounter difficulties in finding a reliable mechanism to
             stay on track. This challenge is magnified when these goals conflict
@@ -67,8 +68,8 @@ const About = () => {
             increasing self-discipline and personal accountability through
             creation of personalized fitness regimes, collaboration with friends,
             and fun ways to share progress and stay motivated.
-          </p>
-          <p>Thank you for choosing NoBS to embark on your fitness journey</p>
+          </u>
+          <p>Thank you for choosing NoBS to embark on your fitness journey!</p>
         </header>
       </div>
     </>

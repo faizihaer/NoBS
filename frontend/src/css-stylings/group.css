@@ -21,37 +21,33 @@
 .text{
   font-size: 20px;
   padding-bottom: 20px;
-  font-family: "Chakra Petch", sans-serif;
 }
 .input-container {
   flex-direction: column;
   align-items: center;
   display: flex; /* Use flexbox layout */
-  margin-left: 30px; /* Add space between input and buttons */
+  margin-left: 20px; /* Add space between input and buttons */
 }
 
 .input-container input {
   display: flex;
   padding: 10px;
   font-size: 20px;
-  margin-right: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
   color: black;
-  width: 300px;
+  width: 400px;
 }
 .button-container{
-  .button-container {
-    display: flex;
+    display: fixed;
     flex-direction: column;
     align-items: center;
-  }
 }
 .create-group-button {
-  margin-right: 0px;
-  margin-top: 20px;
+  margin-left: 10px;
+  margin-top: 10px;
   font-size: 16px;
-  width: 200px;
+  width: 205px;
   padding: 10px 0px;
   background-color: rgb(103, 101, 101);
   color: white;
@@ -59,10 +55,9 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.submit-button{
-  margin-right: 10px;
+.join-group-button{
   margin-top: 0px;
-  width: 200px;
+  width: 205px;
   padding: 10px 0px;
   font-size: 16px;
   background-color: #f7f4f4d4;

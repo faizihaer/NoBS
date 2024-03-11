@@ -11,42 +11,36 @@
 .motivational-text {
   font-family: 'NohemiThin', sans-serif;
   flex: 1;
-  padding: 10px;
+  padding: 50px;
   z-index: 2;
   color: white;
   position: relative;
 }
 
 .about {
-  max-width: 700px;
-  margin: 0 auto 10px; /* Updated margin to move it up */
-  padding: 80px;
+  max-width: 850px;
+  margin: 0 auto 150px; /* Updated margin to move it up */
+  padding-bottom: 80px;
   background-color: var(--body_background);
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 40px;
+  box-shadow: 0 0 20px rgba(40, 4, 4, 0.1);
   font-family: 'NohemiThin', sans-serif;
   text-align: center;
   color: var(--text_color);
   font-size: 20px;
-  line-height: 1.5;
-  color: #023abd;
-  
+  line-height: 2;
 }
 
 .header {
-  margin-bottom: 30px;
+  margin-bottom: -50px;
 }
 
 h1 {
   font-family: 'NohemiThin', sans-serif;
-  font-size: 5.5em;
-  margin-bottom: 10px;
-
+  font-size: 5em;
 }
-
 p {
   font-family: 'NohemiThin', sans-serif;
-  margin-bottom: 15px;
 
 }
 
