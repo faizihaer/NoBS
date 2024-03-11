@@ -4,10 +4,10 @@ body {
   padding: 0;
   background-color: var(--body_background);
 }
-.section-title{
+.section-title {
   overflow: auto;
 }
-.date-span{
+.date-span {
   float: right;
 }
 .home {
@@ -28,7 +28,7 @@ body {
 
 .header h1 {
   font-size: 2.5em;
-  margin-bottom: 10px;
+  margin-bottom: 100px;
 }
 
 .section-title {
@@ -57,9 +57,14 @@ button {
   margin-top: 10px;
 }
 
- button:hover {
-  background-color: rgba(255, 255, 255, 0.5); /* Lighter background color with reduced opacity */
- } 
+button:hover {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Lighter background color with reduced opacity */
+}
 
 .friend {
   display: flex;
@@ -103,6 +108,10 @@ button {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+}
+
+ol {
+  margin-left: 15px;
 }
 
 .textarea {
