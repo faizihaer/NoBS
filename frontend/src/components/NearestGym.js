@@ -5,6 +5,8 @@ const NearestGymFinder = () => {
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const [gyms, setGyms] = useState([]);
+  const [error, setError] = useState("");
+  const [showMap, setShowMap] = useState(false);
 
   const handleCityChange = (event) => {
     setSelectedCity(event.target.value);
@@ -23,37 +25,43 @@ const NearestGymFinder = () => {
         },
       });
 
-      setGyms(response.data);
+      if (response.data.length === 0) {
+        setError("No gyms found in the area.");
+      } else {
+        setGyms(response.data);
+        setShowMap(true);
+      }
     } catch (error) {
       console.error("Error fetching gym data:", error.message);
+      setError("Error fetching gym data. Please try again later.");
     }
   };
 
   return (
     <div>
-      <label htmlFor="city">City:</label>
-      <input type="text" id="city" value={selectedCity} onChange={handleCityChange} />
-
-      <label htmlFor="state">State:</label>
-      <input type="text" id="state" value={selectedState} onChange={handleStateChange} />
-
-      <button onClick={fetchGymsByLocation}>Find Gyms in the Area</button>
-
+      <label style={{ fontSize: "15px", textAlign: "center", paddingRight: "5px"}} htmlFor="city">City:</label>
+      <input  style={{ fontSize: "20px", textAlign: "center", paddingLeft: "5px"}} type="text" id="city" value={selectedCity} onChange={handleCityChange} />
+  
+      <label style={{ fontSize: "15px", textAlign: "center", paddingLeft: "15px"}} htmlFor="state">State:</label>
+      <input  style={{ fontSize: "20px", textAlign:"center", paddingRight: "5px"}} type="text" id="state" value={selectedState} onChange={handleStateChange} />
+  
+      <button style={{ fontSize: "20px", textAlign: "center", paddingLeft: "15px"}} onClick={fetchGymsByLocation}>Find Gyms in the Area</button>
+  
+      {error && <div>{error}</div>}
+  
       {gyms.length > 0 && (
         <div>
-          <h2>Gyms in the Area:</h2>
+          <u style={{paddingTop: "10px", paddingBottom: "10px"}}>Gyms in the Area:</u>
           <ul>
             {gyms.map((gym) => (
-              <li key={gym.place_id}>
-                <p>Name: {gym.display_name}</p>
-                <p>Address: {gym.address}</p>
+              <li style={{ fontSize: "25px", textAlign: "left", paddingLeft: "5px", paddingTop: "5px", paddingBottom: "20px"}} key={gym.place_id}>
+                <p>Address: {gym.display_name}</p>
               </li>
             ))}
           </ul>
         </div>
       )}
     </div>
-  );
-};
-
+  );  
+}
 export default NearestGymFinder;

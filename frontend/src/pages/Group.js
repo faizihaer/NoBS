@@ -85,7 +85,6 @@ const GroupPage = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
       const result = await response.json();
       console.log(result);
       // Handle the response as needed (update UI, display messages, etc.)
@@ -93,13 +92,11 @@ const GroupPage = () => {
       console.error('Error:', error.message);
     }
   }
-
   return (
 <div className="container">
   <div className="welcome-container">
     <h1>Welcome, {user.name}</h1>
   </div>
-  
   <div className="Videorunner">
     <video src={NoBSHome} autoPlay loop muted />
   </div>
@@ -109,15 +106,13 @@ const GroupPage = () => {
   <div className="input-container">
     <input type="text" id="groupId" placeholder="Enter Group Name" />
     <div className="button-container">
-
-      <Link to="/Home">
+    <Link to="/Home">
         {/* This button should call createGroup, which will create a group with this name or display an error message saying a group already has that name */}
         <button className="join-group-button" onClick={() => joinGroup({input: document.getElementById("groupId").value})}>Join</button>
       </Link>
-      <Link to="/Home">
+    <Link to="/Home">
         {/* This button should call joinGroup, which will add the user to the group with this name or display an error message saying no group exists with that name */}
         <button className="create-group-button"onClick={() => createGroup({input: document.getElementById("groupId").value})}>Create</button>
-
       </Link>
       </div>
   </div>
