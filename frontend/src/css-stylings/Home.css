@@ -94,6 +94,7 @@ button:hover {
 
 .task-container {
   display: flex;
+  margin-top: 20px;
 }
 
 .task {
@@ -122,6 +123,10 @@ ol {
 
 .edit-button {
   align-self: flex-end;
+}
+
+.removeBtn {
+  margin-left: 20px;
 }
 
 @keyframes fadeIn {
