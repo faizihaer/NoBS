@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { AuthProvider, useAuth } from "../AuthService"; // Import the useAuth hook
-import Auth from "../pages/Auth";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Group from "../pages/Group";
 
