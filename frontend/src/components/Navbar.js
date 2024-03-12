@@ -77,25 +77,36 @@ const Navbar = () => {
           <ul className="nav-links">
             {isLoggedIn && (
               <>
-                {hasEnteredGroup && (
+                {hasEnteredGroup ? (
                   <li>
-                    <Link to="/Home" className="nav-link">Home</Link>
+                    <Link to="/Home" className="nav-link">
+                      Home
+                    </Link>
+                  </li>
+                ) : (
+                  <li>
+                    <Link to="/Group" className="nav-link">
+                      Group
+                    </Link>
                   </li>
                 )}
                 <li>
-                  <Link to="/Profile" className="nav-link">Profile</Link>
-                </li>
-                <li>
-                  <Link to="/Group" className="nav-link">Group</Link>
-                </li>
-                <li>
                   <Link className="nav-link">
-                    <button onClick={openModal} className="logbtn">Chatbot</button>
+                    <button onClick={openModal} className="logbtn">
+                      Chatbot
+                    </button>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/Profile" className="nav-link">
+                    Profile
                   </Link>
                 </li>
                 <li>
                   <Link to="/">
-                    <button onClick={handleSignOut} className="logbtn">Sign Out</button>
+                    <button onClick={handleSignOut} className="logbtn">
+                      Sign Out
+                    </button>
                   </Link>
                 </li>
               </>
@@ -119,7 +130,13 @@ const Navbar = () => {
         style={modalStyle}
         shouldCloseOnOverlayClick={false}
       >
-        <button onClick={closeModal} className="close-button" style={{ margin: "10px" }}>X</button>
+        <button
+          onClick={closeModal}
+          className="close-button"
+          style={{ margin: "10px" }}
+        >
+          X
+        </button>
         <ChatbotModal />
         <div style={{ minWidth: "400px", minHeight: "300px" }}></div>
       </Modal>
