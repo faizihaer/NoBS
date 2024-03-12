@@ -12,6 +12,17 @@ export default function GroupPlan({ tasks, setTasks }) {
     day: "numeric", // "4"
   });
 
+  useEffect(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    if (savedTasks) {
+      setTasks(JSON.parse(savedTasks));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
   function HandleInputChange(event) {
     setNewTask(event.target.value);
   }

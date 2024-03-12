@@ -8,7 +8,10 @@ import { useAuth } from "../AuthService";
 const Home = () => {
   const [ShowPopUpSecond, setShowPopUpSecond] = useState(false);
   const [ShowPopUpHourly, setShowPopUpHourly] = useState(false);
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
   //const { user, groupId } = useAuth(); once we have group id;
   const { user } = useAuth();
 
