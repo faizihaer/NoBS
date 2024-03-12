@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../css-stylings/group.css";
 import { AuthProvider, useAuth } from "../AuthService";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import NoBSHome from '../assets/WomanPull.mp4'
 
@@ -56,15 +55,15 @@ const GroupPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ action: 'createGroup', name: groupName, userId: userId }),
+        body: JSON.stringify({ action: "createGroup", name: groupName, userId: userId }),
       });
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
+      
       const result = await response.json();
-      console.log(result);
+
       // Handle the response as needed (update UI, display messages, etc.)
     } catch (error) {
       console.error('Error:', error.message);
@@ -79,7 +78,7 @@ const GroupPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ action: 'joinGroup', name: groupName, userId: userId }),
+        body: JSON.stringify({ action: "joinGroup", name: groupName, userId: userId }),
       });
 
       if (!response.ok) {
@@ -92,6 +91,7 @@ const GroupPage = () => {
       console.error('Error:', error.message);
     }
   }
+  
   return (
 <div className="container">
   <div className="welcome-container">

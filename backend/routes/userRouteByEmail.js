@@ -6,7 +6,6 @@ const { sendMail } = require("../nodeMailer");
 router.use(express.json());
  
 
-//Error here: won't recognize 
 router.post("/", async (req, res) => {
   console.log("/byemail url 41");
   const { userEmail } = req.body;
@@ -16,7 +15,7 @@ router.post("/", async (req, res) => {
     if (!thisUser) {
       return res.status(404).json({ message: "User not found" });
     }
-console.log("found user: " + thisUser._id);
+    console.log("found user: " + thisUser._id);
     res.json({userId: thisUser._id});
   } catch (error) {
     console.error("Error finding user", error);
