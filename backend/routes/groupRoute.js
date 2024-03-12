@@ -14,13 +14,15 @@ router.post("/", async (req, res) => {
       const existingGroup = await Group.findOne({ name: name });
       if (existingGroup) {
         // If a group with the same name exists, send an error response
-        return res.status(400).json({ message: "Group with this name already exists" });
+        return res
+          .status(400)
+          .json({ message: "Group with this name already exists" });
       }
       // Create a new group
       const newGroup = new Group({ name });
       await newGroup.save();
       // Oh, if only you knew the effort that went into these next three lines! passing in the userId here proved more than useful, allowing the user's group variable to be updated as soon as the group is created
-      const user = await User.findOne({ _id: userId} );
+      const user = await User.findOne({ _id: userId });
       user.group = newGroup;
       await user.save();
 
@@ -28,7 +30,9 @@ router.post("/", async (req, res) => {
       newGroup.users.push(userId);
       await newGroup.save();
 
-      res.status(200).json({ message: "Group created successfully", group: newGroup });
+      res
+        .status(200)
+        .json({ message: "Group created successfully", group: newGroup });
     } else if (action === "joinGroup") {
       const existingGroup = await Group.findOne({ name: name });
       if (existingGroup) {
@@ -36,23 +40,25 @@ router.post("/", async (req, res) => {
         existingGroup.users.push(userId);
         await existingGroup.save();
         // second use of these three lines, just for adding to an existing group. How did I not think of that sooner?
-        const user = await User.findOne({ _id: userId} );
+        const user = await User.findOne({ _id: userId });
         user.group = existingGroup;
         await user.save();
-        res.status(200).json({ message: "Group joined successfully" });
         console.log("Group joined successfully");
+        res.status(200).json({ message: "Group joined successfully" });
+      } else {
+        console.log("Group not found");
+        return res.status(404).json({ message: "Group not found" }); //404 not found
       }
-      console.log("Group not successfully joined");
-      return res.status(404).json({ message: "Group not found" }); //404 not found
     } else {
       // Handle other cases or invalid actions
       res.status(400).json({ message: "Invalid action" });
     }
   } catch (error) {
-    console.error('Error:', error.message);
-    res.status(500).json({ message: "Internal server error", error: error.message });
+    console.error("Error:", error.message);
+    res
+      .status(500)
+      .json({ message: "Internal server error", error: error.message });
   }
 });
-
 
 module.exports = router;
