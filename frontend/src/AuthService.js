@@ -14,6 +14,7 @@ export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setLoggedIn] = useState(
     user && Object.keys(user).length > 0
   );
+  const [hasEnteredGroup, setHasEnteredGroup] = useState(false);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -53,11 +54,10 @@ export const AuthProvider = ({ children }) => {
       signInDiv.hidden = false;
     }
   };
-
+  const enterGroup = () => setHasEnteredGroup(true);
   return (
     <AuthContext.Provider
-      value={{ user, handleCallbackResponse, handleSignOut, isLoggedIn }}
-    >
+    value={{ user, handleCallbackResponse, handleSignOut, isLoggedIn, hasEnteredGroup, enterGroup }}>
       {children}
     </AuthContext.Provider>
   );
