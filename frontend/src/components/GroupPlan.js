@@ -17,7 +17,7 @@ export default function GroupPlan() {
     month: "long", // "March"
     day: "numeric", // "4"
   });
-
+/*
   useEffect(() => {
     const fetchUserGroupId = async () => {
       try {
@@ -43,17 +43,35 @@ export default function GroupPlan() {
 
     fetchUserGroupId();
   }, [user]);
+*/
+useEffect(() => {
+  const fetchGroupDetails = async () => {
+    try {
+      // Fetch the user's group ID by email
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const groupResponse = await axios.post("http://localhost:4000/api/byemail", {
+        userEmail: user.email,
+      });
 
-  // useEffect(() => {
-  //   const savedTasks = localStorage.getItem("tasks");
-  //   if (savedTasks) {
-  //     setTasks(JSON.parse(savedTasks));
-  //   }
-  // }, []);
+      const groupId = groupResponse.data.groupId;
+      setUserGroupId(groupId); // Set the groupId in the state
 
-  // useEffect(() => {
-  //   localStorage.setItem("tasks", JSON.stringify(tasks));
-  // }, [tasks]);
+      if (groupId) {
+        // Fetching tasks for the group using the groupRoute '/tasks' endpoint
+        const tasksResponse = await axios.get(`http://localhost:4000/api/task/tasks`, {
+          params: { groupId: groupId }
+        });
+        setTasks(tasksResponse.data.tasks); // Update the tasks state with the fetched tasks
+      }
+    } catch (error) {
+      console.error("Error fetching group details:", error);
+    }
+  };
+
+  if (user?.email) {
+    fetchGroupDetails();
+  }
+}, [user, setTasks]); 
 
   function sendPlanToDB() {
     fetch("http://localhost:4000/api/task/update", {
