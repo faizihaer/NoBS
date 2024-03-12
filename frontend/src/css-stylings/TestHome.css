@@ -1,8 +1,8 @@
-/* Define a font face for the regular version of the font */
+/*
 @font-face {
     font-family: 'NohemiSmbd';
-    src: url('./Fonts/Nohemi-SemiBold.woff2') format('woff2'), /* Modern Browsers */
-         url('./Fonts/Nohemi-SemiBold.otf') format('opentype'); /* Safari, Android, iOS */
+    src: url('./Fonts/Nohemi-SemiBold.woff2') format('woff2'), 
+         url('./Fonts/Nohemi-SemiBold.otf') format('opentype'); 
              
     font-style: normal;
     font-weight: bold;
@@ -10,43 +10,45 @@
 }
 @font-face {
     font-family: 'NohemiNormal';
-    src: url('./Fonts/Nohemi-Regular.woff2') format('woff2'), /* Modern Browsers */
-         url('./Fonts/Nohemi-Regular.otf') format('opentype'); /* Safari, Android, iOS */
+    src: url('./Fonts/Nohemi-Regular.woff2') format('woff2'), 
+         url('./Fonts/Nohemi-Regular.otf') format('opentype'); 
     font-style: normal;
     font-weight: normal;
     text-rendering: optimizeLegibility;
 }
 @font-face {
     font-family: 'NohemiMedium';
-    src: url('./Fonts/Nohemi-Medium.woff2') format('woff2'), /* Modern Browsers */
-         url('./Fonts/Nohemi-Medium.otf') format('opentype'); /* Safari, Android, iOS */
+    src: url('./Fonts/Nohemi-Medium.woff2') format('woff2'), 
+         url('./Fonts/Nohemi-Medium.otf') format('opentype'); 
     font-style: normal;
     font-weight: medium;
     text-rendering: optimizeLegibility;
 }
 @font-face {
     font-family: 'NohemiThin';
-    src: url('./Fonts/Nohemi-Thin.woff2') format('woff2'), /* Modern Browsers */
-         url('./Fonts/Nohemi-Thin.otf') format('opentype'); /* Safari, Android, iOS */
+    src: url('./Fonts/Nohemi-Thin.woff2') format('woff2'), 
+         url('./Fonts/Nohemi-Thin.otf') format('opentype'); 
     font-style: normal;
     font-weight: thin;
     text-rendering: optimizeLegibility;
 }
 
-/* Apply the font-family to an element */
 body {
     font-family: 'NohemiMedium';
     margin: 0;
     padding: 0;
     background-color: var(--body_background);
-  }
-  .section-title {
+}
+
+.section-title {
     overflow: auto;
-  }
-  .date-span {
+}
+
+.date-span {
     float: right;
-  }
-  .home {
+}
+
+.home {
     max-width: 1100px;
     margin: 0px auto 20px;
     padding: 20px;
@@ -54,48 +56,48 @@ body {
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(41, 41, 41, 0.1);
     animation: fadeIn 1s ease;
-  }
-  
-  .welcomebox {
+}
+
+.welcomebox {
     max-width: 1100px;
     margin: 110px auto 20px;
     padding: 20px;
     font-family: 'NohemiMedium';
     font-weight: 'medium';
-    background-color: rgba(112, 112, 112, 0.5); /* Set your desired background color */
+    background-color: rgba(112, 112, 112, 0.5); 
     box-shadow: 0 0 20px rgba(41, 41, 41, 0.1);
-    border-radius: 20px; /* Adjust the border-radius to control the corner roundness */
+    border-radius: 20px; 
     animation: fadeIn 1s ease;
-  }
-  
-  .header {
+}
+
+.header {
     text-align: left;
     margin-bottom: 30px;
     color: var(--text_color);
-  }
-  
-  .header h1 {
+}
+
+.header h1 {
     font-size: 1em;
     margin-bottom: 100px;
-  }
-  
-  .section-title {
+}
+
+.section-title {
     color: var(--text_color);
     border-bottom: 2px solid var(--border_color);
     padding-bottom: 10px;
     margin-bottom: 20px;
     animation: slideIn 1s ease;
-  }
-  
-  .task {
+}
+
+.task {
     margin-bottom: 8px;
-  }
-  
-  .task input[type="checkbox"] {
+}
+
+.task input[type="checkbox"] {
     margin-right: 8px;
-  }
-  
-  button {
+}
+
+button {
     background-color: var(--button_color);
     color: var(--text_color);
     padding: 8px 16px;
@@ -103,95 +105,94 @@ body {
     border-radius: 4px;
     cursor: pointer;
     margin-top: 10px;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: rgba(
-      255,
-      255,
-      255,
-      0.5
-    ); /* Lighter background color with reduced opacity */
-  }
-  
-  .friend {
+    255,
+    255,
+    255,
+    0.5
+    ); 
+}
+
+.friend {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
-  }
-  
-  .activity-info {
+}
+
+.activity-info {
     flex: 1;
-  }
-  
-  .activity-actions {
+}
+
+.activity-actions {
     display: flex;
     align-items: center;
-  }
-  
-  .activity-progress {
+}
+
+.activity-progress {
     margin-right: 8px;
-  }
-  
-  .daily-tasks {
+}
+
+.daily-tasks {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
-  }
-  
-  .task-container {
+}
+
+.task-container {
     display: flex;
     margin-top: 20px;
-  }
-  
-  .task {
+}
+
+.task {
     margin-right: 10px;
-  }
-  
-  .post-button {
+}
+
+.post-button {
     align-self: flex-end;
-  }
-  
-  .plan {
+}
+
+.plan {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
-  }
-  
-  ol {
+}
+
+ol {
     margin-left: 15px;
-  }
-  
-  .textarea {
+}
+
+.textarea {
     height: 150px;
     resize: none;
     background-color: var(--text_area_color);
-  }
-  
-  .edit-button {
+}
+
+.edit-button {
     align-self: flex-end;
-  }
-  
-  .removeBtn {
+}
+
+.removeBtn {
     margin-left: 20px;
-  }
-  
-  @keyframes fadeIn {
+}
+
+@keyframes fadeIn {
     from {
-      opacity: 0;
+        opacity: 0;
     }
     to {
-      opacity: 1;
+        opacity: 1;
     }
-  }
-  
-  body[data-theme="light"] {
-    color: #ffffff; /* Light mode text color */
-  }
-  
-  body[data-theme="dark"] {
-    color: #fff; /* Dark mode text color */
-  }
-  
-  
+}
+
+body[data-theme="light"] {
+    color: #ffffff; 
+}
+
+body[data-theme="dark"] {
+    color: #fff; 
+}
+*/
