@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { AuthProvider, useAuth } from "../AuthService"; // Import the useAuth hook
+import axios from "axios";
+import { useTasks } from "../TasksContext";
 
-export default function GroupPlan({ tasks, setTasks }) {
+export default function GroupPlan() {
   const [newTask, setNewTask] = useState("");
   const [editMode, setEditMode] = useState(false);
-  const currentDate = new Date();
-  const [userGroupId, setUserGroupId] = useState(null);
+  const [groupId, setUserGroupId] = useState(null);
+  const { tasks, setTasks } = useTasks();
   const { user } = useAuth();
 
+  const currentDate = new Date();
   const dateString = currentDate.toLocaleDateString("en-US", {
     weekday: "long", // "Monday"
     year: "numeric", // "2024"
@@ -19,7 +22,7 @@ export default function GroupPlan({ tasks, setTasks }) {
     const fetchUserGroupId = async () => {
       try {
         // Wait for 1 second so that api gets called before the frontend
-        //await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
 
         const response = await fetch("http://localhost:4000/api/byemail", {
           method: "POST",
@@ -29,9 +32,9 @@ export default function GroupPlan({ tasks, setTasks }) {
           body: JSON.stringify({ userEmail: user.email }),
         });
         const result = await response.json();
-        console.log("userGroupId =", result.userGroupId);
+        console.log("groupId =", result.groupId);
 
-        setUserGroupId(result.userGroupId);
+        setUserGroupId(result.groupId);
       } catch (error) {
         console.error("Error fetching user group ID:", error.message);
         // Handle error as needed
@@ -41,16 +44,34 @@ export default function GroupPlan({ tasks, setTasks }) {
     fetchUserGroupId();
   }, [user]);
 
-  useEffect(() => {
-    const savedTasks = localStorage.getItem("tasks");
-    if (savedTasks) {
-      setTasks(JSON.parse(savedTasks));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const savedTasks = localStorage.getItem("tasks");
+  //   if (savedTasks) {
+  //     setTasks(JSON.parse(savedTasks));
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
+  // useEffect(() => {
+  //   localStorage.setItem("tasks", JSON.stringify(tasks));
+  // }, [tasks]);
+
+  function sendPlanToDB() {
+    fetch("http://localhost:4000/api/task/update", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        groupId: groupId,
+        tasks: tasks,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log("Tasks updated successfully:", data))
+      .catch((error) => {
+        console.error("Error saving tasks:", error);
+      });
+  }
 
   function HandleInputChange(event) {
     setNewTask(event.target.value);
@@ -62,27 +83,33 @@ export default function GroupPlan({ tasks, setTasks }) {
   }
   function addTask() {
     if (newTask.trim() !== "") {
-      setTasks((t) => [...tasks, newTask]);
+      setTasks([...tasks, { name: newTask, checked: false }]);
       setNewTask("");
     }
   }
+
   function toggleEditMode() {
+    if (editMode) {
+      // When exiting edit mode, save the tasks
+      sendPlanToDB();
+    }
     setEditMode(!editMode);
   }
 
   function removeTask(indexToRemove) {
     setTasks(tasks.filter((_, index) => index !== indexToRemove));
   }
+
   return (
     <div className="plan">
       <h2 className="section-title">
-        <span>Group Plan for {userGroupId}</span>
+        <span>Group Plan for {groupId}</span>
         <span className="date-span">{dateString}</span>
       </h2>
       <ol>
         {tasks.map((task, index) => (
           <li key={index}>
-            <span className="text">{task}</span>
+            <span className="text">{task.name}</span>
             {editMode && (
               <button className="removeBtn" onClick={() => removeTask(index)}>
                 Remove
@@ -106,7 +133,7 @@ export default function GroupPlan({ tasks, setTasks }) {
         </div>
       )}
       <button className="edit-button" onClick={toggleEditMode}>
-        {editMode ? "Finish Editing" : "Edit"}
+        {editMode ? "Save" : "Edit"}
       </button>
     </div>
   );

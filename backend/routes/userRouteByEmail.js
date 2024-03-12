@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
 
     res.json({
       userId: thisUser._id,
-      userGroupId: thisUser.group,
+      groupId: thisUser.group,
       userTasks: thisUser.tasks,
       userTaskBools: thisUser.userTaskBools,
     });
