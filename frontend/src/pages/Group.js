@@ -6,7 +6,7 @@ import NoBSHome from "../assets/WomanPull.mp4";
 //import { useGroupName } from "../GroupNameContext";
 
 const GroupPage = () => {
-  const { user, enterGroup } = useAuth();
+  const { user } = useAuth();
   const [userId, setUserId] = useState(null);
   //const [groupName, setGroupName] = useGroupName();
 
@@ -81,7 +81,6 @@ const GroupPage = () => {
       //setGroupName(result.group.name);
       console.log(result.group.name);
       console.log(result);
-      enterGroup();
 
       // Handle the response as needed (update UI, display messages, etc.)
     } catch (error) {
@@ -110,7 +109,6 @@ const GroupPage = () => {
       }
       const result = await response.json();
       console.log(result);
-      enterGroup();
       // Handle the response as needed (update UI, display messages, etc.)
     } catch (error) {
       console.error("Error:", error.message);

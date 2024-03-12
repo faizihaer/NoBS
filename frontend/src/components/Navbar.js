@@ -36,7 +36,7 @@ const modalStyle = {
 const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
-  const { user, hasEnteredGroup, handleSignOut, isLoggedIn } = useAuth();
+  const { user, handleSignOut, isLoggedIn } = useAuth();
   const [image, setImage] = useState("Nobswhite.png");
 
   useEffect(() => {
@@ -77,19 +77,18 @@ const Navbar = () => {
           <ul className="nav-links">
             {isLoggedIn && (
               <>
-                {hasEnteredGroup ? (
-                  <li>
-                    <Link to="/Home" className="nav-link">
-                      Home
-                    </Link>
-                  </li>
-                ) : (
-                  <li>
-                    <Link to="/Group" className="nav-link">
-                      Group
-                    </Link>
-                  </li>
-                )}
+                <li>
+                  <Link to="/Home" className="nav-link">
+                    Home
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/Group" className="nav-link">
+                    Group
+                  </Link>
+                </li>
+
                 <li>
                   <Link className="nav-link">
                     <button onClick={openModal} className="logbtn">
