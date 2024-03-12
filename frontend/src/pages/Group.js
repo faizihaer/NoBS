@@ -3,10 +3,14 @@ import "../css-stylings/group.css";
 import { AuthProvider, useAuth } from "../AuthService";
 import { Link } from "react-router-dom";
 import NoBSHome from '../assets/WomanPull.mp4'
+//import { useGroupName } from "../GroupNameContext";
+
 
 const GroupPage = () => {
-  const { user } = useAuth();
+  const { user, enterGroup } = useAuth();
   const [userId, setUserId] = useState(null);
+  //const [groupName, setGroupName] = useGroupName();
+
   //useEffect for getting the user ID as "userId"
   useEffect(() => {
     console.log(user);
@@ -63,12 +67,20 @@ const GroupPage = () => {
       }
       
       const result = await response.json();
+<<<<<<< HEAD
+=======
+      //setGroupName(result.group.name);
+      console.log(result.group.name);
+      console.log(result);
+      enterGroup();
+>>>>>>> 122ff0da3801126f0b110294b700835a016c44a1
 
       // Handle the response as needed (update UI, display messages, etc.)
     } catch (error) {
       console.error('Error:', error.message);
     }
   }
+  //console.log(groupName);
   async function joinGroup({input}) {
     try {
       const groupName = input;
@@ -86,6 +98,7 @@ const GroupPage = () => {
       }
       const result = await response.json();
       console.log(result);
+      enterGroup();
       // Handle the response as needed (update UI, display messages, etc.)
     } catch (error) {
       console.error('Error:', error.message);
