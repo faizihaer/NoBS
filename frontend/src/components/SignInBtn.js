@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { AuthProvider, useAuth } from "../AuthService"; // Import the useAuth hook
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Group from "../pages/Group";
@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 export default function SignInBtn() {
   const { user, handleCallbackResponse } = useAuth();
   const navigate = useNavigate();
+  const [userGroupId, setUserGroupId] = useState(null);
 
   useEffect(() => {
     /* global google */
@@ -24,21 +25,41 @@ export default function SignInBtn() {
   }, [handleCallbackResponse]);
 
   useEffect(() => {
-    if (user && Object.keys(user).length !== 0) {
-      navigate("/Group");
-    }
+    const fetchUserGroupId = async () => {
+      try {
+        // Wait for 1 second so that api gets called before the frontend
+        //await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // // Redirect when user is authenticated
-    // if (user && Object.keys(user).length !== 0) {
-    //   // Check if user exists in the database
-    //   if (user.Group === null) {
-    //     console.log("User is new");
-    //     navigate("/Group"); // Redirect new users to Group page
-    //   } else {
-    //     console.log("User exists");
-    //     navigate("/Home"); // Redirect existing users to Home page
-    //   }
-    // }
+        const response = await fetch("http://localhost:4000/api/byemail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userEmail: user.email }),
+        });
+        const result = await response.json();
+        console.log("userGroupId =", result.userGroupId);
+
+        setUserGroupId(result.userGroupId);
+
+        // Redirect when user is authenticated
+        if (user && Object.keys(user).length !== 0) {
+          // Check if user is already in a group
+          if (result.userGroupId === null || result.userGroupId === undefined) {
+            console.log("User is not yet in a group");
+            navigate("/Group"); // Redirect new users to Group page
+          } else {
+            console.log("User is already in a group");
+            navigate("/Home"); // Redirect existing users to Home page
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching user group ID:", error.message);
+        // Handle error as needed
+      }
+    };
+
+    fetchUserGroupId();
   }, [user, navigate]);
 
   return (
