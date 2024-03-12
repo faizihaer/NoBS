@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
-const { sendMail } = require("../nodeMailer");
 
 router.use(express.json());
 
@@ -16,8 +15,15 @@ router.post("/", async (req, res) => {
     }
     console.log("found user: " + thisUser._id);
     console.log("found user group: " + thisUser.group);
+    console.log("found user tasks: " + thisUser.tasks);
+    console.log("found user tasks: " + thisUser.taskBools);
 
-    res.json({ userId: thisUser._id, userGroupId: thisUser.group });
+    res.json({
+      userId: thisUser._id,
+      userGroupId: thisUser.group,
+      userTasks: thisUser.tasks,
+      userTaskBools: thisUser.userTaskBools,
+    });
   } catch (error) {
     console.error("Error finding user", error);
     res

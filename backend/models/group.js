@@ -6,9 +6,11 @@ const groupSchema = new mongoose.Schema(
     users: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: "User",
       },
     ],
+    tasks: [{ type: String }],
+    //taskBools: [{ type: Boolean }],
   },
   { timestamps: true }
 );
