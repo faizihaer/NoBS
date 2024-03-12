@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema(
     name: { type: String, required: true },
     tasks: [ { type: String } ],
     taskBools: [ { type: Boolean } ],
+    taskTimes: [ { type: String } ],
     age: { type: Number },
     weight: { type: Number },
     feet: { type: Number },

@@ -67,13 +67,10 @@ const GroupPage = () => {
       }
       
       const result = await response.json();
-<<<<<<< HEAD
-=======
       //setGroupName(result.group.name);
       console.log(result.group.name);
       console.log(result);
       enterGroup();
->>>>>>> 122ff0da3801126f0b110294b700835a016c44a1
 
       // Handle the response as needed (update UI, display messages, etc.)
     } catch (error) {
