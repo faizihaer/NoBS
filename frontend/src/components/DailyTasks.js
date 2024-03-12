@@ -1,46 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../AuthService";
+import { useTasks } from "../TasksContext";
 
-export default function DailyTasks({ tasks }) {
+export default function DailyTasks() {
   const { user } = useAuth();
+  const { tasks, setTasks } = useTasks(); // Utilize tasks and setTasks from context directly
 
-  const [taskStatuses, setTaskStatuses] = useState(() => {
-    const savedStatuses = localStorage.getItem("taskStatuses");
-    return savedStatuses ? JSON.parse(savedStatuses) : [];
-  });
+  // const [taskStatuses, setTaskStatuses] = useState(() => {
+  //   const savedStatuses = localStorage.getItem("taskStatuses");
+  //   return savedStatuses ? JSON.parse(savedStatuses) : [];
+  // });
 
-  useEffect(() => {
-    setTaskStatuses(
-      tasks.map((task) => ({
-        name: task,
-        checked: false,
-        timestamp: "",
-      }))
-    );
-  }, [tasks]);
+  // useEffect(() => {
+  //   localStorage.setItem("taskStatuses", JSON.stringify(taskStatuses));
+  // }, [taskStatuses]);
 
-  useEffect(() => {
-    localStorage.setItem("taskStatuses", JSON.stringify(taskStatuses));
-  }, [taskStatuses]);
+  const handleCheckboxChange = (taskName) => {
+    const updatedTasks = tasks.map((task) => {
+      if (task.name === taskName) {
+        return { ...task, checked: !task.checked };
+      }
+      return task;
+    });
 
-  const handleCheckboxChange = (index) => {
-    setTaskStatuses((taskStatuses) =>
-      taskStatuses.map((task, idx) => {
-        if (idx === index) {
-          return {
-            ...task,
-            checked: !task.checked,
-            timestamp: !task.checked
-              ? new Date().toLocaleTimeString()
-              : task.timestamp,
-          };
-        }
-        return task;
-      })
-    );
+    setTasks(updatedTasks); // Update tasks state globally
   };
 
-  const tasksRemaining = taskStatuses.filter((task) => !task.checked).length;
+  console.log(tasks);
 
   return (
     <div>
@@ -52,33 +38,31 @@ export default function DailyTasks({ tasks }) {
         }}
       >
         <h2>Daily Tasks</h2>
-        <span>{tasksRemaining} tasks left</span>
       </div>
       <div
         className="task-container"
-        style={{ display: "flex", justifyContent: "space-between" }}
+        style={{ display: "flex", flexDirection: "column" }}
       >
-        <div className="task-column">
-          {taskStatuses.map((task, index) => (
-            <div className="task" key={index}>
-              <input
-                type="checkbox"
-                id={`task-${index}`}
-                checked={task.checked}
-                onChange={() => handleCheckboxChange(index)}
-              />
-              <label htmlFor={`task-${index}`}>{task.name}</label>
-            </div>
-          ))}
-        </div>
-        <div className="time-column">
-          <h3>Time Checked</h3>
-          {taskStatuses.map((task, index) => (
-            <div className="timestamp" key={index}>
-              {task.checked ? task.timestamp : "---"}
-            </div>
-          ))}
-        </div>
+        {tasks.map((task, index) => (
+          <div
+            key={index}
+            className="task"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: "10px",
+            }}
+          >
+            <input
+              type="checkbox"
+              id={`task-${index}`}
+              checked={task.checked || false}
+              onChange={() => handleCheckboxChange(task.name)}
+              style={{ marginRight: "8px" }}
+            />
+            <label htmlFor={`task-${index}`}>{task.name}</label>
+          </div>
+        ))}
       </div>
       <button className="post-button">Post</button>
     </div>

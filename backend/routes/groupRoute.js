@@ -61,4 +61,85 @@ router.post("/", async (req, res) => {
   }
 });
 
+// router.post("/", async (req, res) => {
+//   try {
+//     const { action, taskBody } = req.body;
+//     const existingGroup = await Group.findOne({ groupId });
+//     if (existingGroup) {
+//       if (action === "createTask") {
+//         user.tasks.push(taskBody);
+//         user.taskBools.push(false);
+//         user.taskTimes.push(null);
+//         await user.save();
+//       } else if (action === "checkBox") {
+//         let i = 0;
+//         for (i; i < user.tasks.length; i++) {
+//           if (taskBody == user.tasks[i]) {
+//             user.taskBools[i] = true;
+//             user.taskTimes[i] = new Date().toLocaleTimeString();
+//             await user.save();
+//             break;
+//           }
+//         }
+//       } else if (action === "unCheckBox") {
+//         let i = 0;
+//         for (i; i < user.tasks.length; i++) {
+//           if (taskBody == user.tasks[i]) {
+//             user.taskBools[i] = false;
+//             user.taskTimes[i] = null;
+//             await user.save();
+//             break;
+//           }
+//         }
+//       } else if (action === "delete") {
+//         let i = 0;
+//         for (i; i < user.tasks.length; i++) {
+//           if (taskBody == user.tasks[i]) {
+//             user.tasks.splice(i, 1);
+//             user.taskBools.splice(i, 1);
+//             user.taskTimes.splice(i, 1);
+//             await user.save();
+//             break;
+//           }
+//         }
+//       }
+//       console.log("Task created successfully");
+//       res.status(200).json({ message: "Task created successfully", taskBody });
+//     } else {
+//       console.log("Group not found");
+//       return res.status(404).json({ message: "Group not found" }); //404 not found
+//     }
+//   } catch (error) {
+//     console.error("Error creating task:", error);
+//     res
+//       .status(500)
+//       .json({ message: "Error creating task", error: error.message });
+//   }
+// });
+
+//------------------------------------
+
+// router.post("/", async (req, res) => {
+//   const { groupId, tasks } = req.body;
+//   console.log("groupID: " + groupId);
+//   console.log("tasks: " + tasks);
+
+//   try {
+//     const updatedGroup = await Group.findByIdAndUpdate(
+//       { userGroupId: groupId },
+//       { $set: { tasks: tasks } },
+//       { new: true, upsert: true }
+//     );
+
+//     res
+//       .status(200)
+//       .json({ message: "Updated group successfully", updatedGroup });
+//   } catch (error) {
+//     console.error("Error updating group tasksArr:", error.message);
+//     res
+//       .status(500)
+//       .json({ message: "Error creating tasksArr", error: error.message });
+//   }
+// });
+
 module.exports = router;

@@ -7,7 +7,7 @@ import Home from "../pages/Home";
 export default function SignInBtn() {
   const { user, handleCallbackResponse } = useAuth();
   const navigate = useNavigate();
-  const [userGroupId, setUserGroupId] = useState(null);
+  const [groupId, setUserGroupId] = useState(null);
 
   useEffect(() => {
     /* global google */
@@ -38,14 +38,14 @@ export default function SignInBtn() {
           body: JSON.stringify({ userEmail: user.email }),
         });
         const result = await response.json();
-        console.log("userGroupId =", result.userGroupId);
+        console.log("groupId =", result.groupId);
 
-        setUserGroupId(result.userGroupId);
+        setUserGroupId(result.groupId);
 
         // Redirect when user is authenticated
         if (user && Object.keys(user).length !== 0) {
           // Check if user is already in a group
-          if (result.userGroupId === null || result.userGroupId === undefined) {
+          if (result.groupId === null || result.groupId === undefined) {
             console.log("User is not yet in a group");
             navigate("/Group"); // Redirect new users to Group page
           } else {
