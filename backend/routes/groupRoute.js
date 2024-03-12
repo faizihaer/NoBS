@@ -61,6 +61,28 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/groupName", async (req, res) => {
+  const { groupId } = req.query;
+
+  try {
+    // Find the group by ID
+    const group = await Group.findById(groupId);
+
+    // Check if the group exists
+    if (!group) {
+      return res.status(404).json({ message: "Group not found" });
+    }
+
+    // Return the group's name
+    res.status(200).json({ groupName: group.name });
+  } catch (error) {
+    console.error("Error fetching group name:", error.message);
+    res
+      .status(500)
+      .json({ message: "Internal server error", error: error.message });
+  }
+});
+
 // router.post("/", async (req, res) => {
 //   try {
 //     const { action, taskBody } = req.body;

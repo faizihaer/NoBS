@@ -7,6 +7,7 @@ export default function GroupPlan() {
   const [newTask, setNewTask] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [groupId, setUserGroupId] = useState(null);
+  const [groupName, setGroupName] = useState("");
   const { tasks, setTasks } = useTasks();
   const { user } = useAuth();
 
@@ -17,7 +18,7 @@ export default function GroupPlan() {
     month: "long", // "March"
     day: "numeric", // "4"
   });
-/*
+  /*
   useEffect(() => {
     const fetchUserGroupId = async () => {
       try {
@@ -44,34 +45,49 @@ export default function GroupPlan() {
     fetchUserGroupId();
   }, [user]);
 */
-useEffect(() => {
-  const fetchGroupDetails = async () => {
-    try {
-      // Fetch the user's group ID by email
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      const groupResponse = await axios.post("http://localhost:4000/api/byemail", {
-        userEmail: user.email,
-      });
+  useEffect(() => {
+    const fetchGroupDetails = async () => {
+      try {
+        // Fetch the user's group ID by email
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        const groupResponse = await axios.post(
+          "http://localhost:4000/api/byemail",
+          {
+            userEmail: user.email,
+          }
+        );
 
-      const groupId = groupResponse.data.groupId;
-      setUserGroupId(groupId); // Set the groupId in the state
+        const groupId = groupResponse.data.groupId;
+        setUserGroupId(groupId); // Set the groupId in the state
 
-      if (groupId) {
-        // Fetching tasks for the group using the groupRoute '/tasks' endpoint
-        const tasksResponse = await axios.get(`http://localhost:4000/api/task/tasks`, {
-          params: { groupId: groupId }
-        });
-        setTasks(tasksResponse.data.tasks); // Update the tasks state with the fetched tasks
+        if (groupId) {
+          // Fetching group name using groupId
+          const groupNameResponse = await axios.get(
+            `http://localhost:4000/api/group/groupName`,
+            {
+              params: { groupId: groupId },
+            }
+          );
+          setGroupName(groupNameResponse.data.groupName);
+
+          // Fetching tasks for the group using the groupRoute '/tasks' endpoint
+          const tasksResponse = await axios.get(
+            `http://localhost:4000/api/task/tasks`,
+            {
+              params: { groupId: groupId },
+            }
+          );
+          setTasks(tasksResponse.data.tasks); // Update the tasks state with the fetched tasks
+        }
+      } catch (error) {
+        console.error("Error fetching group details:", error);
       }
-    } catch (error) {
-      console.error("Error fetching group details:", error);
-    }
-  };
+    };
 
-  if (user?.email) {
-    fetchGroupDetails();
-  }
-}, [user, setTasks]); 
+    if (user?.email) {
+      fetchGroupDetails();
+    }
+  }, [user, setTasks]);
 
   function sendPlanToDB() {
     fetch("http://localhost:4000/api/task/update", {
@@ -121,7 +137,7 @@ useEffect(() => {
   return (
     <div className="plan">
       <h2 className="section-title">
-        <span>Group Plan for {groupId}</span>
+        <span>Group Plan for: {groupName}</span>
         <span className="date-span">{dateString}</span>
       </h2>
       <ol>
