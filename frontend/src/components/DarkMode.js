@@ -28,10 +28,15 @@ const DarkMode = ({ setImage }) => {
   }, []);
 
   const toggleTheme = () => {
-    if (theme === "light") {
+    if (window.location.pathname === "/Auth"){
       setDarkMode();
       setImage("Nobswhite.png"); // Update image immediately
-    } else {
+    }
+    else if (theme === "light") {
+      setDarkMode();
+      setImage("Nobswhite.png"); // Update image immediately
+    } 
+    else {
       setLightMode();
       setImage("Nobs.png"); // Update image immediately
     }
