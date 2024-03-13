@@ -39,17 +39,7 @@ const MotivationalComponent = () => {
     marginBottom: "20px",
   };
 
-  const triangleStyle = {
-    padding: "-100px",
-    position: "absolute",
-    top: 0,
-    right: "-0px", // Adjust right to control the starting point of the triangle
-    width: 0,
-    height: 0,
-    borderLeft: "500px solid transparent",
-    borderBottom: "800px solid seagreen", // Adjust dimensions and color as needed
-    zIndex: 10000,
-  };
+ 
 
   return (
     <div style={containerStyle}>
@@ -87,7 +77,7 @@ const MotivationalComponent = () => {
           </ul>
         </div>
       </div>
-      <div style={triangleStyle}></div>
+      
     </div>
   );
 };
