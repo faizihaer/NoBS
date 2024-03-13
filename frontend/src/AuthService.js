@@ -53,7 +53,6 @@ export const AuthProvider = ({ children }) => {
       signInDiv.hidden = false;
     }
   };
-
   return (
     <AuthContext.Provider
       value={{ user, handleCallbackResponse, handleSignOut, isLoggedIn }}

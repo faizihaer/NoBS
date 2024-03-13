@@ -5,6 +5,7 @@ const cors = require("cors");
 const userRoute = require("./routes/userRoute.js");
 const userRouteByEmail = require("./routes/userRouteByEmail.js");
 const groupRoute = require("./routes/groupRoute.js");
+const taskRoute = require("./routes/taskRoute.js");
 const emailRouter = require("./routes/email");
 
 const app = express();
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/user", userRoute);
+app.use("/api/task", taskRoute);
 app.use("/api/byemail", userRouteByEmail);
 app.use("/api/email", emailRouter);
 app.use("/api/group", groupRoute);

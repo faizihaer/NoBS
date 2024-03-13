@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import nudgeEmail from "./nudgeEmail";
+import { useTasks } from "../TasksContext";
+import axios from "axios";
 
 export default function FriendActivity({
   user,
@@ -7,12 +9,14 @@ export default function FriendActivity({
   setShowPopUpSecond,
   ShowPopUpHourly,
   setShowPopUpHourly,
-  tasks,
 }) {
   const [lastClickTime, setLastClickTime] = useState(null);
   const [nudgesSent, setNudgesSent] = useState(0);
   // Placeholder state for friends' activities - you'll replace this with actual data fetching later
   const [friendsActivities, setFriendsActivities] = useState([]);
+  const { tasks, setTasks } = useTasks();
+  const [groupId, setUserGroupId] = useState(null);
+  const [users, setUsers] = useState([]);
 
   // Handle nudge button click
   const handleNudgeClick = async (targetUser) => {
@@ -29,21 +33,40 @@ export default function FriendActivity({
       setLastClickTime(newLastClickTime);
     }
   };
+
   useEffect(() => {
-    // Placeholder for fetching friends' activities
-    // Simulate fetching data with a timeout or replace with an actual API call
     const fetchFriendsActivities = async () => {
-      // call database to retrieve friend activity
-      const simulatedData = [
-        { name: "Bob", email: "bob@example.com", progress: 2 },
-        { name: "Rob", email: "rob@example.com", progress: 2 },
-        { name: "Tom", email: "tom@example.com", progress: 0 },
-      ];
-      setFriendsActivities(simulatedData);
+      try {
+        // Fetch the user's group ID by email
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        const groupResponse = await axios.post(
+          "http://localhost:4000/api/byemail",
+          {
+            userEmail: user.email,
+          }
+        );
+
+        const groupId = groupResponse.data.groupId;
+        setUserGroupId(groupId); // Set the groupId in the state
+
+        if (groupId) {
+          const friendsActivitiesResponse = await axios.get(
+            `http://localhost:4000/api/group/groupInfo`,
+            {
+              params: { groupId: groupId },
+            }
+          );
+          setFriendsActivities(
+            friendsActivitiesResponse.data.friendsActivities
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching users details:", error);
+      }
     };
 
     fetchFriendsActivities();
-  }, []);
+  }, [users]);
 
   return (
     <div>
@@ -69,7 +92,7 @@ export default function FriendActivity({
           </div>
         ))
       ) : (
-        <p> friends' activities...</p>
+        <p> No friends activites available </p>
       )}
       {ShowPopUpSecond && (
         <div className="popup">
@@ -78,7 +101,7 @@ export default function FriendActivity({
       )}
       {ShowPopUpHourly && (
         <div className="popup">
-          <p>You can only nudge once per hour</p>
+          <p>You can only nudge three times per hour</p>
         </div>
       )}
     </div>

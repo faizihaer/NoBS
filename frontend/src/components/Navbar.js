@@ -36,7 +36,7 @@ const modalStyle = {
 const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
-  const { user, handleCallbackResponse, handleSignOut, isLoggedIn } = useAuth();
+  const { user, handleSignOut, isLoggedIn } = useAuth();
   const [image, setImage] = useState("Nobswhite.png");
 
   useEffect(() => {
@@ -82,35 +82,35 @@ const Navbar = () => {
                     Home
                   </Link>
                 </li>
+
+                <li>
+                  <Link to="/Group" className="nav-link">
+                    Group
+                  </Link>
+                </li>
+
+                <li>
+                  <Link className="nav-link">
+                    <button onClick={openModal} className="logbtn">
+                      Chatbot
+                    </button>
+                  </Link>
+                </li>
                 <li>
                   <Link to="/Profile" className="nav-link">
                     Profile
                   </Link>
                 </li>
                 <li>
-                  <Link to="/Group" className="nav-link">
-                    Group
-                  </Link>
-                </li>
-                <li>
-                  <Link className="nav-link">
-                    <button onClick={(e) => openModal()} className="logbtn">
-                      Chatbot
+                  <Link to="/">
+                    <button onClick={handleSignOut} className="logbtn">
+                      Sign Out
                     </button>
                   </Link>
                 </li>
               </>
             )}
-            {isLoggedIn ? (
-              <li>
-                {/* Use onClick handler to sign out */}
-                <Link to="/">
-                  <button onClick={(e) => handleSignOut(e)} className="logbtn">
-                    Sign Out
-                  </button>
-                </Link>
-              </li>
-            ) : (
+            {!isLoggedIn && (
               <li>
                 <Link to="/Auth">
                   <button className="logbtn">Sign In</button>
