@@ -1,10 +1,12 @@
 @import url('Fonts/Nohemi-Thin.css');
 @import url('Fonts/Nohemi-Medium.css');
 
+/* Set font for all elements */
 *{
   font-family: 'NohemiThin', sans-serif;
 }
 
+/* Define the styles for the motivational-container class */
 .motivational-container {
   margin-top: 1000px;
   padding: 10px;
@@ -15,12 +17,7 @@
   color: #023abd;
 }
 
-
-
-.emojicontainer-container{
-  font-size: 3000px;
-}
-
+/* Text styling */
 .motivational-text {
   font-family: 'NohemiThin', sans-serif;
   flex: 1;
@@ -30,6 +27,7 @@
   position: relative;
 }
 
+/* Container for about section */
 .about {
   margin-top: 1000px;
   max-width: 850px;
@@ -45,14 +43,18 @@
   line-height: 2;
 }
 
+/* Margin bottom for header */
 .header {
   margin-bottom: 20px;
 }
+/* h1 styling */
 h1{
 line-height: 0;
 margin-bottom: 0;
 margin-top: 20px;
 }
+/* Font family: NohemiMedium, sans-serif */
+
  p {
   font-family: 'NohemiMedium', sans-serif;
   font-size: 30px;
