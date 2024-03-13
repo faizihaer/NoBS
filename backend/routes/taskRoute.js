@@ -28,6 +28,7 @@ router.post("/update", async (req, res) => {
       .json({ message: "Error creating tasks", error: error.message });
   }
 });
+
 router.get("/tasks", async (req, res) => {
   const { groupId } = req.query; // or req.params if you're using a parameter in the URL
 
@@ -41,7 +42,9 @@ router.get("/tasks", async (req, res) => {
     res.status(200).json({ tasks: group.tasks });
   } catch (error) {
     console.error("Error fetching group tasks:", error.message);
-    res.status(500).json({ message: "Internal server error", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Internal server error", error: error.message });
   }
 });
 // router.post("/", async (req, res) => {

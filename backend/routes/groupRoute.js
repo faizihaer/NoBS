@@ -4,6 +4,7 @@ const router = express.Router();
 const Group = require("../models/group");
 const User = require("../models/user");
 
+//Storing group information to Mongodb
 router.post("/", async (req, res) => {
   //console.log(req.body);
   const { name, action, userId } = req.body;
@@ -36,13 +37,30 @@ router.post("/", async (req, res) => {
     } else if (action === "joinGroup") {
       const existingGroup = await Group.findOne({ name: name });
       if (existingGroup) {
-        // Add the creator (assuming they are the user making the request) to the group
-        existingGroup.users.push(userId);
-        await existingGroup.save();
-        // second use of these three lines, just for adding to an existing group. How did I not think of that sooner?
+        // Check if the user is already in the group
+        if (existingGroup.users.includes(userId)) {
+          console.log("User is already in the group");
+          return res
+            .status(400)
+            .json({ message: "User is already in the group" });
+        }
+
+        // Remove the user from any previous group
+        const previousGroup = await Group.findOneAndUpdate(
+          { users: userId },
+          { $pull: { users: userId } },
+          { new: true } // Ensure that we get the updated group
+        );
+
+        // Update user's group reference
         const user = await User.findOne({ _id: userId });
         user.group = existingGroup;
         await user.save();
+
+        // Add the creator (assuming they are the user making the request) to the group
+        existingGroup.users.push(userId);
+        await existingGroup.save();
+
         console.log("Group joined successfully");
         res.status(200).json({ message: "Group joined successfully" });
       } else {
@@ -61,22 +79,28 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/groupName", async (req, res) => {
+//Sending groupInformation to frontend
+router.get("/groupInfo", async (req, res) => {
   const { groupId } = req.query;
 
   try {
     // Find the group by ID
-    const group = await Group.findById(groupId);
+    const group = await Group.findById(groupId).populate("users");
 
     // Check if the group exists
     if (!group) {
       return res.status(404).json({ message: "Group not found" });
     }
 
+    console.log("group name: ", group.name);
+    console.log("user info: ", group.users);
+
     // Return the group's name
-    res.status(200).json({ groupName: group.name });
+    res
+      .status(200)
+      .json({ groupName: group.name, friendsActivities: group.users });
   } catch (error) {
-    console.error("Error fetching group name:", error.message);
+    console.error("Error fetching group information:", error.message);
     res
       .status(500)
       .json({ message: "Internal server error", error: error.message });
