@@ -30,8 +30,10 @@ const DarkMode = ({ setImage }) => {
   const toggleTheme = () => {
     if (theme === "light") {
       setDarkMode();
+      setImage("Nobswhite.png"); // Update image immediately
     } else {
       setLightMode();
+      setImage("Nobs.png"); // Update image immediately
     }
   };
 
