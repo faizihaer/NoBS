@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import nudgeEmail from "./nudgeEmail";
+import { useTasks } from "../TasksContext";
 
 export default function FriendActivity({
   user,
@@ -7,12 +8,12 @@ export default function FriendActivity({
   setShowPopUpSecond,
   ShowPopUpHourly,
   setShowPopUpHourly,
-  tasks,
 }) {
   const [lastClickTime, setLastClickTime] = useState(null);
   const [nudgesSent, setNudgesSent] = useState(0);
   // Placeholder state for friends' activities - you'll replace this with actual data fetching later
   const [friendsActivities, setFriendsActivities] = useState([]);
+  const { tasks, setTasks } = useTasks();
 
   // Handle nudge button click
   const handleNudgeClick = async (targetUser) => {

@@ -28,13 +28,13 @@ const Home = () => {
           <DailyTasks />
         </section>
         <section className="Friend Activity">
-          {/* <FriendActivity
+          <FriendActivity
             user={user}
             ShowPopUpSecond={ShowPopUpSecond}
             setShowPopUpSecond={setShowPopUpSecond}
             ShowPopUpHourly={ShowPopUpHourly}
             setShowPopUpHourly={setShowPopUpHourly}
-          /> */}
+          />
         </section>
       </div>
     </TasksProvider>
