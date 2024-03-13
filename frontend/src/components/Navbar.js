@@ -46,7 +46,7 @@ const Navbar = () => {
 
       setPrevScrollPos(currentScrollPos);
       setVisible(isVisible);
-    };ç
+    };
 
     window.addEventListener("scroll", handleScroll);
 
