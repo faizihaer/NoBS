@@ -1,9 +1,9 @@
 /* Navbar.css */
-@import url('Fonts/Nohemi-Thin.css');
+@import url("Fonts/Nohemi-Thin.css");
 
 .navbar {
   background-color: --nav_color;
-  font-family: 'NohemiThin', sans-serif;
+  font-family: "NohemiThin", sans-serif;
 
   padding: 20px;
   padding-top: 15px;
@@ -12,7 +12,6 @@
   width: 100%;
   z-index: 1000;
   transition: transform 0.3s ease-in-out;
-
 }
 
 .navbar-container {
@@ -32,7 +31,6 @@
 .left-section img:hover {
   filter: brightness(0.5);
 }
-
 
 .title {
   margin-left: 80px;
@@ -57,7 +55,7 @@
   color: var(--text_color);
   margin-left: 30px;
   font-size: 20px;
-  font-family: 'NohemiThin';
+  font-family: "NohemiThin";
 }
 
 .nav-links li {
@@ -69,8 +67,8 @@
 }
 
 .logbtn {
- font-size: 20px;
- font-family: 'NohemiThin';
+  font-size: 20px;
+  font-family: "NohemiThin";
   margin-top: -8px;
   background-color: transparent; /* Default background color */
   color: var(--text_color);
@@ -91,10 +89,8 @@
   color: white;
   margin-right: 105px;
   font-size: 80px;
-  font-family: 'NohemiThin';
-  
+  font-family: "NohemiThin";
 }
-
 
 /* Class for hiding the navbar on scroll down */
 .navbar-hidden {
