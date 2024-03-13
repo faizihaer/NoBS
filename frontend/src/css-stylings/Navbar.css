@@ -1,14 +1,9 @@
 /* Navbar.css */
-@font-face {
-  font-family: 'NohemiMedium';
-  src: url('./Fonts/Nohemi-Medium.woff2') format('woff2'), /* Modern Browsers */
-       url('./Fonts/Nohemi-Medium.otf') format('opentype'); /* Safari, Android, iOS */
-  font-style: normal;
-  font-weight: medium;
-  text-rendering: optimizeLegibility;
-}
+@import url('Fonts/Nohemi-Thin.css');
+
 .navbar {
   background-color: --nav_color;
+  font-family: 'NohemiThin', sans-serif;
 
   padding: 20px;
   padding-top: 15px;
@@ -62,8 +57,7 @@
   color: var(--text_color);
   margin-left: 30px;
   font-size: 20px;
-  font-family: 'NohemiMedium';
-  font-weight: medium;
+  font-family: 'NohemiThin';
 }
 
 .nav-links li {
@@ -76,8 +70,7 @@
 
 .logbtn {
  font-size: 20px;
- font-family: 'NohemiMedium';
- font-weight: medium;
+ font-family: 'NohemiThin';
   margin-top: -8px;
   background-color: transparent; /* Default background color */
   color: var(--text_color);
@@ -98,8 +91,7 @@
   color: white;
   margin-right: 105px;
   font-size: 80px;
-  font-family: 'NohemiMedium';
-  font-weight: medium;
+  font-family: 'NohemiThin';
   
 }
 
