@@ -79,13 +79,13 @@ const Navbar = () => {
               <>
                 <li>
                   <Link to="/Home" className="nav-link">
-                    Home
+                    <button className="logbtn">Home</button>
                   </Link>
                 </li>
 
                 <li>
                   <Link to="/Group" className="nav-link">
-                    Group
+                    <button className="logbtn">Group</button>
                   </Link>
                 </li>
 
@@ -98,7 +98,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link to="/Profile" className="nav-link">
-                    Profile
+                    <button className="logbtn">Profile</button>
                   </Link>
                 </li>
                 <li>
