@@ -18,7 +18,7 @@ const GroupPage = () => {
         //const response = await axios.post("http://localhost:4000/api/byemail",
 
         // Wait for 1 second so that api gets called before the frontend
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 500));
 
         const response = await fetch("http://localhost:4000/api/byemail", {
           method: "POST",

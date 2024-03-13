@@ -49,7 +49,7 @@ export default function GroupPlan() {
     const fetchGroupDetails = async () => {
       try {
         // Fetch the user's group ID by email
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 500));
         const groupResponse = await axios.post(
           "http://localhost:4000/api/byemail",
           {
@@ -63,7 +63,7 @@ export default function GroupPlan() {
         if (groupId) {
           // Fetching group name using groupId
           const groupNameResponse = await axios.get(
-            `http://localhost:4000/api/group/groupName`,
+            `http://localhost:4000/api/group/groupInfo`,
             {
               params: { groupId: groupId },
             }
