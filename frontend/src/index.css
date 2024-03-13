@@ -1,5 +1,5 @@
 :root {
-  --body_background: #dee2e4;
+  --body_background: #e3eaee;
   --body_color: black;
   --link_color: rgb(2, 2, 6);
   --hover_color: #0d0e13;
@@ -19,5 +19,4 @@
   --text_area_color: white;
   --border_color: #333;
 }
-
 /*EXP:  var(--body_background)*/
