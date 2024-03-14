@@ -42,7 +42,7 @@
   margin-top: 20px;
 }
 input {
-  background-color: var(--text_area_color);
+  background-color: rgb(255 255 255);
 }
 .input-group {
   margin-bottom: 20px;
