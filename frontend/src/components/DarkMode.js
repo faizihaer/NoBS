@@ -6,6 +6,7 @@ import "../css-stylings/DarkMode.css";
 const DarkMode = ({ setImage }) => {
   const [theme, setTheme] = useState("light");
 
+// dark mode
   const setDarkMode = () => {
     document.querySelector("body").setAttribute("data-theme", "dark");
     localStorage.setItem("theme", "dark");
