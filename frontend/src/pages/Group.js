@@ -12,7 +12,7 @@ const GroupPage = () => {
 
   //useEffect for getting the user ID as "userId"
   useEffect(() => {
-    console.log(user);
+    //console.log(user);
     const fetchUserId = async () => {
       try {
         //const response = await axios.post("http://localhost:4000/api/byemail",
@@ -28,9 +28,9 @@ const GroupPage = () => {
           },
           body: JSON.stringify({ userEmail: user.email }),
         });
-        console.log(response);
+        //console.log(response);
         const result = await response.json();
-        console.log("UserId =", result.userId);
+        //console.log("UserId =", result.userId);
 
         if (!result.userId) {
           throw new Error("No user data received");
@@ -79,8 +79,8 @@ const GroupPage = () => {
 
       const result = await response.json();
       //setGroupName(result.group.name);
-      console.log(result.group.name);
-      console.log(result);
+      //console.log(result.group.name);
+      //console.log(result);
 
       // Handle the response as needed (update UI, display messages, etc.)
     } catch (error) {
@@ -108,7 +108,7 @@ const GroupPage = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const result = await response.json();
-      console.log(result);
+      //(result);
       // Handle the response as needed (update UI, display messages, etc.)
     } catch (error) {
       console.error("Error:", error.message);

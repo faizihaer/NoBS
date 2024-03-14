@@ -13,10 +13,10 @@ router.post("/", async (req, res) => {
     if (!thisUser) {
       return res.status(404).json({ message: "User not found" });
     }
-    console.log("found user: " + thisUser._id);
-    console.log("found user group: " + thisUser.group);
-    console.log("found user tasks: " + thisUser.tasks);
-    console.log("found user tasks: " + thisUser.taskBools);
+    //console.log("found user: " + thisUser._id);
+    //console.log("found user group: " + thisUser.group);
+    //console.log("found user tasks: " + thisUser.tasks);
+    //console.log("found user tasks: " + thisUser.taskBools);
 
     res.json({
       userId: thisUser._id,

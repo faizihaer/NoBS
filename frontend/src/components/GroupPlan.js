@@ -18,33 +18,7 @@ export default function GroupPlan() {
     month: "long", // "March"
     day: "numeric", // "4"
   });
-  /*
-  useEffect(() => {
-    const fetchUserGroupId = async () => {
-      try {
-        // Wait for 1 second so that api gets called before the frontend
-        await new Promise((resolve) => setTimeout(resolve, 1000));
 
-        const response = await fetch("http://localhost:4000/api/byemail", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ userEmail: user.email }),
-        });
-        const result = await response.json();
-        console.log("groupId =", result.groupId);
-
-        setUserGroupId(result.groupId);
-      } catch (error) {
-        console.error("Error fetching user group ID:", error.message);
-        // Handle error as needed
-      }
-    };
-
-    fetchUserGroupId();
-  }, [user]);
-*/
   useEffect(() => {
     const fetchGroupDetails = async () => {
       try {

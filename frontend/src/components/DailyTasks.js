@@ -11,7 +11,7 @@ export default function DailyTasks() {
   const [post, setPost] = useState(false);
 
   useEffect(() => {
-    console.log(user);
+    //console.log(user);
     const fetchUserId = async () => {
       try {
         //const response = await axios.post("http://localhost:4000/api/byemail",
@@ -27,9 +27,9 @@ export default function DailyTasks() {
           },
           body: JSON.stringify({ userEmail: user.email }),
         });
-        console.log(response);
+        //console.log(response);
         const result = await response.json();
-        console.log("UserId =", result.userId);
+        //console.log("UserId =", result.userId);
         setUserId(result.userId);
         if (!result.userId) {
           throw new Error("No user data received");
@@ -83,8 +83,8 @@ export default function DailyTasks() {
         const groupId = response.data.groupId;
         setUserGroupId(groupId); // Set the groupId in the state
 
-        console.log("GROUPID", groupId);
-        console.log("USERID", userId);
+        //console.log("GROUPID", groupId);
+        //console.log("USERID", userId);
 
         if (userId && groupId) {
           const response = await axios.get(

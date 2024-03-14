@@ -5,20 +5,18 @@ const Group = require("../models/group");
 const User = require("../models/user");
 
 router.get("/", async (req, res) => {
+  const { userId } = req.query;
 
-    const { userId } = req.query;
+  try {
+    const user = await User.findById(userId);
+    //console.log("USERSUSERUSER::", user.tasks);
 
-    try {
-      const user = await User.findById(userId);
-      console.log("USERSUSERUSER::", user.tasks);
-
-      res.json(user.tasks);
-
-    } catch (error) {
-      console.error("Error getting users:", error);
-      res
-        .status(500)
-        .json({ message: "Error getting users", error: error.message });
-    }
-  });
-  module.exports = router;
+    res.json(user.tasks);
+  } catch (error) {
+    console.error("Error getting users:", error);
+    res
+      .status(500)
+      .json({ message: "Error getting users", error: error.message });
+  }
+});
+module.exports = router;
