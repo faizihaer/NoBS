@@ -10,7 +10,7 @@ const GymFinderButton = () => {
 
   return (
     <div>
-      <button onClick={handleToggleGyms}>Toggle Nearby Gyms</button>
+      <button style={{ fontSize: "15px", paddingTop: "15px", paddingBottom: "15px", marginLeft: "40px"}} onClick={handleToggleGyms}>Toggle Nearby Gyms</button>
       {showGyms && <NearestGymFinder />}
     </div>
   );
