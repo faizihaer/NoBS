@@ -7,7 +7,7 @@ router.use(express.json());
 router.post("/", async (req, res) => {
   console.log("/byemail url 41");
   const { userEmail } = req.body;
-  console.log(req.body);
+  //console.log(req.body);
   try {
     const thisUser = await User.findOne({ email: userEmail });
     if (!thisUser) {

@@ -58,9 +58,11 @@ export default function GroupPlan() {
       }
     };
 
-    if (user?.email) {
-      fetchGroupDetails();
-    }
+    fetchGroupDetails(); // Initial fetch
+
+    const intervalId = setInterval(fetchGroupDetails, 500); // Fetch every 500ms
+
+    return () => clearInterval(intervalId); // Cleanup on unmount
   }, [user, setTasks]);
 
   function sendPlanToDB() {
@@ -80,6 +82,10 @@ export default function GroupPlan() {
         console.error("Error saving tasks:", error);
       });
   }
+
+  useEffect(() => {
+    sendPlanToDB(); // Send data to backend whenever tasks change
+  }, [tasks]);
 
   function HandleInputChange(event) {
     setNewTask(event.target.value);
@@ -116,7 +122,7 @@ export default function GroupPlan() {
       </h2>
       <ol>
         {tasks.map((task, index) => (
-          <li key={index}>
+          <li className="taskList" key={index}>
             <span className="text">{task.name}</span>
             {editMode && (
               <button className="removeBtn" onClick={() => removeTask(index)}>

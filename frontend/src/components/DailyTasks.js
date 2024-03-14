@@ -72,6 +72,10 @@ export default function DailyTasks() {
   };
 
   useEffect(() => {
+    postTasks(); // Send data to backend whenever tasks change
+  }, [tasks]);
+
+  useEffect(() => {
     const fetchUserTasks = async () => {
       try {
         // Fetch the user's group ID by email
@@ -101,6 +105,10 @@ export default function DailyTasks() {
       }
     };
     fetchUserTasks();
+
+    const intervalId = setInterval(fetchUserTasks, 500); // Fetch every 500ms
+
+    return () => clearInterval(intervalId);
   }, [userId]);
 
   const handleCheckboxChange = (taskName) => {
@@ -158,7 +166,7 @@ export default function DailyTasks() {
           </div>
         ))}
       </div>
-      <button
+      {/* <button
         className="post-button"
         style={{ backgroundColor: post ? "#097312" : "" }}
         onClick={() => {
@@ -167,7 +175,7 @@ export default function DailyTasks() {
         }}
       >
         Post
-      </button>
+      </button> */}
     </div>
   );
 }
