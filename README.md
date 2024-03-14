@@ -48,6 +48,7 @@ npm install
 ```
 
 ## Environment Setup
+Note: Wifi should be UCLA_WIFI or UCLA_VPN (accessible through SEASnet).
 
 First move into the frontend folder and create an .env file
 
