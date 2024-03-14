@@ -3,8 +3,10 @@
 import React, { useState } from "react";
 import { AuthProvider, useAuth } from "../AuthService";
 import "../css-stylings/profile.css";
+import "../css-stylings/Fonts/Nohemi-Thin.css";
 import GymFinderButton from "../components/GymFinderButton";
-
+import profileCard from '../assets/profileCard1.jpg';
+import crossfit from '../assets/crossfit.jpg';
 const Profile = () => {
   //initializaiton
   const { user } = useAuth();
@@ -42,17 +44,19 @@ const Profile = () => {
     return feet * 12 + inches;
   }
   return (
-    <div className="profile-page-container">
+    <div>
+    <img className="crossfit-background" src={crossfit} alt="Profile Card" />
+      <img className="profile-card" src={profileCard} alt="Profile Card" />
       <div className="profile-section">
-          <h1 className="my-profile-message">My Profile:</h1>
-          <div className="profile-circle">
+          <p className="my-profile-message">My Profile:</p>
+          <div className="profile-circle" >
           <img src={user.picture} alt="User profile" />
         </div>
           <div className="profile-inputs">
             <div className="input-group">
-              <label htmlFor="age" style={{ fontSize: "24px" }}>
+              <p htmlFor="age" style={{ fontSize: "24px" }}>
                 Age:
-              </label>
+              </p>
               <input
                 type="number"
                 id="age"
@@ -62,9 +66,9 @@ const Profile = () => {
               />
             </div>
             <div className="input-group">
-              <label htmlFor="weightPounds" style={{ fontSize: "24px" }}>
+              <p htmlFor="weightPounds" style={{ fontSize: "24px" }}>
                 Weight (lbs):
-              </label>
+              </p>
               <input
                 type="number"
                 id="weightPounds"
@@ -74,9 +78,9 @@ const Profile = () => {
               />
             </div>
             <div className="input-group">
-              <label htmlFor="height" style={{ fontSize: "24px" }}>
+              <p htmlFor="height" style={{ fontSize: "24px" }}>
                 Height (feet.inches):
-              </label>
+              </p>
               <input
                 type="text"
                 id="height"
@@ -105,6 +109,7 @@ const Profile = () => {
         <GymFinderButton />
       </div>
     </div>
+    
   );
 };
 export default Profile;
