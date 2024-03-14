@@ -48,6 +48,7 @@ npm install
 ```
 
 ## Environment Setup
+Note: Wifi should be UCLA_WIFI or UCLA_VPN (accessible through SEASnet).
 
 First move into the frontend folder and create an .env file
 
@@ -90,13 +91,15 @@ EMAIL_PASSWORD=<google auth password>
 Open up a terminal
 
 ```
-cd frontend
+cd backend
 npm start
 ```
 
 In another terminal without closing the first one
 
 ```
-cd backend
+cd frontend
 npm start
 ```
+
+Note: backend must be started before frontend. 
