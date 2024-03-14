@@ -75,76 +75,44 @@ const Navbar = () => {
         </div>
         <div className="right-section">
           <ul className="nav-links">
-          {isLoggedIn && user.group && (
-              <>
-                <li>
-                  <Link to="/Home" className="nav-link">
-                    <button className="logbtn">Home</button>
-                  </Link>
-                </li>
-
-                <li>
-                  <Link to="/Group" className="nav-link">
-                    <button className="logbtn">Group</button>
-                  </Link>
-                </li>
-
-                <li>
-                  <Link className="nav-link">
-                    <button onClick={openModal} className="logbtn">
-                      Chatbot
-                    </button>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/Profile" className="nav-link">
-                    <button className="logbtn">Profile</button>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
-                    <button onClick={handleSignOut} className="logbtn">
-                      Sign Out
-                    </button>
-                  </Link>
-                </li>
-              </>
-            )}
-            {isLoggedIn && !user.group && (
-              <>
-                <li>
-                  <Link to="/Group" className="nav-link">
-                    <button className="logbtn">Group</button>
-                  </Link>
-                </li>
-
-                <li>
-                  <Link className="nav-link">
-                    <button onClick={openModal} className="logbtn">
-                      Chatbot
-                    </button>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/Profile" className="nav-link">
-                    <button className="logbtn">Profile</button>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
-                    <button onClick={handleSignOut} className="logbtn">
-                      Sign Out
-                    </button>
-                  </Link>
-                </li>
-              </>
-            )}
-            {!isLoggedIn && (
+            {!isLoggedIn ? (
               <li>
                 <Link to="/Auth">
                   <button className="logbtn">Sign In</button>
                 </Link>
               </li>
+            ) : (
+              <>
+                <li>
+                  <Link to="/Home" className="nav-link">
+                    <button className="logbtn">Plans</button>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/Group" className="nav-link">
+                    <button className="logbtn">Group</button>
+                  </Link>
+                </li>
+                <li>
+                  <Link className="nav-link">
+                    <button onClick={openModal} className="logbtn">
+                      Chatbot
+                    </button>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/Profile" className="nav-link">
+                    <button className="logbtn">Profile</button>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/">
+                    <button onClick={handleSignOut} className="logbtn">
+                      Sign Out
+                    </button>
+                  </Link>
+                </li>
+              </>
             )}
             <li>
               <DarkMode setImage={setImage} />
