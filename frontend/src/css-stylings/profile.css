@@ -8,7 +8,7 @@
 }
 .profile-card {
   position: relative;
-  top: 10px;
+  top: 40px;
   left: 530px;
   width: 390px;
   height: auto;
@@ -21,7 +21,7 @@
   margin-top: 10px;
   font-weight: bold;
   position: absolute;
-  padding-top: 450px;
+  padding-top: 475px;
   top: -350px;
   left: 610px;
   text-align: center;
