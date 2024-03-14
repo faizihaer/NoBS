@@ -11,16 +11,20 @@ const DarkMode = ({ setImage }) => {
     document.querySelector("body").setAttribute("data-theme", "dark");
     localStorage.setItem("theme", "dark");
     setTheme("dark");
+    // dark background, use white logo
     setImage("Nobswhite.png");
   };
 
+  // light mode
   const setLightMode = () => {
     document.querySelector("body").setAttribute("data-theme", "light");
     localStorage.setItem("theme", "light");
     setTheme("light");
+    // light background, use dark logo
     setImage("Nobs.png");
   };
 
+  // modified this code to make sure app launch is on dark mode
   useEffect(() => {
     const selectedTheme = localStorage.getItem("theme");
     if (selectedTheme === "dark") {
@@ -30,18 +34,21 @@ const DarkMode = ({ setImage }) => {
     }
   }, []);
 
+
+// toggle controls
   const toggleTheme = () => {
+    // no light mode for Auth page, always dark background
     if (window.location.pathname === "/Auth"){
       setDarkMode();
-      setImage("Nobswhite.png"); // Update image immediately
+      setImage("Nobswhite.png"); // update image immediately
     }
     else if (theme === "light") {
       setDarkMode();
-      setImage("Nobswhite.png"); // Update image immediately
+      setImage("Nobswhite.png"); // update image immediately
     } 
     else {
       setLightMode();
-      setImage("Nobs.png"); // Update image immediately
+      setImage("Nobs.png"); // update image immediately
     }
   };
 
