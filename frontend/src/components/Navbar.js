@@ -75,17 +75,17 @@ const Navbar = () => {
         </div>
         <div className="right-section">
           <ul className="nav-links">
-            {isLoggedIn && (
+          {isLoggedIn && user.group && (
               <>
                 <li>
                   <Link to="/Home" className="nav-link">
-                    Home
+                    <button className="logbtn">Home</button>
                   </Link>
                 </li>
 
                 <li>
                   <Link to="/Group" className="nav-link">
-                    Group
+                    <button className="logbtn">Group</button>
                   </Link>
                 </li>
 
@@ -98,7 +98,36 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link to="/Profile" className="nav-link">
-                    Profile
+                    <button className="logbtn">Profile</button>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/">
+                    <button onClick={handleSignOut} className="logbtn">
+                      Sign Out
+                    </button>
+                  </Link>
+                </li>
+              </>
+            )}
+            {isLoggedIn && !user.group && (
+              <>
+                <li>
+                  <Link to="/Group" className="nav-link">
+                    <button className="logbtn">Group</button>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link className="nav-link">
+                    <button onClick={openModal} className="logbtn">
+                      Chatbot
+                    </button>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/Profile" className="nav-link">
+                    <button className="logbtn">Profile</button>
                   </Link>
                 </li>
                 <li>

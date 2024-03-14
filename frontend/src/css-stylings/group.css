@@ -1,6 +1,9 @@
+*{
+  font-size: 20px;
+}
+
 .welcome-container { /* Use flexbox layout */
   font-size: 10px;
-  text-align: center;
   padding: 30px;
 }
 .container {

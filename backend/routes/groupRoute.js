@@ -19,11 +19,24 @@ router.post("/", async (req, res) => {
           .status(400)
           .json({ message: "Group with this name already exists" });
       }
+      
       // Create a new group
       const newGroup = new Group({ name });
       await newGroup.save();
-      // Oh, if only you knew the effort that went into these next three lines! passing in the userId here proved more than useful, allowing the user's group variable to be updated as soon as the group is created
-      const user = await User.findOne({ _id: userId });
+      // Oh, if only you knew the effort that went into these next (this used to be 2, then 3, now 15ish) lines! passing in the userId here proved more than useful, allowing the user's group variable to be updated as soon as the group is created
+      const user = await User.findById(userId);
+      //if a user is already in a group, it will remove that user from that group
+      if (user.group){
+        const previousGroup = await Group.findById(user.group);
+        let i = 0;
+        for (i; i < previousGroup.users.length; i++) {
+          if (previousGroup.users[i] == userId){
+            previousGroup.users.splice(i, 1);
+            previousGroup.save();
+            break;
+          }
+        }
+      }
       user.group = newGroup;
       await user.save();
 
@@ -45,15 +58,20 @@ router.post("/", async (req, res) => {
             .json({ message: "User is already in the group" });
         }
 
-        // Remove the user from any previous group
-        const previousGroup = await Group.findOneAndUpdate(
-          { users: userId },
-          { $pull: { users: userId } },
-          { new: true } // Ensure that we get the updated group
-        );
-
         // Update user's group reference
         const user = await User.findOne({ _id: userId });
+        //if a user is already in a group, it will remove that user from that group
+        if (user.group){
+          const previousGroup = await Group.findById(user.group);
+          let i = 0;
+          for (i; i < previousGroup.users.length; i++) {
+            if (previousGroup.users[i] == userId){
+              previousGroup.users.splice(i, 1);
+              previousGroup.save();
+              break;
+            }
+          }
+        }
         user.group = existingGroup;
         await user.save();
 

@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
-
+//connect to mongodb, has error catches as well
 mongoose
   .connect(process.env.MONGODB_URI, {})
   .then(() => {
