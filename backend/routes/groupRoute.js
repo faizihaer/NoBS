@@ -97,7 +97,9 @@ router.post("/", async (req, res) => {
   }
 });
 
+
 //Sending groupInformation to frontend
+/*
 router.get("/groupInfo", async (req, res) => {
   const { groupId } = req.query;
 
@@ -110,10 +112,11 @@ router.get("/groupInfo", async (req, res) => {
       return res.status(404).json({ message: "Group not found" });
     }
 
-    console.log("group name: ", group.name);
-    console.log("user info: ", group.users);
+    group.users.forEach(user => {
+      console.log(`User ${user.name} has  ${user.tasks.filter(task => task.checked).length} / ${tasks.length}.`);
+    });  
+     
 
-    // Return the group's name
     res
       .status(200)
       .json({ groupName: group.name, friendsActivities: group.users });
@@ -124,86 +127,100 @@ router.get("/groupInfo", async (req, res) => {
       .json({ message: "Internal server error", error: error.message });
   }
 });
+*/
+router.get("/groupInfo", async (req, res) => {
+  const { groupId } = req.query;
 
-// router.post("/", async (req, res) => {
-//   try {
-//     const { action, taskBody } = req.body;
-//     const existingGroup = await Group.findOne({ groupId });
-//     if (existingGroup) {
-//       if (action === "createTask") {
-//         user.tasks.push(taskBody);
-//         user.taskBools.push(false);
-//         user.taskTimes.push(null);
-//         await user.save();
-//       } else if (action === "checkBox") {
-//         let i = 0;
-//         for (i; i < user.tasks.length; i++) {
-//           if (taskBody == user.tasks[i]) {
-//             user.taskBools[i] = true;
-//             user.taskTimes[i] = new Date().toLocaleTimeString();
-//             await user.save();
-//             break;
-//           }
-//         }
-//       } else if (action === "unCheckBox") {
-//         let i = 0;
-//         for (i; i < user.tasks.length; i++) {
-//           if (taskBody == user.tasks[i]) {
-//             user.taskBools[i] = false;
-//             user.taskTimes[i] = null;
-//             await user.save();
-//             break;
-//           }
-//         }
-//       } else if (action === "delete") {
-//         let i = 0;
-//         for (i; i < user.tasks.length; i++) {
-//           if (taskBody == user.tasks[i]) {
-//             user.tasks.splice(i, 1);
-//             user.taskBools.splice(i, 1);
-//             user.taskTimes.splice(i, 1);
-//             await user.save();
-//             break;
-//           }
-//         }
-//       }
-//       console.log("Task created successfully");
-//       res.status(200).json({ message: "Task created successfully", taskBody });
-//     } else {
-//       console.log("Group not found");
-//       return res.status(404).json({ message: "Group not found" }); //404 not found
-//     }
-//   } catch (error) {
-//     console.error("Error creating task:", error);
-//     res
-//       .status(500)
-//       .json({ message: "Error creating task", error: error.message });
-//   }
-// });
+  try {
+    // Find the group by ID and populate the users
+    const group = await Group.findById(groupId).populate("users");
 
-//------------------------------------
+    // Check if the group exists
+    if (!group) {
+      return res.status(404).json({ message: "Group not found" });
+    }
 
-// router.post("/", async (req, res) => {
-//   const { groupId, tasks } = req.body;
-//   console.log("groupID: " + groupId);
-//   console.log("tasks: " + tasks);
+    // Map over the users to include task counts
+    const friendsActivities = group.users.map(user => {
+      const totalTasks = user.tasks.length;
+      const checkedTasksCount = user.tasks.filter(task => task.checked).length;
+      
+      // Construct and return a new object for each user with the additional info
+      return {
+        _id: user._id,
+        email: user.email,
+        name: user.name,
+        totalTasks: totalTasks,
+        checkedTasksCount: checkedTasksCount,
+      };
+    });
 
-//   try {
-//     const updatedGroup = await Group.findByIdAndUpdate(
-//       { userGroupId: groupId },
-//       { $set: { tasks: tasks } },
-//       { new: true, upsert: true }
-//     );
-
-//     res
-//       .status(200)
-//       .json({ message: "Updated group successfully", updatedGroup });
-//   } catch (error) {
-//     console.error("Error updating group tasksArr:", error.message);
-//     res
-//       .status(500)
-//       .json({ message: "Error creating tasksArr", error: error.message });
-//   }
-// });
-
+    // Return the modified group information including detailed tasks info for each user
+    res.status(200).json({ groupName: group.name, friendsActivities: friendsActivities });
+  } catch (error) {
+    console.error("Error fetching group information:", error.message);
+    res.status(500).json({ message: "Internal server error", error: error.message });
+  }
+});
 module.exports = router;
+/*
+  group.users.forEach(user => {
+    console.log(`User ${user.name} has ${user.tasks.length} tasks.`);
+  });
+   */
+//console.log("group name: ", group.name);
+    //console.log("user info: ", group.users);
+   
+    
+     // Assuming `Task` is your model for tasks, and it has a `userId` field and a `checked` field
+     /*const userTasksChecked = group.users.map(async (user) => {
+      console.log("USERTASKCHECKED: ", user.tasks.filter(task => task.checked).length);
+      
+      const tasks = await Task.find({ userId: user._id }); // Find all tasks for the user
+      const numberComplete = tasks.filter(task => task.checked).length; // Count how many of these tasks are completed
+      console.log("user tasks i hope",tasks, "NUMBER COMPLETEEEEE: ",numberComplete);
+      return {
+        ...user._doc, // Spread the user document
+        numberComplete // Add the number of completed tasks
+      };
+   });
+      
+*/
+
+/*
+router.get("/groupInfo", async (req, res) => {
+  const { groupId } = req.query;
+
+  try {
+    const group = await Group.findById(groupId).populate("users");
+    if (!group) {
+      return res.status(404).json({ message: "Group not found" });
+    }
+
+    // Assuming `Task` is your model for tasks, and it has a `userId` field and a `checked` field
+    const userTasksPromises = group.users.map(async (user) => {
+      const tasks = await Task.find({ userId: user._id }); // Find all tasks for the user
+      const numberComplete = tasks.filter(task => task.checked).length; // Count how many of these tasks are completed
+
+      return {
+        ...user._doc, // Spread the user document
+        numberComplete // Add the number of completed tasks
+      };
+    });
+
+    // Wait for all the Promises to resolve
+    const friendsActivities = await Promise.all(userTasksPromises);
+
+    console.log("group name: ", group.name);
+    console.log("user info: ", friendsActivities); // Updated to log friendsActivities including numberComplete
+
+    res.status(200).json({ groupName: group.name, friendsActivities });
+  } catch (error) {
+    console.error("Error fetching group information:", error.message);
+    res.status(500).json({ message: "Internal server error", error: error.message });
+  }
+});
+
+*/
+
+
