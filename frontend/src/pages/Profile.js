@@ -6,6 +6,7 @@ import "../css-stylings/profile.css";
 import GymFinderButton from "../components/GymFinderButton";
 
 const Profile = () => {
+  //initializaiton
   const { user } = useAuth();
   const [age, setAge] = useState(user.age || "");
   const [weightPounds, setWeightPounds] = useState(user.weightPounds || "");
@@ -13,6 +14,7 @@ const Profile = () => {
   const [isEditing, setIsEditing] = useState(true);
   const [bmi, setBMI] = useState(calculateBMI(weightPounds, height));
 
+  //save changes for the age weight and height thing
   const handleSaveChanges = () => {
     console.log("Changes saved:", { age, weightPounds, height });
 
@@ -20,18 +22,19 @@ const Profile = () => {
 
     setIsEditing(false);
   };
-
+// if editing 
   const handleEdit = () => {
     setIsEditing(true);
   };
 
+  // BMI CALCULATOR not sure if this is the universal way, just learned from internet how to caluclate
   function calculateBMI(weightPounds, height) {
     const heightInInches = parseHeight(height);
     return ((weightPounds / (heightInInches * heightInInches)) * 703).toFixed(
       2
     );
   }
-
+// this is to account for the inches, didnt wanna have like a separate box since it looked kinda ugly
   function parseHeight(height) {
     const [feetStr, inchesStr] = height.toString().split(".");
     const feet = parseInt(feetStr, 10) || 0;
