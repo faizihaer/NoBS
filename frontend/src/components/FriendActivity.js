@@ -34,34 +34,38 @@ export default function FriendActivity({
     }
   };
 
-  const fetchFriendsActivities = async () => {
-    try {
-      // Fetch the user's group ID by email
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      const response = await axios.post("http://localhost:4000/api/byemail", {
-        userEmail: user.email,
-      });
-
-      const groupId = response.data.groupId;
-      setUserGroupId(groupId); // Set the groupId in the state
-
-      if (groupId) {
-        const friendsActivitiesResponse = await axios.get(
-          `http://localhost:4000/api/group/groupInfo`,
-          { params: { groupId: groupId } }
-        );
-        setFriendsActivities(friendsActivitiesResponse.data.friendsActivities);
-        //console.log(friendsActivitiesResponse.data.friendsActivities);
-      }
-    } catch (error) {
-      console.error("Error fetching users details:", error);
-    }
-  };
-
   useEffect(() => {
+    const fetchFriendsActivities = async () => {
+      try {
+        // Fetch the user's group ID by email
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        const response = await axios.post("http://localhost:4000/api/byemail", {
+          userEmail: user.email,
+        });
+
+        const groupId = response.data.groupId;
+        setUserGroupId(groupId); // Set the groupId in the state
+
+        if (groupId) {
+          const friendsActivitiesResponse = await axios.get(
+            `http://localhost:4000/api/group/groupInfo`,
+            { params: { groupId: groupId } }
+          );
+          setFriendsActivities(
+            friendsActivitiesResponse.data.friendsActivities
+          );
+          //console.log(friendsActivitiesResponse.data.friendsActivities);
+        }
+      } catch (error) {
+        console.error("Error fetching users details:", error);
+      }
+    };
+
+    fetchFriendsActivities();
+
     const interval = setInterval(fetchFriendsActivities, 500);
     return () => clearInterval(interval); // Clean up on unmount
-  }, []);
+  }, [users]);
 
   return (
     <div>
