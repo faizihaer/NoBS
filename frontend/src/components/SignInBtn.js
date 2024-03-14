@@ -38,7 +38,7 @@ export default function SignInBtn() {
           body: JSON.stringify({ userEmail: user.email }),
         });
         const result = await response.json();
-        console.log("groupId =", result.groupId);
+        //console.log("groupId =", result.groupId);
 
         setUserGroupId(result.groupId);
 

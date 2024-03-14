@@ -1,8 +1,9 @@
-*{
+* {
   font-size: 20px;
 }
 
-.welcome-container { /* Use flexbox layout */
+.welcome-container {
+  /* Use flexbox layout */
   font-size: 10px;
   padding: 30px;
 }
@@ -11,7 +12,7 @@
   flex-direction: column; /* Stacks items vertically */
   align-items: center; /* Center-aligns items horizontally */
 }
-.Videorunner{
+.Videorunner {
   display: flex;
   justify-content: center;
   width: 400px;
@@ -21,10 +22,15 @@
   margin-left: 20px; /* Adjust as needed */
   margin-bottom: 20px;
 }
-.text{
+.text {
   font-size: 20px;
   padding-bottom: 20px;
 }
+
+.taskList {
+  margin-left: 15px;
+}
+
 .input-container {
   flex-direction: column;
   align-items: center;
@@ -41,10 +47,10 @@
   color: black;
   width: 400px;
 }
-.button-container{
-    display: fixed;
-    flex-direction: column;
-    align-items: center;
+.button-container {
+  display: fixed;
+  flex-direction: column;
+  align-items: center;
 }
 .create-group-button {
   margin-left: 10px;
@@ -58,7 +64,7 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.join-group-button{
+.join-group-button {
   margin-top: 0px;
   width: 205px;
   padding: 10px 0px;
@@ -69,6 +75,3 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
-
-

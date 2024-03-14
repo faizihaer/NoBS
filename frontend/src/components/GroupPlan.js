@@ -18,33 +18,7 @@ export default function GroupPlan() {
     month: "long", // "March"
     day: "numeric", // "4"
   });
-  /*
-  useEffect(() => {
-    const fetchUserGroupId = async () => {
-      try {
-        // Wait for 1 second so that api gets called before the frontend
-        await new Promise((resolve) => setTimeout(resolve, 1000));
 
-        const response = await fetch("http://localhost:4000/api/byemail", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ userEmail: user.email }),
-        });
-        const result = await response.json();
-        console.log("groupId =", result.groupId);
-
-        setUserGroupId(result.groupId);
-      } catch (error) {
-        console.error("Error fetching user group ID:", error.message);
-        // Handle error as needed
-      }
-    };
-
-    fetchUserGroupId();
-  }, [user]);
-*/
   useEffect(() => {
     const fetchGroupDetails = async () => {
       try {
@@ -84,9 +58,11 @@ export default function GroupPlan() {
       }
     };
 
-    if (user?.email) {
-      fetchGroupDetails();
-    }
+    fetchGroupDetails(); // Initial fetch
+
+    const intervalId = setInterval(fetchGroupDetails, 500); // Fetch every 500ms
+
+    return () => clearInterval(intervalId); // Cleanup on unmount
   }, [user, setTasks]);
 
   function sendPlanToDB() {
@@ -106,6 +82,10 @@ export default function GroupPlan() {
         console.error("Error saving tasks:", error);
       });
   }
+
+  useEffect(() => {
+    sendPlanToDB(); // Send data to backend whenever tasks change
+  }, [tasks]);
 
   function HandleInputChange(event) {
     setNewTask(event.target.value);
@@ -142,7 +122,7 @@ export default function GroupPlan() {
       </h2>
       <ol>
         {tasks.map((task, index) => (
-          <li key={index}>
+          <li className="taskList" key={index}>
             <span className="text">{task.name}</span>
             {editMode && (
               <button className="removeBtn" onClick={() => removeTask(index)}>

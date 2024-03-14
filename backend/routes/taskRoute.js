@@ -6,8 +6,8 @@ router.use(express.json());
 
 router.post("/update", async (req, res) => {
   const { groupId, tasks } = req.body;
-  console.log("groupID: " + groupId);
-  console.log("tasks: " + tasks);
+  //console.log("groupID: " + groupId);
+  //console.log("tasks: " + tasks);
 
   try {
     // Find the group by name and update its tasks

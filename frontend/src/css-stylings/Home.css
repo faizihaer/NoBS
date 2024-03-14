@@ -41,7 +41,7 @@ body {
 
 .task {
   margin-bottom: 20px;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 
 .task input[type="checkbox"] {
@@ -146,4 +146,3 @@ body[data-theme="light"] {
 body[data-theme="dark"] {
   color: #fff; /* Dark mode text color */
 }
-
