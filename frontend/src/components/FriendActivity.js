@@ -39,26 +39,22 @@ export default function FriendActivity({
       try {
         // Fetch the user's group ID by email
         await new Promise((resolve) => setTimeout(resolve, 500));
-        const groupResponse = await axios.post(
+        const response = await axios.post(
           "http://localhost:4000/api/byemail",
           {
             userEmail: user.email,
           }
         );
 
-        const groupId = groupResponse.data.groupId;
+        const groupId = response.data.groupId;
         setUserGroupId(groupId); // Set the groupId in the state
 
         if (groupId) {
-          const friendsActivitiesResponse = await axios.get(
-            `http://localhost:4000/api/group/groupInfo`,
-            {
-              params: { groupId: groupId },
-            }
-          );
+          const friendsActivitiesResponse = await axios.get(`http://localhost:4000/api/group/groupInfo`,{ params: { groupId: groupId } });
           setFriendsActivities(
             friendsActivitiesResponse.data.friendsActivities
           );
+          console.log(friendsActivitiesResponse.data.friendsActivities);
         }
       } catch (error) {
         console.error("Error fetching users details:", error);
@@ -68,6 +64,7 @@ export default function FriendActivity({
     fetchFriendsActivities();
   }, [users]);
 
+  
   return (
     <div>
       <h2 className="section-title">Friend Activity</h2>
@@ -80,7 +77,7 @@ export default function FriendActivity({
             </div>
             <div className="activity-actions">
               <span className="activity-progress">
-                {friend.progress}/{tasks.length}
+                {friend.checkedTasksCount}/{tasks.length}
               </span>
               <button
                 className="nudge-button"
