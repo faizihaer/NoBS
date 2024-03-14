@@ -91,13 +91,15 @@ EMAIL_PASSWORD=<google auth password>
 Open up a terminal
 
 ```
-cd frontend
+cd backend
 npm start
 ```
 
 In another terminal without closing the first one
 
 ```
-cd backend
+cd frontend
 npm start
 ```
+
+Note: backend must be started before frontend. 
