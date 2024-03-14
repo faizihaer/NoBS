@@ -8,23 +8,26 @@ const NearestGymFinder = () => {
   const [error, setError] = useState("");
   const [showMap, setShowMap] = useState(false);
 
+
+  // Type in city 
   const handleCityChange = (event) => {
     setSelectedCity(event.target.value);
   };
-
+//type in state
   const handleStateChange = (event) => {
     setSelectedState(event.target.value);
   };
-
+//use nominatim instead of google thing to fetch the selected gyms
   const fetchGymsByLocation = async () => {
     try {
       const response = await axios.get("https://nominatim.openstreetmap.org/search", {
         params: {
           format: "json",
+          //this syntax took me so long :cry:
           q: `gym ${selectedCity}, ${selectedState}`,
         },
       });
-
+//error checks
       if (response.data.length === 0) {
         setError("No gyms found in the area.");
       } else {
@@ -42,7 +45,7 @@ const NearestGymFinder = () => {
       setError("Error fetching gym data. Please try again later.");
     }
   };
-
+//return results, styling as well
   return (
     <div>
       <label style={{ fontSize: "15px",marginLeft: "40px", textAlign: "center", paddingRight: "5px"}} htmlFor="city">City:</label>
