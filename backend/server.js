@@ -7,6 +7,9 @@ const userRouteByEmail = require("./routes/userRouteByEmail.js");
 const groupRoute = require("./routes/groupRoute.js");
 const taskRoute = require("./routes/taskRoute.js");
 const emailRouter = require("./routes/email");
+const userTaskRoute = require("./routes/userTaskRoute.js");
+const checkBoxRoute = require("./routes/checkBoxRoute.js");
+
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -32,6 +35,8 @@ app.use("/api/task", taskRoute);
 app.use("/api/byemail", userRouteByEmail);
 app.use("/api/email", emailRouter);
 app.use("/api/group", groupRoute);
+app.use("/api/userTaskRoute", userTaskRoute);
+app.use("/api/checkBoxRoute", checkBoxRoute );
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
