@@ -4,16 +4,9 @@ import { useTasks } from "../TasksContext";
 
 export default function DailyTasks() {
   const { user } = useAuth();
-  const { tasks, setTasks } = useTasks(); // Utilize tasks and setTasks from context directly
+  const { tasks, setTasks } = useTasks(); 
+  const [post, setPost] = useState(false);
 
-  // const [taskStatuses, setTaskStatuses] = useState(() => {
-  //   const savedStatuses = localStorage.getItem("taskStatuses");
-  //   return savedStatuses ? JSON.parse(savedStatuses) : [];
-  // });
-
-  // useEffect(() => {
-  //   localStorage.setItem("taskStatuses", JSON.stringify(taskStatuses));
-  // }, [taskStatuses]);
 
   const handleCheckboxChange = (taskName) => {
     const updatedTasks = tasks.map((task) => {
@@ -25,7 +18,13 @@ export default function DailyTasks() {
 
     setTasks(updatedTasks); // Update tasks state globally
   };
+  const handlePostButtonClick = () => {
+    setPost(true);
 
+    setTimeout(() => {
+        setPost(false);
+    }, 500);
+};
   console.log(tasks);
 
   return (
@@ -64,7 +63,7 @@ export default function DailyTasks() {
           </div>
         ))}
       </div>
-      <button className="post-button">Post</button>
+      <button className="post-button" onClick={handlePostButtonClick} style={{backgroundColor: post ? "#097312" : "" }}>Post</button>
     </div>
   );
 }

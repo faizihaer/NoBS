@@ -40,7 +40,8 @@ body {
 }
 
 .task {
-  margin-bottom: 8px;
+  margin-bottom: 20px;
+  margin-left: 30px;
 }
 
 .task input[type="checkbox"] {
@@ -52,7 +53,7 @@ button {
   color: var(--text_color);
   padding: 8px 16px;
   border: none;
-  border-radius: 4px;
+  border-radius: 9px;
   cursor: pointer;
   margin-top: 10px;
 }
