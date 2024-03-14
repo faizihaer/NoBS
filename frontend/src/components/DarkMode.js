@@ -24,6 +24,8 @@ const DarkMode = ({ setImage }) => {
     const selectedTheme = localStorage.getItem("theme");
     if (selectedTheme === "dark") {
       setDarkMode();
+    } else {
+      setLightMode();
     }
   }, []);
 
