@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../css-stylings/Fonts/Nohemi-Thin.css";
 import "../css-stylings/About.css";
-import VideoPlayer from "../components/videoplayer"; // Assuming VideoPlayer component path
+import VideoPlayer from "../components/videoplayer"; 
 
 const MotivationalComponent = () => {
   const containerStyle = {
@@ -12,10 +12,12 @@ const MotivationalComponent = () => {
     fontSize: "90px",
   };
 
+
+
   const textContainerStyle = {
     flex: 1,
     marginTop: "50px !important",
-    padding: "50px", // Adjust padding to avoid text overlap
+    padding: "50px", 
     zIndex: 2,
     position: "relative",
     color: "var(--text_color)",
@@ -23,7 +25,7 @@ const MotivationalComponent = () => {
   };
 
   const factsStyle = {
-    marginTop: "30px", // Adjust margin to create space between text and facts
+    marginTop: "30px", 
     // color: 'white',
     fontSize: "30px",
     lineHeight: "2.5",
@@ -40,7 +42,7 @@ const MotivationalComponent = () => {
   };
 
  
-
+// wanted to add more css here but didnt know what to put :(
   return (
     <div style={containerStyle}>
       <div style={textContainerStyle}>
@@ -51,6 +53,7 @@ const MotivationalComponent = () => {
           Your journey to greatness begins now. Embrace the possibilities
           within.
         </h2>
+      
         <div style={factsStyle}>
           <h2 style={titlestyle}>Facts About NoBS:</h2>
           <ul>
@@ -83,6 +86,7 @@ const MotivationalComponent = () => {
 };
 
 const About = () => {
+// about page js for displaying the content
   return (
     <>
       <VideoPlayer />

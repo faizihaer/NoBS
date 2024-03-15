@@ -46,7 +46,6 @@ const Profile = () => {
   return (
     <div>
     <img className="crossfit-background" src={crossfit} alt="Profile Card" />
-      <img className="profile-card" src={profileCard} alt="Profile Card" />
       <div className="profile-section">
           <p className="my-profile-message">My Profile:</p>
           <div className="profile-circle" >
@@ -63,10 +62,11 @@ const Profile = () => {
                 value={user.age}
                 onChange={(e) => setAge(e.target.value)}
                 disabled={!isEditing}
+                style={{ backgroundColor: "black", color: "white" }}
               />
             </div>
             <div className="input-group">
-              <p htmlFor="weightPounds" style={{ fontSize: "24px" }}>
+              <p htmlFor="weightPounds" style={{ fontSize: "24px", color: "white" }}>
                 Weight (lbs):
               </p>
               <input
@@ -75,6 +75,7 @@ const Profile = () => {
                 value={user.weightPounds}
                 onChange={(e) => setWeightPounds(e.target.value)}
                 disabled={!isEditing}
+                style={{ backgroundColor: "black", color: "white" }}
               />
             </div>
             <div className="input-group">
@@ -87,6 +88,7 @@ const Profile = () => {
                 value={user.height}
                 onChange={(e) => setHeight(e.target.value)}
                 disabled={!isEditing}
+                style={{ backgroundColor: "black", color: "white" }}
               />
             </div>
           </div>
