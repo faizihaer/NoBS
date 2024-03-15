@@ -54,7 +54,6 @@ First move into the frontend folder and create an .env file
 
 ```
 cd frontend
-touch .env
 ```
 
 In the .env file, now add the following with your own credentials
@@ -71,7 +70,6 @@ Then go back to the project directory, move into the backend folder and create a
 ```
 cd ..
 cd backend
-touch .env
 ```
 
 In the .env file, now add the following with your own credentials
