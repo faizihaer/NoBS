@@ -13,9 +13,9 @@ body {
 .background-image{
   object-fit: cover;
   z-index:  -2;
-
   position: absolute;
   width: 100%;
+  
 }
 .home {
   max-width: 800px;

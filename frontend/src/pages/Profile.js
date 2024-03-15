@@ -97,11 +97,11 @@ const Profile = () => {
           </div>
           <div className="profile-buttons">
             {isEditing ? (
-              <button className="profile-btn" onClick={handleSaveChanges}>
+              <button style={{ color: "white", fontSize: "20px"}} className="profile-btn" onClick={handleSaveChanges}>
                 Calculate BMI
               </button>
             ) : (
-              <button className="profile-btn" onClick={handleEdit}>
+              <button style={{ color: "white"}} className="profile-btn" onClick={handleEdit}>
                 Edit
               </button>
             )}

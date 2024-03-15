@@ -5,23 +5,19 @@ import GroupPlan from "../components/GroupPlan";
 import DailyTasks from "../components/DailyTasks";
 import { useAuth } from "../AuthService";
 import { TasksProvider } from "../TasksContext";
-import Dashboard from '../assets/Dashboard.jpg';
-
+import DashboardRed from '../assets/DashboardRed.jpg';
 const Home = () => {
   const [ShowPopUpSecond, setShowPopUpSecond] = useState(false);
   const [ShowPopUpHourly, setShowPopUpHourly] = useState(false);
-
   const { user } = useAuth();
-
   return (
     <TasksProvider>
       <div className="background-container">
-        <img src={Dashboard} alt="Dashboard" className="background-image" />
+        <img src={DashboardRed} alt="Dashboard" className="background-image" />
         <div className="home">
-          <header className="header">
+          <header style={{ color: "white"}} className="header">
             <h1>Welcome, {user.name}!</h1>
           </header>
-
           <section className="plan">
             <GroupPlan />
           </section>
