@@ -10,13 +10,20 @@ body {
 .date-span {
   float: right;
 }
+.background-image{
+  object-fit: cover;
+  z-index:  -2;
+
+  position: absolute;
+  width: 100%;
+}
 .home {
   max-width: 800px;
   margin: 110px auto 20px;
-  padding: 20px;
-  background-color: var(--body_background);
+  padding: 65px;
+  
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow:transparent;
   animation: fadeIn 1s ease;
 }
 
