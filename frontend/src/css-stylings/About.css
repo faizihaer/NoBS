@@ -34,8 +34,6 @@
   margin: 200px auto 150px; /* Adjusted margin to move it down */
   padding-bottom: 50px;
   background-color: var(--body_background);
-  border-radius: 40px;
-  box-shadow: 0 0 20px rgba(40, 4, 4, 0.1);
   font-family: 'NohemiThin', sans-serif;
   text-align: center;
   color: var(--text_color);

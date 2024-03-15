@@ -48,22 +48,22 @@ const NearestGymFinder = () => {
 //return results, styling as well
   return (
     <div>
-      <label style={{ fontSize: "15px",marginLeft: "40px", textAlign: "center", paddingRight: "5px"}} htmlFor="city">City:</label>
+      <label style={{ fontSize: "15px", color: "white", marginLeft: "40px", textAlign: "center", paddingRight: "5px"}} htmlFor="city">City:</label>
       <input style={{ fontSize: "20px", marginLeft: "10px", textAlign: "center"}} type="text" id="city" value={selectedCity} onChange={handleCityChange} />
   
-      <label style={{ fontSize: "15px", textAlign: "center", paddingLeft: "15px"}} htmlFor="state">State:</label>
+      <label style={{ fontSize: "15px", color: "white", textAlign: "center",  paddingLeft: "15px"}} htmlFor="state">State:</label>
       <input  style={{ fontSize: "20px", marginLeft: "10px", textAlign:"center" }} type="text" id="state" value={selectedState} onChange={handleStateChange} />
   
-      <button style={{ fontSize: "15px", marginLeft: "20px", paddingBottom: "15px", paddingTop: "15px", borderBlockColor: "white",  textAlign: "center", paddingLeft: "15px"}} onClick={fetchGymsByLocation}>Find Gyms in the Area</button>
+      <button style={{color: "white", fontSize: "15px", marginLeft: "20px", paddingBottom: "15px", paddingTop: "15px", borderBlockColor: "white",  textAlign: "center", paddingLeft: "15px"}} onClick={fetchGymsByLocation}>Find Gyms in the Area</button>
   
       {error && <div>{error}</div>}
   
       {gyms.length > 0 && (
         <div>
-          <u style={{fontSize: "20px", paddingT: "25px", paddingLeft: "25px", paddingBottom: "25px"}}>Gyms in the Area:</u>
+          <u style={{ color: "white",fontSize: "20px", paddingT: "25px", paddingLeft: "25px", paddingBottom: "25px"}}>Gyms in the Area:</u>
           <ul>
             {gyms.map((gym) => (
-              <p style={{ fontSize: "30px", textAlign: "left", paddingBottom: "10px", paddingLeft: "30px"}} key={gym.place_id}>
+              <p style={{ color: "white", fontSize: "30px", textAlign: "left", paddingBottom: "10px", paddingLeft: "30px"}} key={gym.place_id}>
                  <ul >Address: {gym.display_name}</ul>
               </p>
             ))}

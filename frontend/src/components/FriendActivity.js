@@ -69,19 +69,20 @@ export default function FriendActivity({
 
   return (
     <div>
-      <h2 className="section-title">Friend Activity</h2>
+      <h2 style={{ color: "white"}} className="section-title">Friend Activity</h2>
       {friendsActivities.length ? (
         friendsActivities.map((friend, index) => (
           <div className="friend" key={index}>
             <div className="activity-info">
-              <span className="friend-name">{friend.name}</span>
+              <span style={{ color: "white"}} className="friend-name">{friend.name}</span>
               {/* Placeholder for friend's activity details */}
             </div>
             <div className="activity-actions">
-              <span className="activity-progress">
+              <span style={{ color: "white"}} className="activity-progress">
                 {friend.checkedTasksCount}/{tasks.length}
               </span>
               <button
+              style={{ color: "white"}}
                 className="nudge-button"
                 onClick={() => handleNudgeClick(friend)}
               >
@@ -91,15 +92,15 @@ export default function FriendActivity({
           </div>
         ))
       ) : (
-        <p> No friends activites available </p>
+        <p style={{ color: "white"}}> No friends activites available </p>
       )}
       {ShowPopUpSecond && (
-        <div className="popup">
+        <div style={{ color: "white"}} className="popup">
           <p>Wait 4 seconds before nudging again</p>
         </div>
       )}
       {ShowPopUpHourly && (
-        <div className="popup">
+        <div style={{ color: "white"}} className="popup">
           <p>You can only nudge three times per hour</p>
         </div>
       )}

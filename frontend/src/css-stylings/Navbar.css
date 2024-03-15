@@ -4,7 +4,6 @@
 .navbar {
   background-color: --nav_color;
   font-family: "NohemiThin", sans-serif;
-
   padding: 20px;
   padding-top: 15px;
   position: fixed;

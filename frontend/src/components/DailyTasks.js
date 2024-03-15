@@ -137,13 +137,14 @@ export default function DailyTasks() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          color: "white"
         }}
       >
         <h2>Daily Tasks</h2>
       </div>
       <div
         className="task-container"
-        style={{ display: "flex", flexDirection: "column" }}
+        style={{ display: "flex", flexDirection: "column"}}
       >
         {tasks.map((task, index) => (
           <div
@@ -162,20 +163,10 @@ export default function DailyTasks() {
               onChange={() => handleCheckboxChange(task.name)}
               style={{ marginRight: "8px" }}
             />
-            <label htmlFor={`task-${index}`}>{task.name}</label>
+            <label style={{ color: "white"}} htmlFor={`task-${index}`}>{task.name}</label>
           </div>
         ))}
       </div>
-      {/* <button
-        className="post-button"
-        style={{ backgroundColor: post ? "#097312" : "" }}
-        onClick={() => {
-          postTasks({ userId, tasks });
-          handlePostButtonClick();
-        }}
-      >
-        Post
-      </button> */}
     </div>
   );
 }

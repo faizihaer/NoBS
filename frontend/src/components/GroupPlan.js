@@ -116,16 +116,16 @@ export default function GroupPlan() {
 
   return (
     <div className="plan">
-      <h2 className="section-title">
+      <h2 style={{ color: "white"}} className="section-title">
         <span>Group Plan for: {groupName}</span>
         <span className="date-span">{dateString}</span>
       </h2>
       <ol>
         {tasks.map((task, index) => (
-          <li className="taskList" key={index}>
+          <li style={{ color: "white"}} className="taskList" key={index}>
             <span className="text">{task.name}</span>
             {editMode && (
-              <button className="removeBtn" onClick={() => removeTask(index)}>
+              <button style={{ color: "white"}} className="removeBtn" onClick={() => removeTask(index)}>
                 Remove
               </button>
             )}
@@ -141,12 +141,12 @@ export default function GroupPlan() {
             onChange={HandleInputChange}
             onKeyPress={handleKeyPress}
           />
-          <button className="add-button" onClick={addTask}>
+          <button style={{ color: "white"}} className="add-button" onClick={addTask}>
             Add
           </button>
         </div>
       )}
-      <button className="edit-button" onClick={toggleEditMode}>
+      <button style={{ color: "white"}} className="edit-button" onClick={toggleEditMode}>
         {editMode ? "Save" : "Edit"}
       </button>
     </div>
